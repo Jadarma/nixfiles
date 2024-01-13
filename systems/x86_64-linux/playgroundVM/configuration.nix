@@ -13,6 +13,8 @@
       }
       # Shell
       "${nixfiles}/modules/nixos/shell"
+      # Fonts
+      "${nixfiles}/modules/nixos/fonts"
     ];
 
   # Enable Nix Flakes.
