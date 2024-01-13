@@ -10,5 +10,7 @@
   imports = [
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
+    "${nixfiles}/modules/home/starship"
+    "${nixfiles}/modules/home/zsh"
   ];
 }
