@@ -7,5 +7,8 @@
 
   xdg.enable = true;
 
-  imports = [ ];
+  imports = [
+    "${nixfiles}/modules/home/git"
+    "${nixfiles}/modules/home/gpg"
+  ];
 }
