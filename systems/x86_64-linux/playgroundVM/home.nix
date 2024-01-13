@@ -12,6 +12,7 @@
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/starship"
+    "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/zsh"
   ];
 }
