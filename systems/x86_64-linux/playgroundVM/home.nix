@@ -8,6 +8,7 @@
   xdg.enable = true;
 
   imports = [
+    "${nixfiles}/modules/home/alacritty"
     "${nixfiles}/modules/home/bat"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
