@@ -30,9 +30,9 @@
         device = "/dev/disk/by-uuid/0CE2-006A";
         fsType = "vfat";
       };
-
-    swapDevices = [ ];
   };
+
+  swapDevices = [ ];
 
   networking = {
     # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
