@@ -11,6 +11,8 @@
         home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
         home-manager.users.dan_vm = ./home.nix;
       }
+      # Shell
+      "${nixfiles}/modules/nixos/shell"
     ];
 
   # Enable Nix Flakes.
