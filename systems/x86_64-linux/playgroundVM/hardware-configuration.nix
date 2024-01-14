@@ -11,6 +11,7 @@
       kernelModules = [ "amdgpu" ];
     };
     kernelModules = [ "kvm-amd" ];
+    supportedFilesystems = [ "ntfs" ];
     extraModulePackages = [ ];
     extraModprobeConfig = ''
       options amdgpu gpu_recovery=1
@@ -29,6 +30,13 @@
       {
         device = "/dev/disk/by-uuid/0CE2-006A";
         fsType = "vfat";
+      };
+
+    "/home/dan_vm/games" =
+      {
+        device = "/dev/disk/by-uuid/F02E4DF12E4DB200";
+        fsType = "ntfs-3g";
+        options = [ "rw" "uid=1000" "gid=100" ];
       };
   };
 
