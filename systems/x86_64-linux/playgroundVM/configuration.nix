@@ -68,8 +68,18 @@
     description = "DanVM";
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
-    packages = with pkgs; [ firefox neofetch vesktop vscodium pcmanfm jetbrains-toolbox keepassxc ];
+    packages = with pkgs; [
+      firefox
+      neofetch
+      vesktop
+      vscodium
+      pcmanfm
+      jetbrains-toolbox
+      keepassxc
+      protonup-ng
+    ];
   };
+  programs.steam.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
