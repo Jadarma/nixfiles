@@ -68,7 +68,7 @@
     description = "DanVM";
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
-    packages = with pkgs; [ firefox neofetch vesktop vscodium ];
+    packages = with pkgs; [ firefox neofetch vesktop vscodium pcmanfm jetbrains-toolbox keepassxc ];
   };
 
   # Set your time zone.
