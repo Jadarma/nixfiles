@@ -1,7 +1,10 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, nixos-hardware, ... }:
 
 {
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+    nixos-hardware.nixosModules.common-pc-ssd
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
@@ -24,6 +27,7 @@
     "/" = {
       device = "/dev/disk/by-uuid/3714ee2c-293a-443d-b27e-b488fe81484e";
       fsType = "ext4";
+      options = [ "noatime" ];
     };
 
     "/boot" =
