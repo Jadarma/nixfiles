@@ -109,4 +109,7 @@
       ];
     };
   };
+
+  # Update environment to specify which terminal is used.
+  home.sessionVariables.TERMINAL = "alacritty";
 }
