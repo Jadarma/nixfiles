@@ -14,9 +14,6 @@
     ];
   };
 
-  # Ensure git uses the correct gpg program.
-  programs.git.signing.gpgPath = "${pkgs.gnupg}/bin/gpg";
-
   # Enable use of Yubikey for GPG and SSH via SmartCard.
   services.gpg-agent = {
     enable = true;
