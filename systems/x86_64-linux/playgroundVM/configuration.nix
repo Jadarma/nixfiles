@@ -17,6 +17,8 @@
       "${nixfiles}/modules/nixos/fonts"
       # Gnome
       "${nixfiles}/modules/nixos/gnome"
+      # Hyprland
+      "${nixfiles}/modules/nixos/hyprland"
       # GNUPG
       "${nixfiles}/modules/nixos/gpg"
     ];
@@ -109,14 +111,17 @@
 
     videoDrivers = [ "amdgpu" ];
 
-    # Enable auto-login, this is a VM.
+    # Enable auto-login, this is a VM, but not now cause I'm switching DEs.
     displayManager.autoLogin = {
-      enable = true;
+      enable = false;
       user = "dan_vm";
     };
   };
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # NixOS version at time of install.
   system.stateVersion = "23.11";
