@@ -70,7 +70,6 @@
     useDefaultShell = true;
     packages = with pkgs; [
       firefox
-      neofetch
       vesktop
       vscodium
       pcmanfm

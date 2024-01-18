@@ -13,6 +13,7 @@
     "${nixfiles}/modules/home/eza"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
+    "${nixfiles}/modules/home/neofetch"
     "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/vis"
