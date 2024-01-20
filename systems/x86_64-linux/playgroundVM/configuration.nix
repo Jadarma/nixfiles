@@ -15,6 +15,8 @@
       "${nixfiles}/modules/nixos/shell"
       # Fonts
       "${nixfiles}/modules/nixos/fonts"
+      # Gnome
+      "${nixfiles}/modules/nixos/gnome"
     ];
 
   # Enable Nix Flakes.
@@ -99,43 +101,19 @@
     };
   };
 
-  # Use GNOME as provided by the default install ISO, to ease initial setup of the rest of the config.
-  # TODO: Get rid of this abomination as quickly as possible.
   services.xserver = {
-    enable = true;
-    videoDrivers = [ "amdgpu" ];
-
     layout = "ro";
     xkbVariant = "";
 
-    desktopManager.gnome = {
+    videoDrivers = [ "amdgpu" ];
+
+    # Enable auto-login, this is a VM.
+    displayManager.autoLogin = {
       enable = true;
-
-      extraGSettingsOverrides = ''
-        [org.gnome.shell]
-        welcome-dialog-last-shown-version='9999999999'
-        [org.gnome.desktop.session]
-        idle-delay=0
-        [org.gnome.settings-daemon.plugins.power]
-        sleep-inactive-ac-type='nothing'
-        sleep-inactive-battery-type='nothing'
-      '';
-    };
-
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-        autoSuspend = false;
-      };
-      autoLogin = {
-        enable = true;
-        user = "dan_vm";
-      };
+      user = "dan_vm";
     };
   };
 
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
   xdg.portal.enable = true;
 
   # NixOS version at time of install.
