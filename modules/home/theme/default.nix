@@ -26,21 +26,7 @@
       name = "Adapta-Nokto-Eta";
       package = pkgs.adapta-gtk-theme;
     };
-
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
   };
-
-  home.sessionVariables.GTK_THEME = "Adapta-Nokto-Eta";
 
   # Configure QT to use Kvantum with the Adapta Dark theme, which will look close to the GTK theme.
   qt = {
