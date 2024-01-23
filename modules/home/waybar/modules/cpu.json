@@ -1,0 +1,9 @@
+{
+    "cpu": {
+        "interval": 10,
+        "format": " {usage:3}%",
+        "states": {
+            "critical": 90
+        }
+    }
+}

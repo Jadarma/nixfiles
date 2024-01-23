@@ -1,0 +1,121 @@
+@define-color foreground #B0BEC5;
+@define-color background #263238;
+@define-color backgroundDark #222d32;
+@define-color backgroundDarkest #1B2529;
+@define-color backgroundSelect #314549;
+@define-color accent #16a085;
+
+@define-color black #1E272C;
+@define-color red #FF5370;
+@define-color green #C3E88D;
+@define-color yellow #FFCB6B;
+@define-color blue #82AAFF;
+@define-color magenta #C792EA;
+@define-color cyan #89DDFF;
+@define-color white #EAEAEA;
+
+label {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: @foreground;
+}
+
+window#waybar {
+    background-color: @backgroundDark;
+}
+
+/* HYPRLAND -------------------------------------------------------------------------------------------------------- */
+#workspaces button {
+    background-color: @backgroundDark;
+    padding: 4px;
+}
+
+#workspaces button:hover label {
+    color: @foreground;
+}
+
+#workspaces button.empty {
+    background-color: @backgroundDarkest;
+}
+
+#workspaces button.active {
+    padding-top: 2px;
+    background-color: @backgroundSelect;
+    border-top: 2px solid @accent;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    border: 0;
+}
+
+#workspaces button.urgent label {
+    color: @backgroundDarkest;
+}
+
+/* Clock ----------------------------------------------------------------------------------------------------------- */
+#clock {
+    padding: 0 4px;
+    margin: 0 4px;
+    border-top: 2px solid @red;
+}
+
+/* Pulse Audio ----------------------------------------------------------------------------------------------------- */
+#pulseaudio {
+    padding: 0 8px;
+    margin: 0 4px;
+    border-top: 2px solid @yellow;
+}
+
+#pulseaudio.muted {
+    font-weight: 100;
+    background-color: @backgroundDark;
+    border-top: 2px dotted @yellow;
+}
+
+/* CPU ------------------------------------------------------------------------------------------------------------- */
+#cpu {
+    padding: 0 8px;
+    margin: 0 4px;
+    border-top: 2px solid @blue;
+}
+
+#cpu.critical {
+    font-weight: 900;
+    background-color: @blue;
+}
+
+#cpu.critical label {
+    color: @background;
+}
+
+/* Memory ---------------------------------------------------------------------------------------------------------- */
+#memory {
+    padding: 0 8px;
+    margin: 0 4px;
+    border-top: 2px solid @magenta;
+}
+
+#memory.critical {
+    font-weight: 900;
+    background-color: @magenta;
+}
+
+#memory.critical label {
+    color: @background;
+}
+
+/* Idle Inhibitor -------------------------------------------------------------------------------------------------- */
+#idle_inhibitor {
+    padding: 0 6px 0 10px;
+}
+
+#idle_inhibitor.activated {
+    font-weight: 900;
+    background-color: @green;
+}
+
+#idle_inhibitor.activated label {
+    color: @background;
+}

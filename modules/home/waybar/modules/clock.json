@@ -1,0 +1,9 @@
+{
+    "clock": {
+        "interval": 5,
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M}",
+        "format-calendar-weeks": "{}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
+}

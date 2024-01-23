@@ -10,6 +10,7 @@
     };
 
     extraConfig = ''
+      exec-once = waybar
       exec-once = notify-send -u low -t 2500 'Welcome!' 'To <i>Hyprland!</i>'
       #
       # This is an example Hyprland config file.
