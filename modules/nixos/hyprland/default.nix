@@ -6,8 +6,17 @@
 
   xdg.portal = {
     enable = true;
-    # TODO: Because Gnome module is also installed, the GTK portal will conflict.
-    #       Uncomment when that is gone.
-    # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  services.xserver = {
+    enable = true;
+
+    # TODO: Confgiure a more minimal display manager.
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+      autoSuspend = false;
+    };
   };
 }
