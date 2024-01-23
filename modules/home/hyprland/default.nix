@@ -1,9 +1,5 @@
 { pkgs, config, ... }: {
 
-  home.packages = with pkgs; [
-    rofi-wayland
-  ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -44,7 +40,7 @@
       # Because hyprland doesn't source the `home.sessionVariables`, force the menu to be launched by an intermediary shell, that way
       # ZSH will do the environment sourcing for you. This is important because without it, programs won't have the same environment as your
       # terminal, and IDEs won't be able to use GPG/SSH for instance.
-      $menu = /usr/bin/env zsh -ic 'rofi -show drun -show-icons'
+      $menu = /usr/bin/env zsh -ic 'wofi --show drun -D orientation=horizontal --lines=1 --prompt="Search Applications…"'
 
       # Some default env vars.
       env = XCURSOR_SIZE,24

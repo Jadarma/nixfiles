@@ -1,0 +1,29 @@
+#text {
+    font-family: monospace;
+}
+
+#input {
+    min-width: 250px;
+}
+
+#img {
+    margin-right: 6px;
+}
+
+#entry {
+    padding: 6px;
+    background-color: #263238;
+}
+
+#entry label {
+    color: #B0BEC5;
+}
+
+#entry:selected {
+    font-weight: 800;
+    background-color: #16A085
+}
+
+#entry:selected label {
+    color: #263238;
+}

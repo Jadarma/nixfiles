@@ -20,6 +20,7 @@
     "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/vis"
+    "${nixfiles}/modules/home/wofi"
     "${nixfiles}/modules/home/zsh"
   ];
 }
