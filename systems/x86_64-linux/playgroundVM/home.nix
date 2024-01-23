@@ -14,6 +14,7 @@
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gnome"
     "${nixfiles}/modules/home/gpg"
+    "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/neofetch"
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/starship"
