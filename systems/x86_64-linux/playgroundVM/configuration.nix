@@ -66,6 +66,7 @@
     pciutils
     git
     nixpkgs-fmt
+    pulseaudio
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -79,6 +80,7 @@
       vesktop
       vscodium
       pcmanfm
+      pavucontrol
       jetbrains-toolbox
       keepassxc
       protonup-ng
