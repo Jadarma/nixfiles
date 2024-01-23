@@ -17,6 +17,8 @@
       "${nixfiles}/modules/nixos/fonts"
       # Gnome
       "${nixfiles}/modules/nixos/gnome"
+      # GNUPG
+      "${nixfiles}/modules/nixos/gpg"
     ];
 
   # Enable Nix Flakes.

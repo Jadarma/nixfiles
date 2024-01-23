@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, config, ... }: {
 
   # Use GNOME as provided by the default install ISO, to ease initial setup of the rest of the config.
   # TODO: Get rid of this abomination as quickly as possible.
@@ -25,6 +25,4 @@
       autoSuspend = false;
     };
   };
-
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
 }
