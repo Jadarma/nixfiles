@@ -10,6 +10,7 @@
   imports = [
     "${nixfiles}/modules/home/alacritty"
     "${nixfiles}/modules/home/bat"
+    "${nixfiles}/modules/home/cava"
     "${nixfiles}/modules/home/eza"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
@@ -18,7 +19,6 @@
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme"
-    "${nixfiles}/modules/home/vis"
     "${nixfiles}/modules/home/waybar"
     "${nixfiles}/modules/home/wofi"
     "${nixfiles}/modules/home/zsh"
