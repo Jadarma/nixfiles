@@ -82,6 +82,7 @@
       jetbrains-toolbox
       keepassxc
       protonup-ng
+      spotify
     ];
   };
   programs.steam.enable = true;
