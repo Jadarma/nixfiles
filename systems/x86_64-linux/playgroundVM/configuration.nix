@@ -48,7 +48,6 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -112,12 +111,12 @@
     };
 
     videoDrivers = [ "amdgpu" ];
+  };
 
-    # Enable auto-login, this is a VM.
-    displayManager.autoLogin = {
-      enable = true;
-      user = "dan_vm";
-    };
+  # Enable auto-login, this is a VM.
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "dan_vm";
   };
 
   # NixOS version at time of install.
