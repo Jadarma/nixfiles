@@ -106,8 +106,10 @@
   };
 
   services.xserver = {
-    layout = "ro";
-    xkbVariant = "";
+    xkb = {
+      layout = "ro";
+      variant = "";
+    };
 
     videoDrivers = [ "amdgpu" ];
 
