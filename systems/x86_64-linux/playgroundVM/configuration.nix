@@ -79,7 +79,6 @@
       vscodium
       pcmanfm
       pavucontrol
-      jetbrains-toolbox
       keepassxc
       protonup-ng
       spotify
