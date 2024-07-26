@@ -108,14 +108,13 @@ window#waybar {
 
 /* Idle Inhibitor -------------------------------------------------------------------------------------------------- */
 #idle_inhibitor {
-    padding: 0 6px 0 10px;
+    padding-right: 6px;
+    margin: 0 4px;
+    min-width: 32px;
 }
 
 #idle_inhibitor.activated {
     font-weight: 900;
-    background-color: @green;
-}
-
-#idle_inhibitor.activated label {
     color: @background;
+    background-color: @green;
 }
