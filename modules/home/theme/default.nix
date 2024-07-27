@@ -12,10 +12,12 @@
   gtk = {
     enable = true;
 
-    cursorTheme = {
-      name = "Catppuccin-Macchiato-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.macchiatoDark;
-    };
+    # NOTE: Cursors are a bit finnicky, this should work but isn't enough.
+    #       Check out `modules/home/hyprland/hyprcursor.nix` instead!
+    # cursorTheme = {
+    #   name = "catppuccin-macchiato-teal-cursors";
+    #   package = pkgs.catppuccin-cursors.macchiatoTeal;
+    # };
 
     iconTheme = {
       name = "Papirus-Adapta-Nokto-Maia";
