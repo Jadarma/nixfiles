@@ -13,4 +13,9 @@
     "waybar/modules/memory.json".source = ./modules/memory.json;
     "waybar/modules/pulseaudio.json".source = ./modules/pulseaudio.json;
   };
+
+  # Hyprland integration.
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [ "waybar" ];
+  };
 }
