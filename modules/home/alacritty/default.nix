@@ -112,4 +112,11 @@
 
   # Update environment to specify which terminal is used.
   home.sessionVariables.TERMINAL = "alacritty";
+
+  # Hyprland integration.
+  wayland.windowManager.hyprland.settings = {
+    bind = [
+      "SUPER, RETURN, exec, alacritty"
+    ];
+  };
 }
