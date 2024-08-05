@@ -18,6 +18,7 @@
     "${nixfiles}/modules/home/neofetch"
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/jetbrains"
+    "${nixfiles}/modules/home/qalculate"
     "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/waybar"
