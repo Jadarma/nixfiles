@@ -107,7 +107,7 @@
     bind = [
       # HyprLock is called by HyprIdle whenever a dbus lock event occurs.
       # Instead of calling it manually, we trigger the event to get the same effect.
-      "SUPER, escape, exec, loginctl lock-session"
+      "SUPER + SHIFT, escape, exec, loginctl lock-session"
     ];
   };
 }
