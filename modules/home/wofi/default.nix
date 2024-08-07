@@ -24,12 +24,13 @@
     #       shell, that way ZSH will do the environment sourcing for you. This is important because without it, programs
     #       won't have the same environment as your terminal, and IDEs won't be able to use GPG/SSH for instance.
     bind = [
-      "SUPER, D, exec, /usr/bin/env zsh -ic 'wofi --show drun -D orientation=horizontal --lines=1 --prompt=\"Search Applications…\"'"
+      "SUPER, D, exec, /usr/bin/env zsh -ic 'pgrep wofi || wofi --show drun -D orientation=horizontal --lines=1 --prompt=\"Search Applications…\"'"
     ];
 
-    # Use specific animation.
-    # TODO: Seems like only works for exit animation.
     layerrule = [
+      "dimaround, wofi"
+      # Use specific animation.
+      # TODO: Seems like only works for exit animation.
       "animation slide top, wofi"
     ];
   };
