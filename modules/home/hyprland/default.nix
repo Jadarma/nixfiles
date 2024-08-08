@@ -28,7 +28,6 @@
     # Throw in temporary extra config here.
     # This should ideally be empty, and put in relevant modules.
     extraConfig = ''
-      bind = SUPER, F2, exec, firefox
       bind = SUPER, F3, exec, pcmanfm
     '';
   };

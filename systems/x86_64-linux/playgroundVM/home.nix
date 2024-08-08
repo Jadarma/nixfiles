@@ -12,6 +12,7 @@
     "${nixfiles}/modules/home/bat"
     "${nixfiles}/modules/home/cava"
     "${nixfiles}/modules/home/eza"
+    "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/mako"

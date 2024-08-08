@@ -73,7 +73,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
     packages = with pkgs; [
-      firefox
       vesktop
       vscodium
       pcmanfm
