@@ -199,14 +199,9 @@
       name = "Incognito";
       isDefault = false;
 
-      search = {
-        force = true;
-      };
-
       settings = {
 
         # Use separate dark-gray theme to visually identify incognito profile.
-        # NOTE: Requires you to manually enable the extension for now, no idea how to automate it.
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
 
         # Privacy
