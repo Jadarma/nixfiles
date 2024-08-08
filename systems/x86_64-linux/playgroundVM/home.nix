@@ -1,4 +1,4 @@
-{ nixfiles, pkgs, config, ... }: {
+{ nixfiles, pkgs, config, lib, ... }: {
   home = {
     username = "dan_vm";
     homeDirectory = "/home/dan_vm";
@@ -26,4 +26,10 @@
     "${nixfiles}/modules/home/wofi"
     "${nixfiles}/modules/home/zsh"
   ];
+
+  wayland.windowManager.hyprland.settings = {
+    monitor = lib.mkForce [
+      "DP-1,2560x1440@144,0x0,1,vrr,1"
+    ];
+  };
 }
