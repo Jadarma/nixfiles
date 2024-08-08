@@ -138,37 +138,37 @@
       containersForce = true;
       containers = {
         personal = {
-          id = 0;
+          id = 1;
           name = "Personal";
           icon = "fingerprint";
           color = "turquoise";
         };
         shopping = {
-          id = 1;
+          id = 2;
           name = "Shopping";
           icon = "cart";
           color = "green";
         };
         social = {
-          id = 2;
+          id = 3;
           name = "Social";
           icon = "circle";
           color = "blue";
         };
         programming = {
-          id = 3;
+          id = 4;
           name = "Programming";
           icon = "briefcase";
           color = "orange";
         };
         gaming = {
-          id = 4;
+          id = 5;
           name = "Gaming";
           icon = "pet";
           color = "red";
         };
         entertainment = {
-          id = 5;
+          id = 6;
           name = "Entertainment";
           icon = "chill";
           color = "purple";
