@@ -3,6 +3,7 @@
   imports = [
     ./hyprcursor.nix
     ./hypridle.nix
+    ./hyprland.nix
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprpicker.nix
@@ -17,6 +18,18 @@
       variables = [ "--all" ];
     };
 
-    extraConfig = builtins.readFile ./hyprland.conf;
+    settings = {
+      exec-once = [
+        "notify-send -u low -t 2500 'Welcome!' 'To <i>Hyprland!</i>'"
+      ];
+    };
+
+    # TODO: Extra configs.
+    # Throw in temporary extra config here.
+    # This should ideally be empty, and put in relevant modules.
+    extraConfig = ''
+      bind = SUPER, F2, exec, firefox
+      bind = SUPER, F3, exec, pcmanfm
+    '';
   };
 }
