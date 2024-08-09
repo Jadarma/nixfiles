@@ -62,7 +62,6 @@
     neovim
     pciutils
     git
-    nixpkgs-fmt
     pulseaudio
   ];
 

@@ -50,5 +50,25 @@
         };
       in
       foldl' (mergeAttrs) { } (map mkNixosSystem configTargets);
+
+    # Creates a devshell for working with this flake via direnv.
+    # Set the `supportedSystems` to be the set of system architectures you target, all others would be a bit redundant, no?
+    devShells =
+      let
+        supportedSystems = [ "x86_64-linux" ];
+        forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
+          pkgs = import nixpkgs { inherit system; };
+        });
+      in
+      forEachSupportedSystem ({ pkgs }: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            nixpkgs-fmt
+            nixd
+            just
+            vscodium
+          ];
+        };
+      });
   };
 }
