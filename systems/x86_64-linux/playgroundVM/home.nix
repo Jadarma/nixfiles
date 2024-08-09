@@ -1,11 +1,10 @@
 { nixfiles, pkgs, config, lib, ... }: {
+
   home = {
     username = "dan_vm";
     homeDirectory = "/home/dan_vm";
     stateVersion = "23.11";
   };
-
-  xdg.enable = true;
 
   imports = [
     "${nixfiles}/modules/home/alacritty"
@@ -25,6 +24,7 @@
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/waybar"
     "${nixfiles}/modules/home/wofi"
+    "${nixfiles}/modules/home/xdg"
     "${nixfiles}/modules/home/zsh"
   ];
 
