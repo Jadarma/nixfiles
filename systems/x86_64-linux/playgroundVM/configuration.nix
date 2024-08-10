@@ -73,7 +73,6 @@
     useDefaultShell = true;
     packages = with pkgs; [
       vesktop
-      vscodium
       pcmanfm
       pavucontrol
       keepassxc

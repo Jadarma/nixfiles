@@ -2,6 +2,7 @@
 
   imports = [
     ./dmoji
+    ./nixfiles
     ./powermenu
   ];
 }

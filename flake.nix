@@ -66,7 +66,16 @@
             nixpkgs-fmt
             nixd
             just
-            vscodium
+            (vscode-with-extensions.override {
+              vscode = vscodium;
+              vscodeExtensions = with vscode-extensions; [
+                equinusocio.vsc-material-theme
+                equinusocio.vsc-material-theme-icons
+                jnoortheen.nix-ide
+                mkhl.direnv
+                timonwong.shellcheck
+              ];
+            })
           ];
         };
       });
