@@ -38,7 +38,7 @@
         # Read the directory structure, and return a list of targets, containing architecture and hostname.
         # For example: [ { system = "x86_64-linux"; host = "hostname"; }].
         hostWithSystems = system: map (host: { host = host; system = system; }) (directSubdirectories ./systems/${system});
-        configTargets = concatMap (hostWithSystems) (directSubdirectories ./systems);
+        configTargets = concatMap hostWithSystems (directSubdirectories ./systems);
 
         # From a host name and a system architecture, create a NixOS system, which passes all flake inputs to the `configuration.nix` of the target.
         mkNixosSystem = { host, system }: {
@@ -49,7 +49,7 @@
           };
         };
       in
-      foldl' (mergeAttrs) { } (map mkNixosSystem configTargets);
+      foldl' mergeAttrs { } (map mkNixosSystem configTargets);
 
     # Creates a devshell for working with this flake via direnv.
     # Set the `supportedSystems` to be the set of system architectures you target, all others would be a bit redundant, no?
