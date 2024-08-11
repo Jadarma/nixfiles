@@ -118,3 +118,20 @@ window#waybar {
     color: @background;
     background-color: @green;
 }
+
+/* Mako ------------------------------------------------------------------------------------------------------------ */
+#custom-mako {
+    padding: 0 6px 0 10px;
+}
+
+#custom-mako.do-not-disturb {
+    font-weight: 100;
+    padding: 0 8px;
+    background-color: @backgroundDarkest
+}
+
+#custom-mako.alert {
+    font-weight: 900;
+    color: @background;
+    background-color: @yellow;
+}

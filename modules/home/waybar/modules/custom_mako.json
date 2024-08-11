@@ -1,0 +1,15 @@
+{
+    "custom/mako": {
+        "format": "{icon}",
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/custom_mako.sh",
+        "on-click": "$XDG_CONFIG_HOME/waybar/scripts/custom_mako.sh toggle",
+        "on-click-right": "makoctl dismiss -a",
+        "format-icons": [
+            " ",
+            " "
+        ],
+        "return-type": "json",
+        "interval": 1,
+        "signal": 1
+    }
+}

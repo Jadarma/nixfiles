@@ -12,6 +12,7 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "custom/mako",
         "idle_inhibitor",
         "memory",
         "cpu",
@@ -22,6 +23,7 @@
     "include": [
         "$XDG_CONFIG_HOME/waybar/modules/clock.json",
         "$XDG_CONFIG_HOME/waybar/modules/cpu.json",
+        "$XDG_CONFIG_HOME/waybar/modules/custom_mako.json",
         "$XDG_CONFIG_HOME/waybar/modules/idle_inhibitor.json",
         "$XDG_CONFIG_HOME/waybar/modules/memory.json",
         "$XDG_CONFIG_HOME/waybar/modules/pulseaudio.json"
