@@ -29,7 +29,7 @@
       # Specialized.
       extraConfig = {
         XDG_REPO_DIR = "${home}/repo"; # Git clones of various projects.
-        XDG_SCREENSHOT_DIR = "${home}/pics/screenshots"; # Separates screenshots from regular pictures.
+        XDG_SCREENSHOTS_DIR = "${home}/pics/screenshots"; # Separates screenshots from regular pictures.
       };
     };
   };

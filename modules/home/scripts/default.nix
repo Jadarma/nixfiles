@@ -4,5 +4,6 @@
     ./dmoji
     ./nixfiles
     ./powermenu
+    ./snip
   ];
 }
