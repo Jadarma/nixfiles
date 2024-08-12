@@ -5,6 +5,7 @@
 # - "$NIXFILES_DIR"
 # - "$XDG_REPO_DIR/nixfiles"
 # - "~/repo/nixfiles"
+XDG_REPO_DIR="$(xdg-user-dir REPO)"
 NIXFILES_DIR="${NIXFILES_DIR:="${XDG_REPO_DIR:-"$HOME/repo"}/nixfiles"}"
 
 if [ ! -d "$NIXFILES_DIR" ]; then

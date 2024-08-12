@@ -5,7 +5,12 @@
     let
       nixfiles = {
         name = "nixfiles";
-        runtimeInputs = [ jq nix-direnv zsh ];
+        runtimeInputs = [
+          jq
+          nix-direnv
+          xdg-user-dirs
+          zsh
+        ];
         text = builtins.readFile ./nixfiles.sh;
       };
     in
