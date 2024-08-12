@@ -69,14 +69,6 @@
     description = "DanVM";
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
-    packages = with pkgs; [
-      vesktop
-      pcmanfm
-      pavucontrol
-      keepassxc
-      protonup-ng
-      spotify
-    ];
   };
   programs.steam.enable = true;
 

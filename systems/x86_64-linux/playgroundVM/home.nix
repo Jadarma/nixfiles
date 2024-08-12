@@ -4,6 +4,18 @@
     username = "dan_vm";
     homeDirectory = "/home/dan_vm";
     stateVersion = "23.11";
+
+    # Extra apps and packages.
+    packages = with pkgs; [
+      keepassxc
+      pavucontrol
+      pcmanfm
+      protonup-ng
+      spotify
+      vesktop
+      viewnior
+      qpwgraph
+    ];
   };
 
   imports = [
