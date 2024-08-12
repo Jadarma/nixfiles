@@ -19,13 +19,11 @@
       "${nixfiles}/modules/nixos/hyprland"
       # GNUPG
       "${nixfiles}/modules/nixos/gpg"
+      # Nix
+      "${nixfiles}/modules/nixos/nix"
     ];
 
-  # Enable Nix Flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Allow unfree packages as well as required firmware.
-  nixpkgs.config.allowUnfree = true;
+  # Allow required firmware.
   hardware.enableRedistributableFirmware = true;
 
   # Enable VM options.
