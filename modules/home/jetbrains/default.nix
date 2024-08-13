@@ -1,9 +1,11 @@
 { pkgs, config, ... }: {
 
-  home.packages = with pkgs; [
-    jetbrains-toolbox
-    git-crypt
-  ];
+  home = {
+    packages = with pkgs; [
+      git-crypt
+      jetbrains.idea-ultimate
+    ];
+  };
 
   programs.java = {
     enable = true;
