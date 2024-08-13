@@ -11,6 +11,7 @@
       pavucontrol
       pcmanfm
       protonup-ng
+      signal-desktop
       spotify
       vesktop
       viewnior
