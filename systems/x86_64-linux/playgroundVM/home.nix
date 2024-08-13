@@ -27,6 +27,7 @@
     "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
+    "${nixfiles}/modules/home/htop"
     "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/neofetch"
     "${nixfiles}/modules/home/hyprland"

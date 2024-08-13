@@ -2,6 +2,7 @@
     "cpu": {
         "interval": 10,
         "format": " {usage:3}%",
+        "on-click-right": "alacritty -e 'htop'",
         "states": {
             "critical": 90
         }
