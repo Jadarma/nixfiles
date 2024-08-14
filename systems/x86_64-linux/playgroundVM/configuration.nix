@@ -17,6 +17,7 @@
       "${nixfiles}/modules/nixos/hyprland"
       "${nixfiles}/modules/nixos/network"
       "${nixfiles}/modules/nixos/nix"
+      "${nixfiles}/modules/nixos/pipewire"
       "${nixfiles}/modules/nixos/shell"
     ];
 
@@ -29,22 +30,11 @@
 
   networking.hostName = "playgroundVM";
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [
     neovim
     pciutils
     git
-    pulseaudio
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
