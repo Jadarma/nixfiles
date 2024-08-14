@@ -11,18 +11,13 @@
         home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
         home-manager.users.dan_vm = ./home.nix;
       }
-      # Shell
-      "${nixfiles}/modules/nixos/shell"
-      # Fonts
+      "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
-      # Hyprland
-      "${nixfiles}/modules/nixos/hyprland"
-      # Network
-      "${nixfiles}/modules/nixos/network"
-      # GNUPG
       "${nixfiles}/modules/nixos/gpg"
-      # Nix
+      "${nixfiles}/modules/nixos/hyprland"
+      "${nixfiles}/modules/nixos/network"
       "${nixfiles}/modules/nixos/nix"
+      "${nixfiles}/modules/nixos/shell"
     ];
 
   # Allow required firmware.
@@ -31,15 +26,6 @@
   # Enable VM options.
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
-
-  # Bootloader.
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
 
   networking.hostName = "playgroundVM";
 
