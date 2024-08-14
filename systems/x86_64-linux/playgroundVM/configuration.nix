@@ -22,15 +22,9 @@
       "${nixfiles}/modules/nixos/shell"
     ];
 
-  # Allow required firmware.
-  hardware.enableRedistributableFirmware = true;
-
-  # Enable VM options.
-  services.spice-vdagentd.enable = true;
-  services.qemuGuest.enable = true;
-
-  # Set the hostname.
+  # System.
   networking.hostName = "playgroundVM";
+  system.stateVersion = "23.11";
 
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [
@@ -48,15 +42,15 @@
   };
   programs.steam.enable = true;
 
-  # Enable AMD drivers.
+  # Enable drivers and firmware.
+  hardware.enableRedistributableFirmware = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  # Enable auto-login, this is a VM.
+  # Virtual machine settings.
+  services.spice-vdagentd.enable = true;
+  services.qemuGuest.enable = true;
   services.displayManager.autoLogin = {
     enable = true;
     user = "dan_vm";
   };
-
-  # NixOS version at time of install.
-  system.stateVersion = "23.11";
 }
