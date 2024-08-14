@@ -17,6 +17,8 @@
       "${nixfiles}/modules/nixos/fonts"
       # Hyprland
       "${nixfiles}/modules/nixos/hyprland"
+      # Network
+      "${nixfiles}/modules/nixos/network"
       # GNUPG
       "${nixfiles}/modules/nixos/gpg"
       # Nix
@@ -39,11 +41,7 @@
     };
   };
 
-  # Enable networking.
-  networking = {
-    hostName = "playgroundVM";
-    networkmanager.enable = true;
-  };
+  networking.hostName = "playgroundVM";
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
