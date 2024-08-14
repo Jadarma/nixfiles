@@ -15,6 +15,7 @@
       "${nixfiles}/modules/nixos/fonts"
       "${nixfiles}/modules/nixos/gpg"
       "${nixfiles}/modules/nixos/hyprland"
+      "${nixfiles}/modules/nixos/locale"
       "${nixfiles}/modules/nixos/network"
       "${nixfiles}/modules/nixos/nix"
       "${nixfiles}/modules/nixos/pipewire"
@@ -28,6 +29,7 @@
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
 
+  # Set the hostname.
   networking.hostName = "playgroundVM";
 
   # Install system-wide packages.
@@ -46,33 +48,8 @@
   };
   programs.steam.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "en_DK.UTF-8";
-      LC_IDENTIFICATION = "en_DK.UTF-8";
-      LC_MEASUREMENT = "en_DK.UTF-8";
-      LC_MONETARY = "en_DK.UTF-8";
-      LC_NAME = "en_DK.UTF-8";
-      LC_NUMERIC = "en_DK.UTF-8";
-      LC_PAPER = "en_DK.UTF-8";
-      LC_TELEPHONE = "en_DK.UTF-8";
-      LC_TIME = "en_DK.UTF-8";
-    };
-  };
-
-  services.xserver = {
-    xkb = {
-      layout = "ro";
-      variant = "";
-    };
-
-    videoDrivers = [ "amdgpu" ];
-  };
+  # Enable AMD drivers.
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable auto-login, this is a VM.
   services.displayManager.autoLogin = {
