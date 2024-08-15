@@ -20,5 +20,32 @@
     "shellcheck.enableQuickFix": true,
     "shellcheck.run": "onType",
     "shellcheck.disableVersionCheck": true,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        120
+    ],
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.maxColumn": 120,
+    "editor.minimap.renderCharacters": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 300,
+    "files.autoSaveWhenNoErrors": true,
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "workbench.cloudChanges.autoResume": "off",
+    "workbench.cloudChanges.continueOn": "off",
+    "workbench.experimental.cloudChanges.autoStore": "off",
+    "workbench.startupEditor": "terminal",
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true,
+    "workbench.tips.enabled": false,
+    "workbench.tree.renderIndentGuides": "onHover",
+    "workbench.tree.indent": 8,
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.filePath": "on"
 }
