@@ -9,5 +9,16 @@
                 ]
             },
         }
-    }
+    },
+    "workbench.colorTheme": "Material Theme",
+    "materialTheme.accent": "Teal",
+    "direnv.restart.automatic": true,
+    "direnv.status.showChangesCount": true,
+    "direnv.watchForChanges": true,
+    "direnv.path.executable": "direnv",
+    "shellcheck.enable": true,
+    "shellcheck.enableQuickFix": true,
+    "shellcheck.run": "onType",
+    "shellcheck.disableVersionCheck": true,
+    "editor.formatOnSave": true
 }
