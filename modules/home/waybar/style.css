@@ -28,7 +28,7 @@ window#waybar {
 /* HYPRLAND -------------------------------------------------------------------------------------------------------- */
 #workspaces button {
     background-color: @backgroundDark;
-    padding: 4px;
+    padding: 4px 8px;
 }
 
 #workspaces button:hover label {
