@@ -33,7 +33,7 @@
 
   # User account.
   users.users.dan = {
-    description = "Dan Cimpianu";
+    description = "Dan Cîmpianu";
     isNormalUser = true;
 
     uid = 1000;
