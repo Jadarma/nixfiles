@@ -30,7 +30,7 @@
     "editor.minimap.maxColumn": 120,
     "editor.minimap.renderCharacters": false,
     "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 300,
+    "files.autoSaveDelay": 1000,
     "files.autoSaveWhenNoErrors": true,
     "files.encoding": "utf8",
     "files.eol": "\n",
