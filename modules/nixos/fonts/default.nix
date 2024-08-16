@@ -8,10 +8,10 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [ "JetBrains Mono" ];
-        serif = [ "Noto Serif" ];
-        sansSerif = [ "Noto Sans" ];
-        emoji = [ "Noto Color Emoji" "Noto Emoji" ];
+        monospace = [ "JetBrainsMono NF" "Noto Color Emoji" ];
+        serif = [ "NotoSerif NF" "Noto Color Emoji" ];
+        sansSerif = [ "NotoSans NF" "Noto Color Emoji" ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };
