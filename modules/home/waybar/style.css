@@ -32,7 +32,7 @@ window#waybar {
 }
 
 #workspaces button:hover label {
-    color: @foreground;
+    color: @white;
 }
 
 #workspaces button.empty {
@@ -86,7 +86,7 @@ window#waybar {
     background-color: @blue;
 }
 
-#cpu.critical label {
+#cpu.critical {
     color: @background;
 }
 
@@ -102,7 +102,7 @@ window#waybar {
     background-color: @magenta;
 }
 
-#memory.critical label {
+#memory.critical {
     color: @background;
 }
 
