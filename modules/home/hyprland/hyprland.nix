@@ -144,8 +144,8 @@
       # Window Focusing
       "SUPER      , left , Move focus towards the window to the left. , movefocus, l"
       "SUPER      , right, Move focus towards the window to the right., movefocus, r"
-      "SUPER      , up   , Move focus towards the window above.       , movefocus, l"
-      "SUPER      , down , Move focus towards the window below.       , movefocus, l"
+      "SUPER      , up   , Move focus towards the window above.       , movefocus, u"
+      "SUPER      , down , Move focus towards the window below.       , movefocus, d"
       "ALT        , tab  , Move focus to the next window.             , cyclenext"
       "ALT + SHIFT, tab  , Move focus to the previous window.         , cyclenext, prev"
 
