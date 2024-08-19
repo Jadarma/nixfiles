@@ -7,6 +7,7 @@
 
     # Extra apps and packages.
     packages = with pkgs; [
+      kdePackages.ark
       keepassxc
       pavucontrol
       pcmanfm
