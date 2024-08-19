@@ -76,7 +76,7 @@ We can now enable full-disk encryption with LUKS via a master password.
 There are alternatives, such as dummy USB headers or YubiKeys but let's keep it simple here.
 
 > [!IMPORTANT]
-> Forgetting the password for your LUKS container results in a permanent loss of acess to the drive's contents.
+> Forgetting the password for your LUKS container results in a permanent loss of access to the drive's contents.
 > Store it in a safe place, like a password manager.
 
 ```shell
@@ -207,7 +207,7 @@ Do note the rest of the defaults Nix enabled shouldn't be touched _(yet)_.
 In `/mnt/etc/nixos/hardware-configuration.nix`, setup the following:
 
 - Add the `cryptd` kernel module for LUKS.
-- Define the primary luks device.
+- Define the primary LUKS device.
 - Update the filesystems to use `/dev/disk/by-label` for convenience.
 - Enable firmware updates _(optional, recommended)_.
 
