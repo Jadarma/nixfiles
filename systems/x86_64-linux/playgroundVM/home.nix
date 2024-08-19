@@ -7,6 +7,7 @@
 
     # Extra apps and packages.
     packages = with pkgs; [
+      evince
       kdePackages.ark
       keepassxc
       pavucontrol
@@ -41,6 +42,7 @@
     "${nixfiles}/modules/home/waybar"
     "${nixfiles}/modules/home/wofi"
     "${nixfiles}/modules/home/xdg"
+    "${nixfiles}/modules/home/zathura"
     "${nixfiles}/modules/home/zsh"
   ];
 
