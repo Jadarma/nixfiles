@@ -42,13 +42,6 @@
   };
   programs.steam.enable = true;
 
-  # Enable drivers and firmware.
-  hardware.enableRedistributableFirmware = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  # Virtual machine settings.
-  services.spice-vdagentd.enable = true;
-  services.qemuGuest.enable = true;
   services.displayManager.autoLogin = {
     enable = true;
     user = "dan_vm";
