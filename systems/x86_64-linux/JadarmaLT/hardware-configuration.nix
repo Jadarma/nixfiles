@@ -1,5 +1,5 @@
-{ pkgs, config, lib, modulesPath, nixos-hardware, ... }: {
-  imports = [ 
+{ lib, modulesPath, nixos-hardware, ... }: {
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-gpu-nvidia
@@ -19,29 +19,29 @@
     };
 
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [];
+    extraModulePackages = [ ];
   };
 
   # Drvies, Partitions, and Swap.
   fileSystems = {
-    "/" = { 
+    "/" = {
       device = "/dev/disk/by-label/NIXOS_ROOT";
       fsType = "ext4";
     };
 
     "/boot" = {
-       device = "/dev/disk/by-label/NIXOS_BOOT";
-       fsType = "vfat";
-       options = [ "umask=0077" ];
+      device = "/dev/disk/by-label/NIXOS_BOOT";
+      fsType = "vfat";
+      options = [ "umask=0077" ];
     };
 
-    "/home" = { 
+    "/home" = {
       device = "/dev/disk/by-label/NIXOS_HOME";
       fsType = "ext4";
     };
-  }; 
+  };
 
-  swapDevices = [ 
+  swapDevices = [
     { device = "/dev/disk/by-label/NIXOS_SWAP"; }
   ];
 

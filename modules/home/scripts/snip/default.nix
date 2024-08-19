@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   # Create the snip script.
   home.packages = with pkgs;
     let

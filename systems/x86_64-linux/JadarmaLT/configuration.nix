@@ -1,4 +1,4 @@
-{ config, lib, pkgs, nixfiles, homeManager, nix-colors, ... }:
+{ pkgs, nixfiles, homeManager, nix-colors, ... }:
 {
   imports = [
     # Include the results of the hardware scan.

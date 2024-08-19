@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixfiles, ... }: {
+{ pkgs, nixfiles, ... }: {
 
   imports = [
     "${nixfiles}/modules/home/alacritty"

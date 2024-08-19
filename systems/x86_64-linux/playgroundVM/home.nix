@@ -1,4 +1,4 @@
-{ nixfiles, pkgs, config, lib, ... }: {
+{ nixfiles, pkgs, lib, ... }: {
 
   home = {
     username = "dan_vm";

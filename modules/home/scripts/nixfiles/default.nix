@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
 
   # Create the nixfiles script.
   home.packages = with pkgs;

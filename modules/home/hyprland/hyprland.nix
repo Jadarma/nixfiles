@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ lib, ... }: {
   wayland.windowManager.hyprland.settings = {
 
     # TODO: Use color scheme variables for the colors.

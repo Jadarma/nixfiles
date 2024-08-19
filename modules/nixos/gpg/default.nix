@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, lib, ... }: {
 
   # The HomeManager module for GPG uses `Gnome3` as pinentry flavor, therefore this is required for compatibility when not using Gnome.
   services.dbus.packages = [ pkgs.gcr ];

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ config, ... }: {
 
   # Configure HyprPaper.
   services.hyprpaper = {

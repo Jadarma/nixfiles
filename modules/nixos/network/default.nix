@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ lib, ... }: {
 
   networking = {
     # Enables DHCP on each ethernet and wireless interface.

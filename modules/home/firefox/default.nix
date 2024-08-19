@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   programs.firefox = {
     enable = true;
 
@@ -64,7 +64,7 @@
 
       # Similar to the `settings` attribute, controls values in `about:config`.
       # Settings here affect all profiles, so put specific settings in their respective profiles if desired.
-      Preferences = with builtins;
+      Preferences =
         let
           # value : the value of the preference.
           # type  : the value type, one of: number, boolean, or string.

@@ -29,7 +29,7 @@ let
     mkdir -p $out/bin
     ln -s ${pkgs.resvg}/bin/resvg $out/bin/rendersvg
   '';
-  materiaThemePackage = pkgs.stdenv.mkDerivation rec {
+  materiaThemePackage = pkgs.stdenv.mkDerivation {
     name = "materia-${scheme.slug}";
     src = pkgs.fetchFromGitHub {
       owner = "nana-4";
@@ -71,7 +71,7 @@ let
         HDR_FG=${materiaTheme.menuForeground}
 
         SEL_BG=${materiaTheme.accent}
-  
+
         TERMINAL_COLOR5=${materiaTheme.visited}
         TERMINAL_COLOR9=${materiaTheme.error}
         TERMINAL_COLOR10=${materiaTheme.success}
@@ -79,7 +79,7 @@ let
       EOF
 
       echo "Changing colours:"
-      ./change_color.sh --inkscape false --target "$out/share/themes" --output ${materiaTheme.name} /build/gtk-colors 
+      ./change_color.sh --inkscape false --target "$out/share/themes" --output ${materiaTheme.name} /build/gtk-colors
       chmod 555 -R .
     '';
   };

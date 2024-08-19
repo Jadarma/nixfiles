@@ -1,7 +1,7 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
 
   # Cursor workaround.
-  # See https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#fixing-problems-with-themes 
+  # See https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#fixing-problems-with-themes
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.catppuccin-cursors.macchiatoTeal;

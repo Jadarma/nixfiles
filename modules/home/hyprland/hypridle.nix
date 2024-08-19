@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ ... }: {
 
   # Configure HyprIdle
   services.hypridle = {

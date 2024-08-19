@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, ... }: {
 
   xdg = let home = config.home.homeDirectory; in {
     enable = true;
