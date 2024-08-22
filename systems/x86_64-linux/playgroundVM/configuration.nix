@@ -20,6 +20,7 @@
       "${nixfiles}/modules/nixos/nix"
       "${nixfiles}/modules/nixos/pipewire"
       "${nixfiles}/modules/nixos/shell"
+      "${nixfiles}/modules/nixos/steam"
     ];
 
   # System.
@@ -40,7 +41,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
   };
-  programs.steam.enable = true;
 
   services.displayManager.autoLogin = {
     enable = true;
