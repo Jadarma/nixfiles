@@ -1,4 +1,4 @@
-{ lib, modulesPath, nixos-hardware, ... }:
+{ pkgs, lib, modulesPath, nixos-hardware, ... }:
 
 {
   imports = [
@@ -48,6 +48,11 @@
   };
 
   swapDevices = [ ];
+
+  # AMD GPU
+  environment.systemPackages = with pkgs; [ lact ];
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   # Virtual machine settings.
   services.spice-vdagentd.enable = true;
