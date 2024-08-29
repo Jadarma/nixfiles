@@ -40,7 +40,7 @@
       fsType = "vfat";
     };
 
-    "/home/dan_vm/games" = {
+    "/home/dan/games" = {
       device = "/dev/disk/by-uuid/F02E4DF12E4DB200";
       fsType = "ntfs-3g";
       options = [ "rw" "uid=1000" "gid=100" ];

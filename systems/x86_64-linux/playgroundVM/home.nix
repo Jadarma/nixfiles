@@ -1,8 +1,8 @@
 { nixfiles, pkgs, lib, ... }: {
 
   home = {
-    username = "dan_vm";
-    homeDirectory = "/home/dan_vm";
+    username = "dan";
+    homeDirectory = "/home/dan";
     stateVersion = "23.11";
 
     # Extra apps and packages.

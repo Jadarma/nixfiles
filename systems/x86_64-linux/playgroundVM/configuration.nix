@@ -9,7 +9,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
-        home-manager.users.dan_vm = ./home.nix;
+        home-manager.users.dan = ./home.nix;
       }
       "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
@@ -35,15 +35,22 @@
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dan_vm = {
+  users.users.dan = {
+    description = "Dan Cîmpianu";
     isNormalUser = true;
-    description = "DanVM";
+
+    uid = 1000;
     extraGroups = [ "networkmanager" "wheel" ];
+
+    createHome = true;
+    home = "/home/dan";
+    homeMode = "700";
+
     useDefaultShell = true;
   };
 
   services.displayManager.autoLogin = {
     enable = true;
-    user = "dan_vm";
+    user = "dan";
   };
 }
