@@ -14,6 +14,7 @@
       "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
       "${nixfiles}/modules/nixos/gpg"
+      "${nixfiles}/modules/nixos/homelab"
       "${nixfiles}/modules/nixos/hyprland"
       "${nixfiles}/modules/nixos/locale"
       "${nixfiles}/modules/nixos/network"
