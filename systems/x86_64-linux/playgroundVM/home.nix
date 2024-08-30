@@ -1,4 +1,4 @@
-{ nixfiles, pkgs, lib, ... }: {
+{ config, pkgs, lib, nixfiles, ... }: {
 
   home = {
     username = "dan";
@@ -49,7 +49,27 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = lib.mkForce [
-      "DP-1,2560x1440@144,0x0,1,vrr,2"
+      "HDMI-A-1,2560x1440@144,0x0,1"
+      "DP-1,2560x1440@144,2560x0,1,vrr,2"
+      "DP-3,2560x1440@144,5120x0,1"
+    ];
+
+    workspace = [
+      "4,monitor:HDMI-A-1,persistent:true"
+      "5,monitor:HDMI-A-1,persistent:true"
+      "6,monitor:HDMI-A-1,persistent:true"
+      "1,monitor:DP-1,persistent:true"
+      "2,monitor:DP-1,persistent:true"
+      "3,monitor:DP-1,persistent:true"
+      "7,monitor:DP-3,persistent:true"
+      "8,monitor:DP-3,persistent:true"
+      "9,monitor:DP-3,persistent:true"
     ];
   };
+
+  services.hyprpaper.settings.wallpaper = lib.mkForce [
+    "HDMI-A-1,${config.xdg.dataHome}/wallpapers/bg_left.png"
+    "DP-1,${config.xdg.dataHome}/wallpapers/bg_center.png"
+    "DP-3,${config.xdg.dataHome}/wallpapers/bg_right.png"
+  ];
 }

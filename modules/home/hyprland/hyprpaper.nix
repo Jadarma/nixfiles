@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
 
   # Configure HyprPaper.
   services.hyprpaper = {
@@ -9,8 +9,12 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload = [ "${config.xdg.dataHome}/wallpapers/bg_center.png" ];
-      wallpaper = [ ",${config.xdg.dataHome}/wallpapers/bg_center.png" ];
+      preload = [
+        "${config.xdg.dataHome}/wallpapers/bg_left.png"
+        "${config.xdg.dataHome}/wallpapers/bg_center.png"
+        "${config.xdg.dataHome}/wallpapers/bg_right.png"
+      ];
+      wallpaper = lib.mkDefault [ ",${config.xdg.dataHome}/wallpapers/bg_center.png" ];
     };
   };
 
