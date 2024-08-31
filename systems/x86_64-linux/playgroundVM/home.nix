@@ -72,4 +72,17 @@
     "DP-1,${config.xdg.dataHome}/wallpapers/bg_center.png"
     "DP-3,${config.xdg.dataHome}/wallpapers/bg_right.png"
   ];
+
+  # Stream the audio to the VM host.
+  # As a reminder, the config for the host is:
+  # xdg.configFile."pipewire/pipewire-pulse.conf.d/30-network-stream-receiver.conf".text = ''
+  #   pulse.cmd = [
+  #     { cmd = "load-module" args = "module-native-protocol-tcp port=4656 listen=10.10.10.10 auth-anonymous=true" }
+  #   ]
+  # ''
+  xdg.configFile."pipewire/pipewire-pulse.conf.d/30-network-stream-sender.conf".text = ''
+    pulse.cmd = [
+      { cmd = "load-module" args = "module-tunnel-sink server=tcp:10.10.10.10:4656" }
+    ]
+  '';
 }
