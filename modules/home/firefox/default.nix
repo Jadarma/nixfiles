@@ -248,13 +248,27 @@
         "layout.spellcheckDefault" = 0;
       };
     };
+
+    # A separate, moslty unused profile to test settings on before commiting to main ones.
+    # Also useful for local development where incognito's cookie and history wipe is undesirable.
+    profiles.testing = {
+      id = 2;
+      name = "Testing";
+      isDefault = false;
+
+      settings = {
+        "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+        "browser.startup.page" = 3;
+      };
+    };
   };
 
   # Hyprland integration.
   wayland.windowManager.hyprland.settings = {
     bindd = [
-      "SUPER        , F2, Launch Firefox.                   , exec, firefox"
-      "SUPER + SHIFT, F2, Launch Firefox in private profile., exec, firefox -P Incognito"
+      "SUPER              , F2, Launch Firefox.                   , exec, firefox"
+      "SUPER + SHIFT      , F2, Launch Firefox in private profile., exec, firefox -P Incognito"
+      "SUPER + ALT + SHIFT, F2, Launch Firefox in testing profile., exec, firefox -P Testing"
     ];
   };
 }
