@@ -41,9 +41,9 @@
     };
 
     "/home/dan/games" = {
-      device = "/dev/disk/by-uuid/F02E4DF12E4DB200";
+      device = "/dev/disk/by-label/Games";
       fsType = "ntfs-3g";
-      options = [ "rw" "uid=1000" "gid=100" ];
+      options = [ "rw" "uid=1000" "gid=100" "noatime" "nofail" "utf8" ];
     };
   };
 
