@@ -8,6 +8,7 @@
     # Extra apps and packages.
     packages = with pkgs; [
       evince
+      filelight
       kdePackages.ark
       keepassxc
       pavucontrol
