@@ -84,6 +84,7 @@
     };
 
     master = {
+      mfact = 0.5;
       orientation = "left";
       no_gaps_when_only = true;
       new_status = "slave";
