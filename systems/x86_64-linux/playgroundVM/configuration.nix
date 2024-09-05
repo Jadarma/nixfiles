@@ -11,6 +11,7 @@
         home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
         home-manager.users.dan = ./home.nix;
       }
+      "${nixfiles}/modules/nixos/android"
       "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
       "${nixfiles}/modules/nixos/gpg"
@@ -41,7 +42,7 @@
     isNormalUser = true;
 
     uid = 1000;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
 
     createHome = true;
     home = "/home/dan";
