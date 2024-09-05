@@ -42,7 +42,7 @@
     isNormalUser = true;
 
     uid = 1000;
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
 
     createHome = true;
     home = "/home/dan";
@@ -55,4 +55,6 @@
     enable = true;
     user = "dan";
   };
+
+  virtualisation.docker.enable = true;
 }
