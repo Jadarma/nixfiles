@@ -4,7 +4,7 @@
     packages = with pkgs; [
       git-crypt
       jetbrains.idea-ultimate
-      android-studio
+      # android-studio
     ];
 
     # Home declutter.
