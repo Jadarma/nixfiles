@@ -8,6 +8,7 @@
     # Extra apps and packages.
     packages = with pkgs; [
       evince
+      devenv
       filelight
       kdePackages.ark
       keepassxc
