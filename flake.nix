@@ -57,7 +57,10 @@
       let
         supportedSystems = [ "x86_64-linux" ];
         forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
         });
       in
       forEachSupportedSystem ({ pkgs }: {
