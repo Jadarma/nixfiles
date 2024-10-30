@@ -39,7 +39,6 @@
     "${nixfiles}/modules/home/qalculate"
     "${nixfiles}/modules/home/scripts"
     "${nixfiles}/modules/home/starship"
-    "${nixfiles}/modules/home/steam"
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/waybar"
     "${nixfiles}/modules/home/wofi"
