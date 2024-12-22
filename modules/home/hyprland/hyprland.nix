@@ -47,13 +47,15 @@
     decoration = {
       rounding = 4;
 
-      drop_shadow = true;
-      shadow_range = 10;
-      shadow_render_power = 1;
-      shadow_offset = "2 4";
+      shadow = {
+        enabled = true;
+        range = 10;
+        render_power = 1;
+        offset = "2 4";
 
-      "col.shadow" = "$shadow_active";
-      "col.shadow_inactive" = "$shadow";
+        color = "$shadow_active";
+        color_inactive = "$shadow";
+      };
 
       blur = {
         enabled = true;
@@ -76,7 +78,6 @@
     };
 
     dwindle = {
-      no_gaps_when_only = true;
       pseudotile = true;
       preserve_split = true;
       force_split = 2;
@@ -86,7 +87,6 @@
     master = {
       mfact = 0.5;
       orientation = "left";
-      no_gaps_when_only = true;
       new_status = "slave";
       inherit_fullscreen = true;
     };
@@ -187,5 +187,13 @@
 
   # Extra config pasted as-is to the end of the configuration file.
   # Useful for stuff where order matters, such as binding submaps.
-  wayland.windowManager.hyprland.extraConfig = '''';
+  wayland.windowManager.hyprland.extraConfig = ''
+    # Replacement for Smart Gaps.
+    workspace = w[tv1], gapsout:0, gapsin:0
+    workspace = f[1], gapsout:0, gapsin:0
+    windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
+    windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
+    windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
+    windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
+  '';
 }
