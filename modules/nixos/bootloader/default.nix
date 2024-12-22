@@ -1,7 +1,4 @@
-{ pkgs, lib, ... }: {
-
-  # Use latest stable kernel by default.
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+{ lib, ... }: {
 
   # Enable systemd-boot.
   boot.loader = {
