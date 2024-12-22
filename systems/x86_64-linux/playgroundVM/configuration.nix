@@ -27,7 +27,6 @@
 
   # System.
   networking.hostName = "playgroundVM";
-  system.stateVersion = "23.11";
 
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [

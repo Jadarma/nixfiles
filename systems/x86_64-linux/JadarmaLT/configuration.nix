@@ -24,7 +24,6 @@
 
   # System.
   networking.hostName = "JadarmaLT";
-  system.stateVersion = "24.05";
 
   # System-wide packages.
   environment.systemPackages = with pkgs; [
