@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-24.11";
     };
 
     homeManager = {
@@ -78,6 +78,20 @@
                 mkhl.direnv
                 timonwong.shellcheck
               ];
+            })
+            python312Packages.mkdocs-material
+            (python312Packages.buildPythonPackage rec {
+              pname = "markdown_callouts";
+              version = "0.4.0";
+              pyproject = true;
+
+              src = fetchPypi {
+                inherit pname version;
+                sha256 = "sha256-ftLJBIaWcFinOlR3gRIZg4OVItZwQa5SxJeWFvGyt0Y=";
+              };
+
+              nativeBuildInputs = with python312Packages; [ setuptools hatchling markdown ];
+              pythonImportsCheck = [ "markdown_callouts" ];
             })
           ];
         };
