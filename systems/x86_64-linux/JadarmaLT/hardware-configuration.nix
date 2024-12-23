@@ -46,9 +46,14 @@
     { device = "/dev/disk/by-label/NIXOS_SWAP"; }
   ];
 
-  # Nvidia prime settings needed by the `common-gpu-nvidia` imported above.
-  hardware.nvidia.prime = {
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+
+    # Nvidia prime settings needed by the `common-gpu-nvidia` imported above.
+    prime = {
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 }
