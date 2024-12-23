@@ -22,8 +22,10 @@
     "${nixfiles}/modules/nixos/shell"
   ];
 
-  # System.
+
+  # Homelab
   networking.hostName = "JadarmaLT";
+  homelab.nfs.enable = true;
 
   # System-wide packages.
   environment.systemPackages = with pkgs; [
