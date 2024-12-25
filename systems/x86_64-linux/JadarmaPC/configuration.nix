@@ -37,11 +37,13 @@
   ];
 
   # Define a user account.
+  users.groups.dan.gid = 1000;
   users.users.dan = {
     description = "Dan Cîmpianu";
     isNormalUser = true;
 
     uid = 1000;
+    group = "dan";
     extraGroups = [ "networkmanager" "wheel" "libvirt" ];
 
     createHome = true;
