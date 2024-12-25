@@ -25,6 +25,14 @@ in
     ];
   };
 
+  # Mount VM Storage SSD
+  environment.etc.crypttab = {
+    mode = "0600";
+    text = ''
+      gaming_vm      UUID=dd480781-3a84-4620-b733-02b140412218    /etc/luks-keys/gameOnVMStorage.keyfile luks,keyfile-timeout=2s
+    '';
+  };
+
   # Enable Libvirt.
   virtualisation = {
     libvirtd = {
