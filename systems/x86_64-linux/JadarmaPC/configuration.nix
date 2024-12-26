@@ -53,4 +53,12 @@
 
     useDefaultShell = true;
   };
+
+  # Only allow Suspend to RAM.
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
 }
