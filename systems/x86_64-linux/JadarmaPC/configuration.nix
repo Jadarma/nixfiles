@@ -53,9 +53,4 @@
 
     useDefaultShell = true;
   };
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "dan";
-  };
 }
