@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, nixfiles, ... }:
 let
   hostNetworkInterface = "eno1";
   pciIDs = [
@@ -10,6 +10,11 @@ let
   ];
 in
 {
+
+  imports = [
+    "${nixfiles}/overlays/scream.nix"
+  ];
+
   # Isolate GPU and PCI devices with VFIO.
   boot = {
     initrd.kernelModules = [
@@ -66,7 +71,7 @@ in
     firewall.allowedTCPPorts = [ 4713 ];
   };
 
-  # Stram Audio from Pipewire-Pulse network connection.
+  # Stream Audio from Pipewire-Pulse network connection.
   services.pipewire.extraConfig.pipewire-pulse."30-network-stream-receiver" = {
     "pulse.cmd" = [
       {
@@ -74,6 +79,18 @@ in
         args = "module-native-protocol-tcp port=4713 listen=10.10.10.10 auth-anonymous=true";
       }
     ];
+  };
+
+  # Stream Audio from Scream (Windows Guest).
+  systemd.user.services.scream = {
+    enable = true;
+    description = "Scream Audio";
+    serviceConfig = {
+      ExecStart = "${pkgs.scream}/bin/scream -o pulse -u -i br0 -p 4010 -v";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
+    requires = [ "pipewire-pulse.service" ];
   };
 
   # Other
