@@ -1,7 +1,7 @@
 { lib, pkgs, nixfiles, ... }:
 let
   hostNetworkInterface = "eno1"; # The physical interface to bridge (not Wi-Fi). Will be bridged to `br0`.
-  hostIp = "10.10.10.10";        # The IP assigned by router DHCP leases.
+  hostIp = "10.10.10.10"; # The IP assigned by router DHCP leases.
   hostMac = "58:11:22:aa:bb:cc"; # The MAC for which the router assigns the `hostIp`. Will be assigned to the bridge.
   pciIDs = [
     "1002:744c" # Radeon RX 7900XTX - Graphics
@@ -20,13 +20,16 @@ in
   # Isolate GPU and PCI devices with VFIO.
   boot = {
     initrd.kernelModules = [
+      "kvm-amd"
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
+      "amdgpu"
     ];
 
     kernelParams = [
       "iommu=pt"
+      "pcie_aspm=off"
       ("vfio-pci.ids=" + lib.concatStringsSep "," pciIDs)
     ];
   };

@@ -1,8 +1,7 @@
-{ lib, modulesPath, nixos-hardware, ... }:
-
-{
+{ lib, modulesPath, nixos-hardware, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    nixos-hardware.nixosModules.common-cpu-amd-pstate
     nixos-hardware.nixosModules.common-pc-ssd
   ];
 
@@ -18,6 +17,15 @@
       luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS_LUKS";
     };
     kernelModules = [ "kvm-amd" ];
+    kernelParams = [
+      "amdgpu.runpm=0"
+      "amdgpu.dc=1"
+      "amdgpu.gpu_recovery=1"
+
+      "video=HDMI-A-1:2560x1440@144"
+      "video=DP-1:2560x1440@144"
+      "video=DP-2:2560x1440@144"
+    ];
     extraModulePackages = [ ];
   };
 
