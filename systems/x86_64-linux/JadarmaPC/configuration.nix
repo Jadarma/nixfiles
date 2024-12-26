@@ -45,7 +45,7 @@
 
     uid = 1000;
     group = "dan";
-    extraGroups = [ "networkmanager" "wheel" "libvirt" ];
+    extraGroups = [ "networkmanager" "wheel" ];
 
     createHome = true;
     home = "/home/dan";

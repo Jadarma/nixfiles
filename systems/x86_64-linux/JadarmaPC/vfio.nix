@@ -1,16 +1,15 @@
 { lib, pkgs, ... }:
 let
-  # Radeon RX 7900XTX
-  gpuIDs = [
-    "1002:744c" # Graphics
-    "1002:ab30" # Audio
-    "1002:7446" # USB
-    "1002:7444" # Serial
+  pciIDs = [
+    "1002:744c" # Radeon RX 7900XTX - Graphics
+    "1002:ab30" # Radeon RX 7900XTX - Audio
+    "1002:7446" # Radeon RX 7900XTX - USB
+    "1002:7444" # Radeon RX 7900XTX - Serial
+    "1022:15b7" # USB Hub Motherboard Port
   ];
 in
 {
-
-  # Isolate GPU with VFIO.
+  # Isolate GPU and PCI devices with VFIO.
   boot = {
     initrd.kernelModules = [
       "vfio_pci"
@@ -19,9 +18,8 @@ in
     ];
 
     kernelParams = [
-      "amd_iommu=on"
       "iommu=pt"
-      ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      ("vfio-pci.ids=" + lib.concatStringsSep "," pciIDs)
     ];
   };
 
@@ -34,6 +32,7 @@ in
   };
 
   # Enable Libvirt.
+  programs.virt-manager.enable = true;
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -47,6 +46,11 @@ in
     spiceUSBRedirection.enable = true;
   };
 
+  # Allow ports for streaming audio.
+  networking.firewall.allowedTCPPorts = [ 4656 ];
+
   # Other
+  users.groups.libvirtd.members = [ "dan" ];
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 }

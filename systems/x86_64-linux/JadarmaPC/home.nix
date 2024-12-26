@@ -70,4 +70,11 @@
     "HDMI-A-1,${config.xdg.dataHome}/wallpapers/bg_center.png"
     "DP-2,${config.xdg.dataHome}/wallpapers/bg_right.png"
   ];
+
+  # Stream Audio From Linux VM.
+  xdg.configFile."pipewire/pipewire-pulse.conf.d/30-network-stream-receiver.conf".text = ''
+    pulse.cmd = [
+      { cmd = "load-module" args = "module-native-protocol-tcp port=4656 listen=10.10.10.10 auth-anonymous=true" }
+    ]
+  '';
 }
