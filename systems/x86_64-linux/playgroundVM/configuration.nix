@@ -56,4 +56,14 @@
   };
 
   virtualisation.docker.enable = true;
+
+  # Stram Audio to Host
+  services.pipewire.extraConfig.pipewire-pulse."30-network-stream-sender" = {
+    "pulse.cmd" = [
+      {
+        cmd = "load-module";
+        args = "module-tunnel-sink server=tcp:10.10.10.10:4713 reconnect_interval_ms=5000";
+      }
+    ];
+  };
 }

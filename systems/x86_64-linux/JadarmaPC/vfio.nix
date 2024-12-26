@@ -63,7 +63,7 @@ in
 
     # Allow ports for streaming audio: Scream and Pulse
     firewall.allowedUDPPorts = [ 4010 ];
-    firewall.allowedTCPPorts = [ 4656 ];
+    firewall.allowedTCPPorts = [ 4713 ];
   };
 
   # Stram Audio from Pipewire-Pulse network connection.
@@ -71,7 +71,7 @@ in
     "pulse.cmd" = [
       {
         cmd = "load-module";
-        args = "module-native-protocol-tcp port=4656 listen=10.10.10.10 auth-anonymous=true";
+        args = "module-native-protocol-tcp port=4713 listen=10.10.10.10 auth-anonymous=true";
       }
     ];
   };
