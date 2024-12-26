@@ -1,6 +1,8 @@
 { lib, pkgs, nixfiles, ... }:
 let
-  hostNetworkInterface = "eno1";
+  hostNetworkInterface = "eno1"; # The physical interface to bridge (not Wi-Fi). Will be bridged to `br0`.
+  hostIp = "10.10.10.10";        # The IP assigned by router DHCP leases.
+  hostMac = "58:11:22:aa:bb:cc"; # The MAC for which the router assigns the `hostIp`. Will be assigned to the bridge.
   pciIDs = [
     "1002:744c" # Radeon RX 7900XTX - Graphics
     "1002:ab30" # Radeon RX 7900XTX - Audio
@@ -59,7 +61,7 @@ in
     interfaces = {
       "br0" = {
         useDHCP = lib.mkForce true;
-        macAddress = "58:11:22:aa:bb:cc";
+        macAddress = hostMac;
       };
       "${hostNetworkInterface}" = {
         useDHCP = lib.mkForce true;
@@ -76,7 +78,7 @@ in
     "pulse.cmd" = [
       {
         cmd = "load-module";
-        args = "module-native-protocol-tcp port=4713 listen=10.10.10.10 auth-anonymous=true";
+        args = "module-native-protocol-tcp port=4713 listen=${hostIp} auth-anonymous=true";
       }
     ];
   };
