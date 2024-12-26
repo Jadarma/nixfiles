@@ -47,7 +47,7 @@ in
   };
 
   # Allow ports for streaming audio.
-  networking.firewall.allowedTCPPorts = [ 4656 ];
+  networking.firewall.allowedTCPPorts = [ 4010 4656 ];
 
   # Other
   users.groups.libvirtd.members = [ "dan" ];
