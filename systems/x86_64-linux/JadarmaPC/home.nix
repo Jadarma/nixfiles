@@ -32,6 +32,7 @@
 
     # Extra apps and packages.
     packages = with pkgs; [
+      android-studio
       evince
       kdePackages.ark
       keepassxc

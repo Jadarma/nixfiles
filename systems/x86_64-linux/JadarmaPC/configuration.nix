@@ -14,6 +14,7 @@
         home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
         home-manager.users.dan = ./home.nix;
       }
+      "${nixfiles}/modules/nixos/android"
       "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
       "${nixfiles}/modules/nixos/gpg"
@@ -45,7 +46,7 @@
 
     uid = 1000;
     group = "dan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
 
     createHome = true;
     home = "/home/dan";
@@ -61,4 +62,6 @@
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
+
+  virtualisation.docker.enable = true;
 }
