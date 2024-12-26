@@ -48,7 +48,4 @@
   # CPU
   hardware.enableAllFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
-
-  # Other
-  networking.useDHCP = lib.mkDefault true;
 }

@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:
 let
+  hostNetworkInterface = "eno1";
   pciIDs = [
     "1002:744c" # Radeon RX 7900XTX - Graphics
     "1002:ab30" # Radeon RX 7900XTX - Audio
@@ -46,8 +47,23 @@ in
     spiceUSBRedirection.enable = true;
   };
 
-  # Allow ports for streaming audio.
-  networking.firewall.allowedTCPPorts = [ 4010 4656 ];
+  # Create a Networking Bridge.
+  networking = {
+    useDHCP = lib.mkForce false;
+    bridges."br0".interfaces = [ hostNetworkInterface ];
+    interfaces = {
+      "br0" = {
+        useDHCP = lib.mkForce true;
+        macAddress = "58:11:22:aa:bb:cc";
+      };
+      "${hostNetworkInterface}" = {
+        useDHCP = lib.mkForce true;
+      };
+    };
+
+    # Allow ports for streaming audio: Scream and Pulse
+    firewall.allowedTCPPorts = [ 4010 4656 ];
+  };
 
   # Other
   users.groups.libvirtd.members = [ "dan" ];
