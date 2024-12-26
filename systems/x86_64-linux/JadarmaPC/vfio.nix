@@ -65,6 +65,16 @@ in
     firewall.allowedTCPPorts = [ 4010 4656 ];
   };
 
+  # Stram Audio from Pipewire-Pulse network connection.
+  services.pipewire.extraConfig.pipewire-pulse."30-network-stream-receiver" = {
+    "pulse.cmd" = [
+      {
+        cmd = "load-module";
+        args = "module-native-protocol-tcp port=4656 listen=10.10.10.10 auth-anonymous=true";
+      }
+    ];
+  };
+
   # Other
   users.groups.libvirtd.members = [ "dan" ];
   hardware.graphics.enable = true;
