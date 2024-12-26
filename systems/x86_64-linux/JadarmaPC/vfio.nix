@@ -62,7 +62,8 @@ in
     };
 
     # Allow ports for streaming audio: Scream and Pulse
-    firewall.allowedTCPPorts = [ 4010 4656 ];
+    firewall.allowedUDPPorts = [ 4010 ];
+    firewall.allowedTCPPorts = [ 4656 ];
   };
 
   # Stram Audio from Pipewire-Pulse network connection.
