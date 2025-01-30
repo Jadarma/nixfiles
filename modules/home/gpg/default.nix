@@ -12,6 +12,10 @@
         trust = "ultimate";
       }
     ];
+
+    scdaemonSettings = {
+      reader-port = "Yubico Yubi";
+    };
   };
 
   # Enable use of Yubikey for GPG and SSH via SmartCard.

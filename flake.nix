@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
@@ -20,7 +25,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, ... }:
     let
       inherit (builtins) map concatMap filter foldl' readDir attrNames;
       inherit (nixpkgs.lib) filterAttrs mergeAttrs strings;
@@ -54,11 +59,30 @@
         in
         foldl' mergeAttrs { } (map mkNixosSystem configTargets);
 
+      darwinConfigurations =
+        let
+          # Detect NixDarwin systems.
+          configTargets = concatMap hostWithSystems (filter (strings.hasSuffix "-darwin") (directSubdirectories ./systems));
+
+          # From a host name and a system architecture, create a NixDarwin system, which passes all flake inputs to the `configuration.nix` of the target.
+          mkNixDarwinSystem = { host, system }: {
+            "${host}" = nix-darwin.lib.darwinSystem {
+              specialArgs = inputs // { nixfiles = ./.; };
+              modules = [
+                { system.configurationRevision = self.rev or self.dirtyRev or null; }
+                { nixpkgs.hostPlatform = system; }
+                ./systems/${system}/${host}/configuration.nix
+              ];
+            };
+          };
+        in
+        foldl' mergeAttrs { } (map mkNixDarwinSystem configTargets);
+
       # Creates a devshell for working with this flake via direnv.
       # Set the `supportedSystems` to be the set of system architectures you target, all others would be a bit redundant, no?
       devShells =
         let
-          supportedSystems = [ "x86_64-linux" ];
+          supportedSystems = [ "x86_64-linux" "aarch64-darwin" ];
           forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
             pkgs = import nixpkgs {
               inherit system;
