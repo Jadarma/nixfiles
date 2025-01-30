@@ -17,6 +17,11 @@
     username = "dan";
     homeDirectory = "/Users/dan";
     stateVersion = "24.11";
+
+    # Extra apps and packages.
+    packages = with pkgs; [
+      keepassxc
+    ];
   };
 
   # TODO: Make this an automatic config in the gpg module.
