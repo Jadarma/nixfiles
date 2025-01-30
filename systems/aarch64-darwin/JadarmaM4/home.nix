@@ -6,6 +6,7 @@
     "${nixfiles}/modules/home/eza"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
+    "${nixfiles}/modules/home/scripts/nixfiles"
     "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme/colorScheme.nix"
     "${nixfiles}/modules/home/xdg"
@@ -21,4 +22,5 @@
   # TODO: Make this an automatic config in the gpg module.
   services.gpg-agent.pinentryPackage = lib.mkForce pkgs.pinentry_mac;
   xdg.userDirs.enable = lib.mkForce false;
+  xdg.desktopEntries = lib.mkForce {};
 }

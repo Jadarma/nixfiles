@@ -3,10 +3,8 @@
 # Get the location of the nixfiles dir.
 # In order or priority:
 # - "$NIXFILES_DIR"
-# - "$XDG_REPO_DIR/nixfiles"
 # - "~/repo/nixfiles"
-XDG_REPO_DIR="$(xdg-user-dir REPO)"
-NIXFILES_DIR="${NIXFILES_DIR:="${XDG_REPO_DIR:-"$HOME/repo"}/nixfiles"}"
+NIXFILES_DIR="${NIXFILES_DIR:="$HOME/repo/nixfiles"}"
 
 if [ ! -d "$NIXFILES_DIR" ]; then
    >&2 echo 'Nixfiles dir not found!'
@@ -16,7 +14,7 @@ fi
 # Check that direnv was allowed, otherwise we do not have the `use flake` which provides VSCodium.
 if [ "$(cd "$NIXFILES_DIR" && direnv status --json | jq '.state.foundRC.allowed')" != '0' ]; then
    >&2 echo "Direnv for $NIXFILES_DIR must be allowed first."
-   exit 3 
+   exit 3
 fi
 
 # Start the editor.
