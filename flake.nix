@@ -16,6 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+    };
+
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };

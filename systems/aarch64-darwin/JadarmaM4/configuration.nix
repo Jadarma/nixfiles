@@ -1,4 +1,4 @@
-{ pkgs, nixfiles, homeManager, nix-colors, ... }: {
+{ pkgs, nixfiles, homeManager, nix-colors, mac-app-util, ... }: {
 
   imports = [
     homeManager.darwinModules.home-manager
@@ -7,6 +7,7 @@
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
       home-manager.users.dan = ./home.nix;
+      home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
     }
   ];
 
