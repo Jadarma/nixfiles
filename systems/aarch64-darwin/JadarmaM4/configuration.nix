@@ -9,6 +9,7 @@
       home-manager.users.dan = ./home.nix;
       home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
     }
+    "${nixfiles}/modules/darwin/homebrew"
   ];
 
   # Nix & System
@@ -231,4 +232,10 @@
   };
 
   system.startup.chime = true;
+
+  homebrew = {
+    masApps = {
+      Xcode = 497799835;
+    };
+  };
 }
