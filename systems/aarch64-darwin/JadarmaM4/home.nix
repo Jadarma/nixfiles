@@ -1,8 +1,13 @@
-{ pkgs, lib, config, nixfiles, ... }: {
+{ pkgs, lib, nixfiles, ... }: {
   imports = [
+    "${nixfiles}/modules/home/alacritty"
+    "${nixfiles}/modules/home/bat"
     "${nixfiles}/modules/home/direnv"
+    "${nixfiles}/modules/home/eza"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
+    "${nixfiles}/modules/home/starship"
+    "${nixfiles}/modules/home/theme/colorScheme.nix"
     "${nixfiles}/modules/home/xdg"
     "${nixfiles}/modules/home/zsh"
   ];
