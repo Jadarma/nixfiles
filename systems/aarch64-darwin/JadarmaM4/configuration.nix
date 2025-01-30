@@ -237,5 +237,20 @@
     masApps = {
       Xcode = 497799835;
     };
+
+    casks = [
+      {
+        name = "jetbrains-toolbox";
+        greedy = true;
+      }
+      {
+        name = "keepassxc";
+        greedy = true;
+      }
+      {
+        name = "firefox";
+        greedy = true;
+      }
+    ];
   };
 }
