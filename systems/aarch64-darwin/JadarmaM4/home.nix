@@ -22,6 +22,7 @@
     packages = with pkgs; [
       colima
       docker-client
+      kdoctor
     ];
   };
 
