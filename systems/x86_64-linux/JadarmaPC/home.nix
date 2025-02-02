@@ -2,27 +2,20 @@
 
   imports = [
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/bat"
     "${nixfiles}/modules/home/cava"
-    "${nixfiles}/modules/home/direnv"
-    "${nixfiles}/modules/home/eza"
     "${nixfiles}/modules/home/firefox"
-    "${nixfiles}/modules/home/git"
-    "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/htop"
     "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/neofetch"
     "${nixfiles}/modules/home/hyprland"
-    "${nixfiles}/modules/home/jetbrains"
     "${nixfiles}/modules/home/qalculate"
     "${nixfiles}/modules/home/scripts"
-    "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/waybar"
     "${nixfiles}/modules/home/wofi"
-    "${nixfiles}/modules/home/xdg"
     "${nixfiles}/modules/home/zathura"
-    "${nixfiles}/modules/home/zsh"
+
+    "${nixfiles}/modules2/home/nixos"
   ];
 
   home = {
@@ -34,6 +27,7 @@
     packages = with pkgs; [
       android-studio
       evince
+      jetbrains.idea-ultimate
       kdePackages.ark
       keepassxc
       pavucontrol
@@ -44,6 +38,11 @@
       viewnior
       qpwgraph
     ];
+  };
+
+  nixfiles.home = {
+    cli.enable = true;
+    development.enable = true;
   };
 
   wayland.windowManager.hyprland.settings = {
