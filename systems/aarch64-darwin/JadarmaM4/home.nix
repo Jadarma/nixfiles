@@ -10,8 +10,10 @@
     "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme/colorScheme.nix"
     "${nixfiles}/modules/home/xdg"
-    "${nixfiles}/modules/home/zsh"
+    "${nixfiles}/modules/common/cli"
   ];
+
+  nixfiles.common.cli.enable = true;
 
   home = {
     username = "dan";
