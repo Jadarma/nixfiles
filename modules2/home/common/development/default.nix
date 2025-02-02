@@ -3,6 +3,7 @@ let cfg = config.nixfiles.home.development; in {
 
   imports = [
     ./direnv.nix
+    ./git.nix
   ];
 
   options = {
@@ -16,6 +17,7 @@ let cfg = config.nixfiles.home.development; in {
     # Enable all imported modules by default, if not overriden by global config.
     nixfiles.home.development = {
       direnv.enable = lib.mkDefault true;
+      git.enable = lib.mkDefault true;
     };
   };
 }
