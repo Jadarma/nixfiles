@@ -1,12 +1,12 @@
 { config, lib, ... }:
-let cfg = config.nixfiles.common.cli; in {
+let cfg = config.nixfiles.home.cli.zsh; in {
   options = {
-    nixfiles.common.cli.zsh = {
+    nixfiles.home.cli.zsh = {
       enable = lib.mkEnableOption "Z shell (Zsh)";
     };
   };
 
-  config = lib.mkIf (cfg.enable && cfg.zsh.enable) {
+  config = lib.mkIf cfg.enable {
     programs.zsh = {
       enable = true;
 

@@ -1,12 +1,12 @@
 { config, lib, ... }:
-let cfg = config.nixfiles.common.cli; in {
+let cfg = config.nixfiles.home.cli.eza; in {
   options = {
-    nixfiles.common.cli.eza = {
+    nixfiles.home.cli.eza = {
       enable = lib.mkEnableOption "Better LS (Eza)";
     };
   };
 
-  config = lib.mkIf (cfg.enable && cfg.eza.enable) {
+  config = lib.mkIf cfg.enable {
     programs.eza = {
       enable = true;
     };

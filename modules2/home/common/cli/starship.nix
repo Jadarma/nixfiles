@@ -1,12 +1,12 @@
 { config, lib, ... }:
-let cfg = config.nixfiles.common.cli; in {
+let cfg = config.nixfiles.home.cli.starship; in {
   options = {
-    nixfiles.common.cli.starship = {
+    nixfiles.home.cli.starship = {
       enable = lib.mkEnableOption "Starship Shell Prompt";
     };
   };
 
-  config = lib.mkIf (cfg.enable && cfg.starship.enable) {
+  config = lib.mkIf cfg.enable {
     programs.starship = {
       enable = true;
       enableZshIntegration = true;

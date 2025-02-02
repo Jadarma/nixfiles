@@ -1,5 +1,5 @@
 { config, lib, ... }:
-let cfg = config.nixfiles.common.cli; in {
+let cfg = config.nixfiles.home.cli; in {
 
   imports = [
     ./bat.nix
@@ -9,7 +9,7 @@ let cfg = config.nixfiles.common.cli; in {
   ];
 
   options = {
-    nixfiles.common.cli = {
+    nixfiles.home.cli = {
       enable = lib.mkEnableOption "Platform-agnostic CLI setup.";
     };
   };
@@ -17,7 +17,7 @@ let cfg = config.nixfiles.common.cli; in {
   config = lib.mkIf cfg.enable {
 
     # Enable all imported modules by default, if not overriden by global config.
-    nixfiles.common.cli = {
+    nixfiles.home.cli = {
       bat.enable = lib.mkDefault true;
       eza.enable = lib.mkDefault true;
       starship.enable = lib.mkDefault true;

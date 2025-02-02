@@ -1,12 +1,12 @@
 { config, lib, ... }:
-let cfg = config.nixfiles.common.cli; in {
+let cfg = config.nixfiles.home.cli.bat; in {
   options = {
-    nixfiles.common.cli.bat = {
+    nixfiles.home.cli.bat = {
       enable = lib.mkEnableOption "Better Cat (Bat)";
     };
   };
 
-  config = lib.mkIf (cfg.enable && cfg.bat.enable) {
+  config = lib.mkIf cfg.enable {
     programs.bat = {
       enable = true;
 
