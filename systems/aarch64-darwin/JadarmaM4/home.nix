@@ -1,4 +1,4 @@
-{ pkgs, lib, config, nixfiles, ... }: {
+{ config, pkgs, nixfiles, ... }: {
   imports = [
     "${nixfiles}/modules2/home/darwin"
     "${nixfiles}/modules/home/alacritty"
@@ -20,10 +20,6 @@
       kdoctor
     ];
   };
-
-  # TODO: Make this an automatic config in the gpg module.
-  xdg.userDirs.enable = lib.mkForce false;
-  xdg.desktopEntries = lib.mkForce { };
 
   # TODO: Development stuff.
   home.sessionVariables = rec {
