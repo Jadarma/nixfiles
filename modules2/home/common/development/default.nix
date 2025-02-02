@@ -2,11 +2,11 @@
 let cfg = config.nixfiles.home.development; in {
 
   imports = [
+    ./gpg
+    ./nixfiles
     ./direnv.nix
     ./git.nix
-    ./gpg
-    ./jvm
-    ./nixfiles
+    ./jvm.nix
   ];
 
   options = {
