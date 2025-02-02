@@ -5,6 +5,7 @@ let cfg = config.nixfiles.home.development; in {
     ./direnv.nix
     ./git.nix
     ./gpg
+    ./jvm
     ./nixfiles
   ];
 
@@ -21,6 +22,7 @@ let cfg = config.nixfiles.home.development; in {
       direnv.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       gpg.enable = lib.mkDefault true;
+      jvm.enable = lib.mkDefault true;
       nixfiles.enable = lib.mkDefault true;
     };
   };
