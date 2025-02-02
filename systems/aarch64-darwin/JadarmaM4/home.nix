@@ -6,7 +6,6 @@
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/scripts/nixfiles"
-    "${nixfiles}/modules/home/starship"
     "${nixfiles}/modules/home/theme/colorScheme.nix"
     "${nixfiles}/modules/home/xdg"
     "${nixfiles}/modules/common/cli"
