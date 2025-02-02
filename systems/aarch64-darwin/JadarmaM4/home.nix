@@ -2,7 +2,6 @@
   imports = [
     "${nixfiles}/modules/home/alacritty"
     "${nixfiles}/modules/home/direnv"
-    "${nixfiles}/modules/home/eza"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/scripts/nixfiles"

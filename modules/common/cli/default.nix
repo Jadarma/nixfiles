@@ -3,6 +3,7 @@ let cfg = config.nixfiles.common.cli; in {
 
   imports = [
     ./bat.nix
+    ./eza.nix
     ./starship.nix
     ./zsh.nix
   ];
@@ -18,6 +19,7 @@ let cfg = config.nixfiles.common.cli; in {
     # Enable all imported modules by default, if not overriden by global config.
     nixfiles.common.cli = {
       bat.enable = lib.mkDefault true;
+      eza.enable = lib.mkDefault true;
       starship.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;
     };
