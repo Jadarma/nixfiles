@@ -8,7 +8,6 @@
         runtimeInputs = [
           jq
           nix-direnv
-          xdg-user-dirs
           zsh
         ];
         text = builtins.readFile ./nixfiles.sh;

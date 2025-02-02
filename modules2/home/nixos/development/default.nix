@@ -1,6 +1,5 @@
 { ... }: {
   imports = [
-    ../common
-    ./development
+    ./nixfiles.nix
   ];
 }

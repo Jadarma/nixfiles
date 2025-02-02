@@ -2,7 +2,6 @@
   imports = [
     "${nixfiles}/modules2/home/darwin"
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/scripts/nixfiles"
     "${nixfiles}/modules/home/theme/colorScheme.nix"
   ];
 
