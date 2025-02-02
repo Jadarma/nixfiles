@@ -2,6 +2,7 @@
 let cfg = config.nixfiles.common.cli; in {
 
   imports = [
+    ./bat.nix
     ./zsh.nix
   ];
 
@@ -15,6 +16,7 @@ let cfg = config.nixfiles.common.cli; in {
 
     # Enable all imported modules by default, if not overriden by global config.
     nixfiles.common.cli = {
+      bat.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;
     };
   };
