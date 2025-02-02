@@ -17,8 +17,6 @@
 
     # Extra apps and packages.
     packages = with pkgs; [
-      colima
-      docker-client
       kdoctor
     ];
   };
