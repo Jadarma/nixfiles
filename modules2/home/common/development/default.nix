@@ -4,6 +4,7 @@ let cfg = config.nixfiles.home.development; in {
   imports = [
     ./direnv.nix
     ./git.nix
+    ./gpg
   ];
 
   options = {
@@ -18,6 +19,7 @@ let cfg = config.nixfiles.home.development; in {
     nixfiles.home.development = {
       direnv.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
+      gpg.enable = lib.mkDefault true;
     };
   };
 }

@@ -1,6 +1,5 @@
 { ... }: {
   imports = [
-    ../common
-    ./development
+    ./gpg.nix
   ];
 }

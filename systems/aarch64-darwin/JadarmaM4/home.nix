@@ -2,7 +2,6 @@
   imports = [
     "${nixfiles}/modules2/home/darwin"
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/scripts/nixfiles"
     "${nixfiles}/modules/home/theme/colorScheme.nix"
   ];
@@ -26,7 +25,6 @@
   };
 
   # TODO: Make this an automatic config in the gpg module.
-  services.gpg-agent.pinentryPackage = lib.mkForce pkgs.pinentry_mac;
   xdg.userDirs.enable = lib.mkForce false;
   xdg.desktopEntries = lib.mkForce { };
 
@@ -37,10 +35,6 @@
 
     KONAN_DATA_DIR = "${config.xdg.dataHome}/konan";
     GRADLE_USER_HOME = "${config.xdg.dataHome}/gradle";
-
-    # Seems like the macOS ones wins the battle.
-    # Hardcoded for now but not ideal.
-    SSH_AUTH_SOCK = "${config.xdg.dataHome}/gnupg/S.gpg-agent.ssh";
   };
 
   programs.java = {
