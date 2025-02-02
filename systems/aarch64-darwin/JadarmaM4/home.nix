@@ -2,15 +2,16 @@
   imports = [
     "${nixfiles}/modules2/home/darwin"
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/direnv"
     "${nixfiles}/modules/home/git"
     "${nixfiles}/modules/home/gpg"
     "${nixfiles}/modules/home/scripts/nixfiles"
     "${nixfiles}/modules/home/theme/colorScheme.nix"
-    "${nixfiles}/modules/home/xdg"
   ];
 
-  nixfiles.home.cli.enable = true;
+  nixfiles.home = {
+    cli.enable = true;
+    development.enable = true;
+  };
 
   home = {
     username = "dan";
