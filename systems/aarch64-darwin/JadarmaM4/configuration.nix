@@ -14,9 +14,12 @@
     }
   ];
 
-  # Nix & System
+  # System
   system.stateVersion = 5;
-  nixpkgs.config.allowUnfree = true;
+  networking = {
+    hostName = "JadarmaM4";
+    computerName = "Mac Mini M4";
+  };
 
   # System packages.
   environment.systemPackages = with pkgs; [
@@ -32,12 +35,6 @@
 
   nixfiles.darwin = {
     saneDefaults.enable = true;
-  };
-
-  # Networking
-  networking = {
-    hostName = "JadarmaM4";
-    computerName = "Mac Mini M4";
   };
 
   # Power

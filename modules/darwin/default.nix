@@ -2,6 +2,7 @@
 let cfg = config.nixfiles.darwin.saneDefaults; in {
   imports = [
     ./homebrew.nix
+    ./nix.nix
   ];
 
   options = {
@@ -12,5 +13,6 @@ let cfg = config.nixfiles.darwin.saneDefaults; in {
 
   config = lib.mkIf cfg.enable {
     nixfiles.darwin.homebrew.enable = lib.mkDefault true;
+    nixfiles.darwin.nix.enable = lib.mkDefault true;
   };
 }
