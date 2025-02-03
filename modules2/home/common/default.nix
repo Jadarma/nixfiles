@@ -4,5 +4,6 @@
 
     ./cli
     ./development
+    ./programs
   ];
 }

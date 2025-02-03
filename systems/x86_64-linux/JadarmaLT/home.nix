@@ -2,7 +2,6 @@
 
   imports = [
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/cava"
     "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/htop"
     "${nixfiles}/modules/home/mako"
@@ -17,11 +16,6 @@
 
     "${nixfiles}/modules2/home/nixos"
   ];
-
-  nixfiles.home = {
-    cli.enable = true;
-    development.enable = true;
-  };
 
   home = {
     username = "dan";
@@ -43,6 +37,15 @@
       viewnior
       qpwgraph
     ];
+  };
+
+  nixfiles.home = {
+    cli.enable = true;
+    development.enable = true;
+
+    programs = {
+      cava.enable = true;
+    };
   };
 
   wayland.windowManager.hyprland.settings = {

@@ -2,7 +2,6 @@
 
   imports = [
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/cava"
     "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/htop"
     "${nixfiles}/modules/home/mako"
@@ -43,6 +42,10 @@
   nixfiles.home = {
     cli.enable = true;
     development.enable = true;
+
+    programs = {
+      cava.enable = true;
+    };
   };
 
   wayland.windowManager.hyprland.settings = {
