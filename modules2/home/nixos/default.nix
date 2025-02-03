@@ -4,5 +4,6 @@
     ./core
 
     ./development
+    ./gaming
   ];
 }
