@@ -58,13 +58,12 @@
               inherit system;
               specialArgs = inputs // { nixfiles = ./.; };
               modules = [
+                ./systems/${system}/${host}/configuration.nix
+                home-manager.nixosModules.home-manager
                 {
                   system.configurationRevision = self.rev or self.dirtyRev or null;
                   nix.settings.experimental-features = "nix-command flakes";
                   nixpkgs.hostPlatform = system;
-                }
-                home-manager.nixosModules.home-manager
-                {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.sharedModules = [
@@ -72,7 +71,6 @@
                     ./modules/home/nixos
                   ];
                 }
-                ./systems/${system}/${host}/configuration.nix
               ];
             };
           };
@@ -89,13 +87,13 @@
             "${host}" = nix-darwin.lib.darwinSystem {
               specialArgs = inputs;
               modules = [
+                ./systems/${system}/${host}/configuration.nix
+                ./modules/darwin
+                home-manager.darwinModules.home-manager
                 {
                   system.configurationRevision = self.rev or self.dirtyRev or null;
                   nix.settings.experimental-features = "nix-command flakes";
                   nixpkgs.hostPlatform = system;
-                }
-                home-manager.darwinModules.home-manager
-                {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.sharedModules = [
@@ -104,8 +102,6 @@
                     ./modules/home/darwin
                   ];
                 }
-                ./modules/darwin
-                ./systems/${system}/${host}/configuration.nix
               ];
             };
           };
