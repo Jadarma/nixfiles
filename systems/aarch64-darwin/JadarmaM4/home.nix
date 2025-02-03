@@ -1,6 +1,6 @@
 { config, pkgs, nixfiles, ... }: {
   imports = [
-    "${nixfiles}/modules2/home/darwin"
+    "${nixfiles}/modules/home/darwin"
   ];
 
   home = {

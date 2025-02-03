@@ -1,17 +1,26 @@
-{ ... }: {
+{ config, lib, ... }:
+let cfg = config.nixfiles.darwin.homebrew; in {
 
-  homebrew = {
-    enable = true;
-
-    onActivation.cleanup = "zap";
-
-    caskArgs = {
-      appdir = "~/Applications";
-      require_sha = true;
+  options = {
+    nixfiles.darwin.homebrew = {
+      enable = lib.mkEnableOption "Homebrew (Alternate Package Manager)";
     };
   };
 
-  environment.variables = {
-    HOMEBREW_NO_ANALYTICS = "1";
+  config = lib.mkIf cfg.enable {
+    homebrew = {
+      enable = true;
+
+      onActivation.cleanup = "zap";
+
+      caskArgs = {
+        appdir = "~/Applications";
+        require_sha = true;
+      };
+    };
+
+    environment.variables = {
+      HOMEBREW_NO_ANALYTICS = "1";
+    };
   };
 }

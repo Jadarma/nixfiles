@@ -12,7 +12,6 @@
       ];
       home-manager.users.dan = ./home.nix;
     }
-    "${nixfiles}/modules/darwin/homebrew"
   ];
 
   # Nix & System
@@ -30,6 +29,10 @@
     description = "Dan Cîmpianu";
     shell = pkgs.zsh;
     home = "/Users/dan";
+  };
+
+  nixfiles.darwin = {
+    homebrew.enable = true;
   };
 
   # Networking

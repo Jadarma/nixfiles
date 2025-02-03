@@ -75,6 +75,7 @@
               modules = [
                 { system.configurationRevision = self.rev or self.dirtyRev or null; }
                 { nixpkgs.hostPlatform = system; }
+                ./modules/darwin
                 ./systems/${system}/${host}/configuration.nix
               ];
             };
