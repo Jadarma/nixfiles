@@ -1,7 +1,6 @@
 { pkgs, lib, config, nixfiles, ... }: {
 
   imports = [
-    "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/scripts"
     "${nixfiles}/modules/home/theme"
@@ -35,6 +34,7 @@
 
   nixfiles.home = {
     cli.enable = true;
+    desktop.enable = true;
     development.enable = true;
 
     programs = {

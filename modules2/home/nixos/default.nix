@@ -3,6 +3,7 @@
     ../common
     ./core
 
+    ./desktop
     ./development
     ./gaming
   ];
