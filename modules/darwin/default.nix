@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let cfg = config.nixfiles.darwin.saneDefaults; in {
   imports = [
-    ./homebrew
+    ./homebrew.nix
   ];
 
   options = {
