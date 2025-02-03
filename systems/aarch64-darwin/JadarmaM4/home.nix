@@ -2,13 +2,7 @@
   imports = [
     "${nixfiles}/modules2/home/darwin"
     "${nixfiles}/modules/home/alacritty"
-    "${nixfiles}/modules/home/theme/colorScheme.nix"
   ];
-
-  nixfiles.home = {
-    cli.enable = true;
-    development.enable = true;
-  };
 
   home = {
     username = "dan";
@@ -19,6 +13,16 @@
     packages = with pkgs; [
       kdoctor
     ];
+  };
+
+  nixfiles.home = {
+    cli.enable = true;
+    development.enable = true;
+
+    programs = {
+      cava.enable = true;
+      neofetch.enable = true;
+    };
   };
 
   # TODO: Development stuff.

@@ -5,7 +5,6 @@
     "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/htop"
     "${nixfiles}/modules/home/mako"
-    "${nixfiles}/modules/home/neofetch"
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/qalculate"
     "${nixfiles}/modules/home/scripts"
@@ -45,6 +44,7 @@
 
     programs = {
       cava.enable = true;
+      neofetch.enable = true;
     };
   };
 
