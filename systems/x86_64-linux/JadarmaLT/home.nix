@@ -4,7 +4,6 @@
     "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/hyprland"
-    "${nixfiles}/modules/home/qalculate"
     "${nixfiles}/modules/home/scripts"
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/waybar"
@@ -44,6 +43,7 @@
       cava.enable = true;
       htop.enable = true;
       neofetch.enable = true;
+      qalculate.enable = true;
       zathura.enable = true;
     };
   };
