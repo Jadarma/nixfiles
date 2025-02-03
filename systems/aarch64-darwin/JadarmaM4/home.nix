@@ -1,7 +1,6 @@
 { config, pkgs, nixfiles, ... }: {
   imports = [
     "${nixfiles}/modules2/home/darwin"
-    "${nixfiles}/modules/home/alacritty"
   ];
 
   home = {
@@ -20,6 +19,7 @@
     development.enable = true;
 
     programs = {
+      alacritty.enable = true;
       cava.enable = true;
       neofetch.enable = true;
     };

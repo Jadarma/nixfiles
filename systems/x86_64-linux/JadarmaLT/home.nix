@@ -1,7 +1,6 @@
 { pkgs, nixfiles, ... }: {
 
   imports = [
-    "${nixfiles}/modules/home/alacritty"
     "${nixfiles}/modules/home/firefox"
     "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/hyprland"
@@ -41,6 +40,7 @@
     development.enable = true;
 
     programs = {
+      alacritty.enable = true;
       cava.enable = true;
       htop.enable = true;
       neofetch.enable = true;
