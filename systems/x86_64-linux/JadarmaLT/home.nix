@@ -10,7 +10,6 @@
     "${nixfiles}/modules/home/theme"
     "${nixfiles}/modules/home/waybar"
     "${nixfiles}/modules/home/wofi"
-    "${nixfiles}/modules/home/zathura"
 
     "${nixfiles}/modules2/home/nixos"
   ];
@@ -45,6 +44,7 @@
       cava.enable = true;
       htop.enable = true;
       neofetch.enable = true;
+      zathura.enable = true;
     };
   };
 
