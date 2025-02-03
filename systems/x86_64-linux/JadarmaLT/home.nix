@@ -1,7 +1,7 @@
 { pkgs, nixfiles, ... }: {
 
   imports = [
-    "${nixfiles}/modules2/home/nixos"
+    "${nixfiles}/modules/home/nixos"
   ];
 
   home = {
