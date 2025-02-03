@@ -4,7 +4,6 @@
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/scripts"
     "${nixfiles}/modules/home/theme"
-    "${nixfiles}/modules/home/waybar"
 
     "${nixfiles}/modules2/home/nixos"
   ];
