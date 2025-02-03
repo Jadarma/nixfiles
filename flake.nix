@@ -73,8 +73,11 @@
             "${host}" = nix-darwin.lib.darwinSystem {
               specialArgs = inputs // { nixfiles = ./.; };
               modules = [
-                { system.configurationRevision = self.rev or self.dirtyRev or null; }
-                { nixpkgs.hostPlatform = system; }
+                {
+                  system.configurationRevision = self.rev or self.dirtyRev or null;
+                  nix.settings.experimental-features = "nix-command flakes";
+                  nixpkgs.hostPlatform = system;
+                }
                 ./modules/darwin
                 ./systems/${system}/${host}/configuration.nix
               ];

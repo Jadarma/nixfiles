@@ -16,7 +16,6 @@
 
   # Nix & System
   system.stateVersion = 5;
-  nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
 
   # System packages.
@@ -32,7 +31,7 @@
   };
 
   nixfiles.darwin = {
-    homebrew.enable = true;
+    saneDefaults.enable = true;
   };
 
   # Networking
