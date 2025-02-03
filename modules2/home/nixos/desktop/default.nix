@@ -3,6 +3,7 @@ let cfg = config.nixfiles.home.desktop; in {
 
   imports = [
     ./mako
+    ./theme
     ./waybar
     ./wofi
   ];
