@@ -2,7 +2,6 @@
 
   imports = [
     "${nixfiles}/modules/home/hyprland"
-    "${nixfiles}/modules/home/scripts"
 
     "${nixfiles}/modules2/home/nixos"
   ];
