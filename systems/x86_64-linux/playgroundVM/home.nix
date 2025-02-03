@@ -3,7 +3,6 @@
   imports = [
     "${nixfiles}/modules/home/alacritty"
     "${nixfiles}/modules/home/firefox"
-    "${nixfiles}/modules/home/htop"
     "${nixfiles}/modules/home/mako"
     "${nixfiles}/modules/home/hyprland"
     "${nixfiles}/modules/home/qalculate"
@@ -44,6 +43,7 @@
 
     programs = {
       cava.enable = true;
+      htop.enable = true;
       neofetch.enable = true;
     };
   };
