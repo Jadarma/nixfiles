@@ -1,16 +1,8 @@
-{ pkgs, nixfiles, homeManager, nix-colors, ... }:
+{ pkgs, nixfiles, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    homeManager.nixosModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit nixfiles; };
-      home-manager.sharedModules = [ nix-colors.homeManagerModules.default ];
-      home-manager.users.dan = ./home.nix;
-    }
     "${nixfiles}/modules/nixos/bootloader"
     "${nixfiles}/modules/nixos/fonts"
     "${nixfiles}/modules/nixos/gpg"
@@ -22,7 +14,6 @@
     "${nixfiles}/modules/nixos/pipewire"
     "${nixfiles}/modules/nixos/shell"
   ];
-
 
   # Homelab
   networking.hostName = "JadarmaLT";
@@ -48,6 +39,7 @@
 
     useDefaultShell = true;
   };
+  home-manager.users.dan = ./home.nix;
 
   # Enable auto-login.
   # This device uses full-disk encryption, a password was already required to boot it.

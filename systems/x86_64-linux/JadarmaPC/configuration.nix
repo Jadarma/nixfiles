@@ -1,4 +1,4 @@
-{ pkgs, nixfiles, homeManager, nix-colors, ... }: {
+{ pkgs, nixfiles, ... }: {
 
   imports =
     [
@@ -6,15 +6,6 @@
       ./hardware-configuration.nix
       # Include VFIO Setup.
       ./vfio.nix
-      # Setup home manager.
-      homeManager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit nixfiles; };
-        home-manager.sharedModules = [ nix-colors.homeManagerModules.default ];
-        home-manager.users.dan = ./home.nix;
-      }
       "${nixfiles}/modules/nixos/android"
       "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
@@ -55,6 +46,7 @@
 
     useDefaultShell = true;
   };
+  home-manager.users.dan = ./home.nix;
 
   # Only allow Suspend to RAM.
   systemd.sleep.extraConfig = ''

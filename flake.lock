@@ -68,7 +68,7 @@
         "type": "indirect"
       }
     },
-    "homeManager": {
+    "home-manager": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -216,7 +216,7 @@
     },
     "root": {
       "inputs": {
-        "homeManager": "homeManager",
+        "home-manager": "home-manager",
         "mac-app-util": "mac-app-util",
         "nix-colors": "nix-colors",
         "nix-darwin": "nix-darwin",

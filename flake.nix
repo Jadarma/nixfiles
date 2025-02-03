@@ -6,7 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-24.11";
     };
 
-    homeManager = {
+    home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -29,7 +29,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, homeManager, nix-colors, mac-app-util, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-colors, mac-app-util, ... }:
     let
       inherit (builtins) map concatMap filter foldl' readDir attrNames;
       inherit (nixpkgs.lib) filterAttrs mergeAttrs strings;
@@ -57,7 +57,23 @@
             "${host}" = nixpkgs.lib.nixosSystem {
               inherit system;
               specialArgs = inputs // { nixfiles = ./.; };
-              modules = [ ./systems/${system}/${host}/configuration.nix ];
+              modules = [
+                {
+                  system.configurationRevision = self.rev or self.dirtyRev or null;
+                  nix.settings.experimental-features = "nix-command flakes";
+                  nixpkgs.hostPlatform = system;
+                }
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.sharedModules = [
+                    nix-colors.homeManagerModules.default
+                    ./modules/home/nixos
+                  ];
+                }
+                ./systems/${system}/${host}/configuration.nix
+              ];
             };
           };
         in
@@ -78,7 +94,7 @@
                   nix.settings.experimental-features = "nix-command flakes";
                   nixpkgs.hostPlatform = system;
                 }
-                homeManager.darwinModules.home-manager
+                home-manager.darwinModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;

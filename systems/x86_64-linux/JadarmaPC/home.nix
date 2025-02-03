@@ -1,8 +1,4 @@
-{ pkgs, lib, config, nixfiles, ... }: {
-
-  imports = [
-    "${nixfiles}/modules/home/nixos"
-  ];
+{ pkgs, lib, config, ... }: {
 
   home = {
     username = "dan";

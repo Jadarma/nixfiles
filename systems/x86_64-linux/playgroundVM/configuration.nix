@@ -1,17 +1,9 @@
-{ pkgs, nixfiles, homeManager, nix-colors, ... }: {
+{ pkgs, nixfiles, ... }: {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Setup home manager.
-      homeManager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit nixfiles; };
-        home-manager.sharedModules = [ nix-colors.homeManagerModules.default ];
-        home-manager.users.dan = ./home.nix;
-      }
+
       "${nixfiles}/modules/nixos/android"
       "${nixfiles}/modules/nixos/bootloader"
       "${nixfiles}/modules/nixos/fonts"
@@ -50,6 +42,7 @@
 
     useDefaultShell = true;
   };
+  home-manager.users.dan = ./home.nix;
 
   services.displayManager.autoLogin = {
     enable = true;
