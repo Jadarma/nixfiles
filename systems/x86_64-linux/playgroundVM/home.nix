@@ -1,8 +1,6 @@
 { config, pkgs, lib, nixfiles, ... }: {
 
   imports = [
-    "${nixfiles}/modules/home/hyprland"
-
     "${nixfiles}/modules2/home/nixos"
   ];
 

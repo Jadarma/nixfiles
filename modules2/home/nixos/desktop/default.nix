@@ -2,6 +2,7 @@
 let cfg = config.nixfiles.home.desktop; in {
 
   imports = [
+    ./hyprland
     ./mako
     ./scripts
     ./theme
