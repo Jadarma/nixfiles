@@ -1,8 +1,4 @@
-{ pkgs, config, nix-colors, ... }: {
-
-  imports = [
-    ./colorScheme.nix
-  ];
+{ pkgs, config, ... }: {
 
   # Configure the GTK Theme.
   # Note that while you could use `nix-colors` to autogenerate a Materia GTK theme, I found that the color scheme is a bit off.

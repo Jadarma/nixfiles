@@ -25,7 +25,7 @@
         alacritty_sync = config.programs.alacritty.enable;
       };
 
-      color = with config.colorScheme.colors; {
+      color = with config.colorScheme.palette; {
         background = "default";
         foreground = "default";
 

@@ -7,7 +7,8 @@
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
+      home-manager.extraSpecialArgs = { inherit nixfiles; };
+      home-manager.sharedModules = [ nix-colors.homeManagerModules.default ];
       home-manager.users.dan = ./home.nix;
     }
     "${nixfiles}/modules/nixos/bootloader"

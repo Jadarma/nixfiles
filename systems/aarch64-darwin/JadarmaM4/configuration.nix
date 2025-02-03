@@ -5,9 +5,12 @@
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit nixfiles nix-colors; };
+      home-manager.extraSpecialArgs = { inherit nixfiles; };
+      home-manager.sharedModules = [
+        mac-app-util.homeManagerModules.default
+        nix-colors.homeManagerModules.default
+      ];
       home-manager.users.dan = ./home.nix;
-      home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
     }
     "${nixfiles}/modules/darwin/homebrew"
   ];
