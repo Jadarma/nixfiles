@@ -1,7 +1,4 @@
-{ config, pkgs, nixfiles, ... }: {
-  imports = [
-    "${nixfiles}/modules/home/darwin"
-  ];
+{ config, pkgs, ... }: {
 
   home = {
     username = "dan";

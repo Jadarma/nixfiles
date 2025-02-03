@@ -29,7 +29,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, homeManager, nix-colors, mac-app-util, ... }:
     let
       inherit (builtins) map concatMap filter foldl' readDir attrNames;
       inherit (nixpkgs.lib) filterAttrs mergeAttrs strings;
@@ -71,12 +71,22 @@
           # From a host name and a system architecture, create a NixDarwin system, which passes all flake inputs to the `configuration.nix` of the target.
           mkNixDarwinSystem = { host, system }: {
             "${host}" = nix-darwin.lib.darwinSystem {
-              specialArgs = inputs // { nixfiles = ./.; };
+              specialArgs = inputs;
               modules = [
                 {
                   system.configurationRevision = self.rev or self.dirtyRev or null;
                   nix.settings.experimental-features = "nix-command flakes";
                   nixpkgs.hostPlatform = system;
+                }
+                homeManager.darwinModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.sharedModules = [
+                    mac-app-util.homeManagerModules.default
+                    nix-colors.homeManagerModules.default
+                    ./modules/home/darwin
+                  ];
                 }
                 ./modules/darwin
                 ./systems/${system}/${host}/configuration.nix

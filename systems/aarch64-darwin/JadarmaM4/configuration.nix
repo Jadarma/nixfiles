@@ -1,19 +1,6 @@
-{ pkgs, nixfiles, homeManager, nix-colors, mac-app-util, ... }: {
+{ pkgs, ... }: {
 
-  imports = [
-    homeManager.darwinModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit nixfiles; };
-      home-manager.sharedModules = [
-        mac-app-util.homeManagerModules.default
-        nix-colors.homeManagerModules.default
-      ];
-      home-manager.users.dan = ./home.nix;
-    }
-    ./appleSettings.nix
-  ];
+  imports = [ ./appleSettings.nix ];
 
   # System
   system.stateVersion = 5;
@@ -28,6 +15,8 @@
     shell = pkgs.zsh;
     home = "/Users/dan";
   };
+
+  home-manager.users.dan = ./home.nix;
 
   nixfiles.darwin = {
     saneDefaults.enable = true;
