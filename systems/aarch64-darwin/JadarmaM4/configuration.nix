@@ -49,9 +49,6 @@
     };
   };
 
-  # Enable alternative shell support in nix-darwin.
-  programs.zsh.enable = true;
-
   # MacOS Settings
   system.defaults = {
     ".GlobalPreferences" = {
