@@ -9,6 +9,9 @@ let cfg = config.nixfiles.darwin.nix; in {
 
   config = lib.mkIf cfg.enable {
 
+    # Enable Nix Flakes.
+    nix.settings.experimental-features = lib.mkDefault [ "nix-command" "flakes" ];
+
     # Automatically run garbage collection every week.
     nix.gc = lib.mkDefault {
       automatic = true;

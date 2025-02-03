@@ -1,7 +1,7 @@
 { lib, ... }: {
 
   # Enable Nix Flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = lib.mkDefault [ "nix-command" "flakes" ];
 
   # Make administrators trusted users.
   nix.settings.trusted-users = [ "root" "@wheel" ];
