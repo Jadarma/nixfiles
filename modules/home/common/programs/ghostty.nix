@@ -25,9 +25,11 @@ let cfg = config.nixfiles.home.programs.ghostty; in {
         window-padding-x = 16;
         window-padding-y = 16;
         window-vsync = true;
+        resize-overlay = "never";
+        confirm-close-surface = false;
 
         font-family = "JetBrains Mono";
-        font-size = 20;
+        font-size = lib.mkOptionDefault 12;
         font-thicken = true;
         font-thicken-strength = 128;
         font-feature = [
@@ -42,8 +44,9 @@ let cfg = config.nixfiles.home.programs.ghostty; in {
           "ctrl+alt+i=inspector:toggle"
 
           # Window Management
-          "ctrl+w=close_surface"
           "super+shift+q=quit"
+          "ctrl+w=close_surface"
+          "ctrl+shift+w=close_tab"
 
           "ctrl+n=new_tab"
           "ctrl+shift+n=new_window"
@@ -136,8 +139,11 @@ let cfg = config.nixfiles.home.programs.ghostty; in {
 
     # Hyprland integration (Linux Only)
     wayland.windowManager.hyprland.settings = {
+      exec-once = [
+        "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
+      ];
       bind = [
-        "SUPER, RETURN, exec, ghostty"
+        "SUPER, RETURN, exec, ghostty --gtk-single-instance=true"
       ];
     };
   };

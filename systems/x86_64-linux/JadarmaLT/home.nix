@@ -28,9 +28,9 @@
     development.enable = true;
 
     programs = {
-      alacritty.enable = true;
       cava.enable = true;
       firefox.enable = true;
+      ghostty.enable = true;
       htop.enable = true;
       neofetch.enable = true;
       qalculate.enable = true;

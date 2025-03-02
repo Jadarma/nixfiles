@@ -10,6 +10,8 @@ let cfg = config.nixfiles.home.programs.ghostty; in {
         auto-update = "off";
         fullscreen = true;
 
+        font-size = lib.mkDefault 20;
+
         macos-icon = "custom-style";
         macos-icon-ghost-color = "#${config.colorScheme.palette.accent}";
         macos-icon-screen-color = "#${config.colorScheme.palette.base00}";
