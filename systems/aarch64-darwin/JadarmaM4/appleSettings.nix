@@ -138,7 +138,7 @@
     finder = {
       AppleShowAllExtensions = true;
       AppleShowAllFiles = false;
-      CreateDesktop = false;
+      CreateDesktop = true; # Without this, Spaces does annoying autofocus when navigating to empty desktops.
       FXDefaultSearchScope = "SCcf";
       FXEnableExtensionChangeWarning = false;
       FXPreferredViewStyle = "Nlsv";
