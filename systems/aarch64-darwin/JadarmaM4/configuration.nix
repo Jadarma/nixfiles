@@ -33,6 +33,7 @@
     casks = [
       { name = "discord"; greedy = true; }
       { name = "firefox"; greedy = true; }
+      { name = "ghostty"; greedy = true; }
       { name = "jetbrains-toolbox"; greedy = true; }
       { name = "keepassxc"; greedy = true; }
       { name = "spotify"; greedy = true; args = { require_sha = false; }; }

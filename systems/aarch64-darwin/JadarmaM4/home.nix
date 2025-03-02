@@ -16,7 +16,7 @@
     development.enable = true;
 
     programs = {
-      alacritty.enable = true;
+      ghostty.enable = true;
       cava.enable = true;
       neofetch.enable = true;
     };
