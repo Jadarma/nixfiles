@@ -129,8 +129,8 @@
               (vscode-with-extensions.override {
                 vscode = vscodium;
                 vscodeExtensions = with vscode-extensions; [
-                  equinusocio.vsc-material-theme
-                  equinusocio.vsc-material-theme-icons
+                  tobiasalthoff.atom-material-theme
+                  vscode-icons-team.vscode-icons
                   jnoortheen.nix-ide
                   mkhl.direnv
                   timonwong.shellcheck

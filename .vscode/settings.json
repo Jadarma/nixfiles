@@ -10,8 +10,7 @@
             },
         }
     },
-    "workbench.colorTheme": "Material Theme",
-    "materialTheme.accent": "Teal",
+    "workbench.colorTheme": "Atom Material Theme",
     "direnv.restart.automatic": true,
     "direnv.status.showChangesCount": true,
     "direnv.watchForChanges": true,
@@ -40,7 +39,7 @@
     "workbench.cloudChanges.continueOn": "off",
     "workbench.experimental.cloudChanges.autoStore": "off",
     "workbench.startupEditor": "terminal",
-    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.iconTheme": "vscode-icons",
     "workbench.sideBar.location": "left",
     "workbench.statusBar.visible": true,
     "workbench.tips.enabled": false,
