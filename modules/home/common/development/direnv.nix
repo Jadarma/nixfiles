@@ -12,6 +12,7 @@ let cfg = config.nixfiles.home.development.direnv; in {
       enable = true;
       nix-direnv.enable = true;
 
+      enableBashIntegration = true;
       enableZshIntegration = true;
     };
 
