@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, osConfig, lib, ... }:
 let cfg = config.nixfiles.home.desktop; in {
 
   imports = [
@@ -16,6 +16,15 @@ let cfg = config.nixfiles.home.desktop; in {
     };
   };
 
-  # TODO: Integrate with NixOS module when implemented.
-  config = lib.mkIf cfg.enable { };
+  config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = osConfig.nixfiles.nixos.gui.enable;
+        message = "
+          The 'nixfiles.home.desktop' module requires NixOS integration!
+           └ To fix, set 'nixfiles.nixos.gui.enable = true' in your NixOS configuration.
+        ";
+      }
+    ];
+  };
 }

@@ -7,7 +7,6 @@
 
     # Extra apps and packages.
     packages = with pkgs; [
-      android-studio
       evince
       jetbrains.idea-ultimate
       kdePackages.ark
@@ -25,7 +24,10 @@
   nixfiles.home = {
     cli.enable = true;
     desktop.enable = true;
-    development.enable = true;
+    development = {
+      enable = true;
+      android.enable = true;
+    };
 
     programs = {
       cava.enable = true;
