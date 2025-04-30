@@ -1,27 +1,18 @@
-{ pkgs, nixfiles, ... }: {
+{ pkgs, ... }: {
 
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # Include VFIO Setup.
-      ./vfio.nix
-      "${nixfiles}/modules/nixos/android"
-      "${nixfiles}/modules/nixos/bootloader"
-      "${nixfiles}/modules/nixos/fonts"
-      "${nixfiles}/modules/nixos/gpg"
-      "${nixfiles}/modules/nixos/homelab"
-      "${nixfiles}/modules/nixos/hyprland"
-      "${nixfiles}/modules/nixos/locale"
-      "${nixfiles}/modules/nixos/network"
-      "${nixfiles}/modules/nixos/nix"
-      "${nixfiles}/modules/nixos/pipewire"
-      "${nixfiles}/modules/nixos/shell"
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./vfio.nix
+  ];
 
-  # Homelab
   networking.hostName = "JadarmaPC";
-  homelab.nfs.enable = true;
+
+  # Nixfiles
+  nixfiles.nixos = {
+    saneDefaults.enable = true;
+    homelab.nfs.enable = true;
+    android.enable = true;
+  };
 
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [

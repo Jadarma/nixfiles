@@ -1,22 +1,14 @@
-{ pkgs, nixfiles, ... }: {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+{ pkgs, ... }: {
 
-      "${nixfiles}/modules/nixos/android"
-      "${nixfiles}/modules/nixos/bootloader"
-      "${nixfiles}/modules/nixos/fonts"
-      "${nixfiles}/modules/nixos/gpg"
-      "${nixfiles}/modules/nixos/homelab"
-      "${nixfiles}/modules/nixos/hyprland"
-      "${nixfiles}/modules/nixos/locale"
-      "${nixfiles}/modules/nixos/network"
-      "${nixfiles}/modules/nixos/nix"
-      "${nixfiles}/modules/nixos/pipewire"
-      "${nixfiles}/modules/nixos/shell"
-      "${nixfiles}/modules/nixos/steam"
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  # Nixfiles
+  nixfiles.nixos = {
+    saneDefaults.enable = true;
+    steam.enable = true;
+  };
 
   # System.
   networking.hostName = "playgroundVM";

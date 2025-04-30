@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  cfg = config.homelab.nfs;
+  cfg = config.nixfiles.nixos.homelab.nfs;
 
   # Defines a lazy-mounted NFS Share on the homelab network.
   mkNfsShare = { name, readOnly ? false }: {
@@ -19,9 +19,10 @@ let
 in
 {
   options = {
-    homelab.nfs.enable = lib.mkEnableOption "Enable connecting to the Homelab NFS shares.";
+    nixfiles.nixos.homelab.nfs.enable = lib.mkEnableOption "Enable connecting to the Homelab NFS shares.";
   };
 
+  # TODO: Enable picking and choosing which shares to mount and where.
   config = lib.mkIf cfg.enable {
     fileSystems."/mnt/vault" = mkNfsShare { name = "vault"; };
     fileSystems."/mnt/pool" = mkNfsShare { name = "pool"; };

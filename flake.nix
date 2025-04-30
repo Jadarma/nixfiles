@@ -59,6 +59,7 @@
               specialArgs = inputs // { nixfiles = ./.; };
               modules = [
                 ./systems/${system}/${host}/configuration.nix
+                ./modules/nixos
                 home-manager.nixosModules.home-manager
                 {
                   system.configurationRevision = self.rev or self.dirtyRev or null;
