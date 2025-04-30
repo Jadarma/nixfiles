@@ -1,4 +1,10 @@
-{ lib, ... }: {
+{ config, lib, ... }:
+let
+  inherit (lib) map flatten;
+  inherit (lib.attrsets) mapAttrs mapAttrsToList;
+  cfg = config.nixfiles.home.desktop.monitors;
+in
+{
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -105,8 +111,6 @@
         inherit_fullscreen = true;
       };
 
-      monitor = lib.mkDefault ",preffered,auto,auto";
-
       misc = {
         background_color = "$background";
         disable_hyprland_logo = true;
@@ -197,6 +201,24 @@
         "SUPER, mouse:273, Resize active window via mouse dragging., resizewindow"
       ];
 
+      # Set persistent workspaces from config.
+      workspace =
+        let
+          monitorToWorkspaces = mapAttrs (k: v: v.persistentWorkspaces) cfg;
+          fmtLine = (k: v: map (it: "${builtins.toString it},monitor:${k},persistent:true") v);
+          configLines = mapAttrsToList fmtLine monitorToWorkspaces;
+        in
+        flatten configLines;
+
+      # TODO: Allow setting of extra, non-mandatory options too.
+      #       But for the time being, those can easily be added separately using extraConfig.
+      # Set monitor options from config.
+      monitor =
+        let
+          fmtLine = (k: v: "${k},${v.resolution},${v.position},${lib.strings.floatToString v.scale}");
+          configLines = mapAttrsToList fmtLine cfg;
+        in
+        configLines ++ [ ",preffered,auto,auto" ];
     };
 
     # Extra config pasted as-is to the end of the configuration file.

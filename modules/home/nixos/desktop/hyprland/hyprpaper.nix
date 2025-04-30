@@ -1,5 +1,13 @@
-{ config, lib, ... }: {
-
+{ config, lib, ... }:
+let
+  inherit (lib.attrsets) mapAttrs' mapAttrsToList nameValuePair filterAttrs attrValues;
+  cfg = config.nixfiles.home.desktop.monitors;
+  defaultWallpaper = "${config.xdg.dataHome}/wallpapers/bg_center.png";
+  listWithFallback = xs: default: if xs == [ ] then default else xs;
+  hyprPaperEntry = monitor: monitorConfig: "${monitor},${config.xdg.dataHome}/wallpapers/${monitorConfig.wallpaper}";
+  hyprPaperPreload = monitorConfig: "${config.xdg.dataHome}/wallpapers/${monitorConfig.wallpaper}";
+in
+{
   # Configure HyprPaper.
   services.hyprpaper = {
     enable = true;
@@ -9,12 +17,17 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload = [
-        "${config.xdg.dataHome}/wallpapers/bg_left.png"
-        "${config.xdg.dataHome}/wallpapers/bg_center.png"
-        "${config.xdg.dataHome}/wallpapers/bg_right.png"
-      ];
-      wallpaper = lib.mkDefault [ ",${config.xdg.dataHome}/wallpapers/bg_center.png" ];
+      # Preload all wallpapers in use.
+      preload =
+        lib.lists.unique (listWithFallback
+          (builtins.map hyprPaperPreload (attrValues cfg))
+          [ defaultWallpaper ]);
+
+      # Set wallpapers for their respective monitors.
+      wallpaper =
+        listWithFallback
+          (mapAttrsToList hyprPaperEntry cfg)
+          ",${defaultWallpaper}";
     };
   };
 
@@ -23,11 +36,9 @@
     exec-once = [ "hyprpaper" ];
   };
 
-  # Import wallpaper image resources.
-  xdg.dataFile = {
-    "wallpapers/bg_center.png".source = ./wallpapers/bg_center.png;
-    "wallpapers/bg_left.png".source = ./wallpapers/bg_left.png;
-    "wallpapers/bg_right.png".source = ./wallpapers/bg_right.png;
-    "wallpapers/bg_full.png".source = ./wallpapers/bg_full.png;
-  };
+  # Symlink wallpaper image resources.
+  xdg.dataFile =
+    mapAttrs'
+      (name: _: nameValuePair "wallpapers/${name}" { source = ./wallpapers/${name}; })
+      (filterAttrs (_: v: v == "regular") (builtins.readDir ./wallpapers));
 }

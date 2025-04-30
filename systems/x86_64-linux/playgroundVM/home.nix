@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ lib, pkgs, ... }: {
 
   home = {
     username = "dan";
@@ -24,8 +24,24 @@
 
   nixfiles.home = {
     cli.enable = true;
-    desktop.enable = true;
     development.enable = true;
+    desktop = {
+      enable = true;
+      monitors = {
+        "HDMI-A-1" = {
+          wallpaper = "bg_left.png";
+          persistentWorkspaces = [ 4 5 6 ];
+        };
+        "DP-1" = {
+          wallpaper = "bg_center.png";
+          persistentWorkspaces = [ 1 2 3 ];
+        };
+        "DP-3" = {
+          wallpaper = "bg_right.png";
+          persistentWorkspaces = [ 7 8 9 ];
+        };
+      };
+    };
 
     programs = {
       cava.enable = true;
@@ -44,23 +60,5 @@
       "DP-1,2560x1440@144,2560x0,1,vrr,2"
       "DP-3,2560x1440@144,5120x0,1"
     ];
-
-    workspace = [
-      "4,monitor:HDMI-A-1,persistent:true"
-      "5,monitor:HDMI-A-1,persistent:true"
-      "6,monitor:HDMI-A-1,persistent:true"
-      "1,monitor:DP-1,persistent:true"
-      "2,monitor:DP-1,persistent:true"
-      "3,monitor:DP-1,persistent:true"
-      "7,monitor:DP-3,persistent:true"
-      "8,monitor:DP-3,persistent:true"
-      "9,monitor:DP-3,persistent:true"
-    ];
   };
-
-  services.hyprpaper.settings.wallpaper = lib.mkForce [
-    "HDMI-A-1,${config.xdg.dataHome}/wallpapers/bg_left.png"
-    "DP-1,${config.xdg.dataHome}/wallpapers/bg_center.png"
-    "DP-3,${config.xdg.dataHome}/wallpapers/bg_right.png"
-  ];
 }

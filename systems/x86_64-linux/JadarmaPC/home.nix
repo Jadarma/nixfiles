@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, ... }: {
 
   home = {
     username = "dan";
@@ -23,7 +23,29 @@
 
   nixfiles.home = {
     cli.enable = true;
-    desktop.enable = true;
+    desktop = {
+      enable = true;
+      monitors = {
+        "DP-1" = {
+          resolution = "2560x1440@144";
+          position = "0x0";
+          persistentWorkspaces = [ 4 5 6 ];
+          wallpaper = "bg_left.png";
+        };
+        "HDMI-A-1" = {
+          resolution = "2560x1440@144";
+          position = "2560x0";
+          persistentWorkspaces = [ 1 2 3 ];
+          wallpaper = "bg_center.png";
+        };
+        "DP-2" = {
+          resolution = "2560x1440@144";
+          position = "5120x0";
+          persistentWorkspaces = [ 7 8 9 ];
+          wallpaper = "bg_right.png";
+        };
+      };
+    };
     development = {
       enable = true;
       android.enable = true;
@@ -39,30 +61,4 @@
       zathura.enable = true;
     };
   };
-
-  wayland.windowManager.hyprland.settings = {
-    monitor = lib.mkForce [
-      "DP-1    ,2560x1440@144,0x0,1"
-      "HDMI-A-1,2560x1440@144,2560x0,1"
-      "DP-2    ,2560x1440@144,5120x0,1"
-    ];
-
-    workspace = [
-      "4,monitor:DP-1,persistent:true"
-      "5,monitor:DP-1,persistent:true"
-      "6,monitor:DP-1,persistent:true"
-      "1,monitor:HDMI-A-1,persistent:true"
-      "2,monitor:HDMI-A-1,persistent:true"
-      "3,monitor:HDMI-A-1,persistent:true"
-      "7,monitor:DP-2,persistent:true"
-      "8,monitor:DP-2,persistent:true"
-      "9,monitor:DP-2,persistent:true"
-    ];
-  };
-
-  services.hyprpaper.settings.wallpaper = lib.mkForce [
-    "DP-1,${config.xdg.dataHome}/wallpapers/bg_left.png"
-    "HDMI-A-1,${config.xdg.dataHome}/wallpapers/bg_center.png"
-    "DP-2,${config.xdg.dataHome}/wallpapers/bg_right.png"
-  ];
 }
