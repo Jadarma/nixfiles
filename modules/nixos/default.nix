@@ -12,6 +12,7 @@ let cfg = config.nixfiles.nixos.saneDefaults; in {
     ./shell.nix
     ./sound.nix
     ./steam.nix
+    ./usb.nix
   ];
 
   options = {
@@ -29,5 +30,6 @@ let cfg = config.nixfiles.nixos.saneDefaults; in {
     nixfiles.nixos.shell.enable = lib.mkDefault true;
     nixfiles.nixos.sound.enable = lib.mkDefault true;
     nixfiles.nixos.nixConfig.enable = lib.mkDefault true;
+    nixfiles.nixos.usb.enable = lib.mkDefault true;
   };
 }
