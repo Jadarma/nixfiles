@@ -1,4 +1,4 @@
-{ lib, modulesPath, nixos-hardware, ... }: {
+{ modulesPath, nixos-hardware, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -7,7 +7,7 @@
 
   # Sytem
   system.stateVersion = "24.11";
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Bootloader
   boot = {
@@ -56,4 +56,11 @@
   # CPU
   hardware.enableAllFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "performance";
+    # Limit the CPU Freq to 5.45GHz, seems to stop random reboots.
+    # See https://hjr265.me/blog/strangest-amd-7950x-bug/
+    cpufreq.max = 5450000;
+  };
 }
