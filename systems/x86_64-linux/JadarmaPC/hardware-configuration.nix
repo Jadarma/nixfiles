@@ -1,4 +1,4 @@
-{ modulesPath, nixos-hardware, ... }: {
+{ pkgs, modulesPath, nixos-hardware, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -16,6 +16,7 @@
       kernelModules = [ "cryptd" "dm-snapshot" ];
       luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS_LUKS";
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     kernelParams = [
       "amdgpu.runpm=0"
