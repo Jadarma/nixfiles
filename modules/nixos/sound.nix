@@ -19,6 +19,8 @@ let cfg = config.nixfiles.nixos.sound; in {
     };
 
     # Enable pulseaudio API.
-    environment.systemPackages = with pkgs; [ pulseaudio ];
+    environment.systemPackages = with pkgs;
+      [ pulseaudio ]
+      ++ (lib.optionals config.nixfiles.nixos.gui.enable [ pavucontrol qpwgraph ]);
   };
 }

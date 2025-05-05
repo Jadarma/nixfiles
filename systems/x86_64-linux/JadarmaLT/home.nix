@@ -11,14 +11,12 @@
       jetbrains.idea-ultimate
       kdePackages.ark
       keepassxc
-      pavucontrol
       pcmanfm
       protonup-ng
       signal-desktop
       spotify
       vesktop
       viewnior
-      qpwgraph
     ];
   };
 
