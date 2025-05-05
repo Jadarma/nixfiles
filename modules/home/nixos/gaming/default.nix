@@ -3,6 +3,7 @@ let cfg = config.nixfiles.home.gaming; in {
 
   imports = [
     ./mangohud
+    ./proton.nix
   ];
 
   options = {
