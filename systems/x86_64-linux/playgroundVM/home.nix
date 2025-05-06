@@ -33,6 +33,7 @@
         "DP-1" = {
           resolution = "2560x1440@144";
           position = "2560x0";
+          extraArgs = { vrr = "2"; };
           wallpaper = "bg_center.png";
           persistentWorkspaces = [ 1 2 3 ];
         };

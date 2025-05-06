@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  inherit (lib) map flatten;
+  inherit (lib) map flatten concatStrings;
   inherit (lib.attrsets) mapAttrs mapAttrsToList;
   cfg = config.nixfiles.home.desktop.monitors;
 in
@@ -210,12 +210,11 @@ in
         in
         flatten configLines;
 
-      # TODO: Allow setting of extra, non-mandatory options too.
-      #       But for the time being, those can easily be added separately using extraConfig.
       # Set monitor options from config.
       monitor =
         let
-          fmtLine = (k: v: "${k},${v.resolution},${v.position},${lib.strings.floatToString v.scale}");
+          fmtExtra = args: concatStrings (mapAttrsToList (k: v: ",${k},${v}") args);
+          fmtLine = (k: v: "${k},${v.resolution},${v.position},${lib.strings.floatToString v.scale}${fmtExtra v.extraArgs}");
           configLines = mapAttrsToList fmtLine cfg;
         in
         configLines ++ [ ",preffered,auto,auto" ];

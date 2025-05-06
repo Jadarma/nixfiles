@@ -39,6 +39,12 @@ in
               example = 1.25;
               default = 1.0;
             };
+            extraArgs = mkOption {
+              description = "Extra monitor args for Hyprland.";
+              type = attrsOf str;
+              example = { vrr = "2"; };
+              default = { };
+            };
             persistentWorkspaces = mkOption {
               description = "Names of persistent workspaces to bind to this monitor. Values 1-9 have keybinds!";
               type = listOf (either str int);
