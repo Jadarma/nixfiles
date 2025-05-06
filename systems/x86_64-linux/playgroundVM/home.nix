@@ -12,8 +12,6 @@
       kdePackages.ark
       keepassxc
       pcmanfm
-      signal-desktop
-      spotify
       vesktop
       viewnior
     ];
@@ -57,8 +55,4 @@
       zathura.enable = true;
     };
   };
-
-  wayland.windowManager.hyprland.settings.monitor = [
-    "DP-1,vrr,2"
-  ];
 }

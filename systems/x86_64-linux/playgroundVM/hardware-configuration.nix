@@ -18,6 +18,7 @@
       availableKernelModules = [ "ahci" "xhci_pci" "amdgpu" "virtio_pci" "virtio_scsi" "usbhid" "sr_mod" "virtio_blk" ];
       kernelModules = [ "amdgpu" ];
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
     supportedFilesystems = [ "ntfs" ];
     extraModulePackages = [ ];
