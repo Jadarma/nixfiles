@@ -141,6 +141,7 @@ let cfg = config.nixfiles.home.programs.firefox; in {
             (extension "better-youtube-shorts" "{ac34afe8-3a2e-4201-b745-346c0cf6ec7d}" false)
             (extension "old-reddit-redirect" "{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}" false)
             (extension "reddit-enhancement-suite" "jid1-xUfzOsOFlzSOXg@jetpack" false)
+            (extension "user-agent-string-switcher" "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" false)
           ];
       };
 
