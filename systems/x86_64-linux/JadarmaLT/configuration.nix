@@ -14,7 +14,6 @@
 
   # System-wide packages.
   environment.systemPackages = with pkgs; [
-    neovim
     git
   ];
 

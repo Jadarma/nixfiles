@@ -24,7 +24,6 @@
 
   # More Apps
   environment.systemPackages = with pkgs; [
-    neovim
   ];
 
   homebrew = {

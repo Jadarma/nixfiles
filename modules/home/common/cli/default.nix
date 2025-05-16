@@ -4,6 +4,7 @@ let cfg = config.nixfiles.home.cli; in {
   imports = [
     ./bat.nix
     ./eza.nix
+    ./neovim.nix
     ./ripgrep.nix
     ./starship.nix
     ./zsh.nix
@@ -21,6 +22,7 @@ let cfg = config.nixfiles.home.cli; in {
     nixfiles.home.cli = {
       bat.enable = lib.mkDefault true;
       eza.enable = lib.mkDefault true;
+      neovim.enable = lib.mkDefault true;
       ripgrep.enable = lib.mkDefault true;
       starship.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;

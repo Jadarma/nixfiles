@@ -15,7 +15,6 @@
 
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [
-    neovim
     pciutils
     git
   ];
