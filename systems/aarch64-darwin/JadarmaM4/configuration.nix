@@ -17,6 +17,7 @@
   };
 
   home-manager.users.dan = ./home.nix;
+  system.primaryUser = "dan";
 
   nixfiles.darwin = {
     saneDefaults.enable = true;

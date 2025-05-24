@@ -11,7 +11,7 @@ in
     };
 
     # Override the pinentry for Darwin.
-    services.gpg-agent.pinentryPackage = lib.mkForce pkgs.pinentry_mac;
+    services.gpg-agent.pinentry.package = lib.mkForce pkgs.pinentry_mac;
 
     # Without this enabled, macOS will take precedence, since HM only sets this variable if it is not already set.
     home.sessionVariables = {
