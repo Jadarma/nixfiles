@@ -8,7 +8,7 @@
     # Extra apps and packages.
     packages = with pkgs; [
       evince
-      filelight
+      kdePackages.filelight
       kdePackages.ark
       keepassxc
       pcmanfm
