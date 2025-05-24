@@ -23,7 +23,7 @@ let cfg = config.nixfiles.home.cli.eza; in {
         lta = "lt -a";
       };
 
-      initExtra = ''
+      initContent = ''
         function lg() {
           REPO=$(git rev-parse --show-toplevel)
           [ -z "$REPO" ] && return 1

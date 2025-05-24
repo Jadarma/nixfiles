@@ -40,8 +40,9 @@ let cfg = config.nixfiles.nixos.gui; in {
 
     # Configure fonts.
     fonts = {
-      packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "JetBrainsMono" "Noto" ]; })
+      packages = with pkgs.nerd-fonts; [
+        jetbrains-mono
+        noto
       ];
 
       fontconfig = {
