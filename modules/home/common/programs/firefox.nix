@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 let cfg = config.nixfiles.home.programs.firefox; in {
   options = {
     nixfiles.home.programs.firefox = {
@@ -7,12 +7,6 @@ let cfg = config.nixfiles.home.programs.firefox; in {
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO: This *should* be a common module, but Firefox is not available for darwin targets until 25.05.
-    #       Using just the configs, with a package from Homebrew also doesn't work, because it complains about writing
-    #       to HM-managed profiles for whatever reason.
-    #       Therefore, treat as a common module, wait for the fix, and disallow usage from darwin.
-    assertions = [ (lib.hm.assertions.assertPlatform "nixfiles.home.programs.firefox" pkgs lib.platforms.linux) ];
-
     programs.firefox = {
       enable = true;
 
@@ -280,7 +274,7 @@ let cfg = config.nixfiles.home.programs.firefox; in {
     # Hyprland integration. (Linux Only)
     wayland.windowManager.hyprland.settings = {
       bindd = [
-        "SUPER              , F2, Launch Firefox.                   , exec, firefox"
+        "SUPER              , F2, Launch Firefox.                  , exec, firefox"
         "SUPER + SHIFT      , F2, Launch Firefox in private profile., exec, firefox -P Incognito"
         "SUPER + ALT + SHIFT, F2, Launch Firefox in testing profile., exec, firefox -P Testing"
       ];

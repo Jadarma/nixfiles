@@ -23,16 +23,11 @@
     saneDefaults.enable = true;
   };
 
-  # More Apps
-  environment.systemPackages = with pkgs; [
-  ];
-
   homebrew = {
     masApps.Xcode = 497799835;
 
     casks = [
       { name = "discord"; greedy = true; }
-      { name = "firefox"; greedy = true; }
       { name = "ghostty"; greedy = true; }
       { name = "jetbrains-toolbox"; greedy = true; }
       { name = "keepassxc"; greedy = true; }

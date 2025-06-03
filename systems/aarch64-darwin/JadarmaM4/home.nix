@@ -16,8 +16,8 @@
     development.enable = true;
 
     programs = {
+      firefox.enable = true;
       ghostty.enable = true;
-      cava.enable = true;
       neofetch.enable = true;
     };
   };
