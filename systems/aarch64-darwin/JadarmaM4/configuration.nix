@@ -32,7 +32,6 @@
       { name = "jetbrains-toolbox"; greedy = true; }
       { name = "keepassxc"; greedy = true; }
       { name = "signal"; greedy = true; }
-      { name = "spotify"; greedy = true; args = { require_sha = false; }; }
     ];
   };
 }
