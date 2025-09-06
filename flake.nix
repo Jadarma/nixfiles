@@ -56,7 +56,7 @@
           mkNixosSystem = { host, system }: {
             "${host}" = nixpkgs.lib.nixosSystem {
               inherit system;
-              specialArgs = inputs // { nixfiles = ./.; };
+              specialArgs = inputs;
               modules = [
                 ./systems/${system}/${host}/configuration.nix
                 ./modules/nixos

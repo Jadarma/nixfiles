@@ -1,4 +1,4 @@
-{ lib, pkgs, nixfiles, ... }:
+{ lib, pkgs, ... }:
 let
   hostNetworkInterface = "eno1"; # The physical interface to bridge (not Wi-Fi). Will be bridged to `br0`.
   hostIp = "10.10.10.10"; # The IP assigned by router DHCP leases.
@@ -12,11 +12,6 @@ let
   ];
 in
 {
-
-  imports = [
-    "${nixfiles}/overlays/scream.nix"
-  ];
-
   # Isolate GPU and PCI devices with VFIO.
   boot = {
     initrd.kernelModules = [
