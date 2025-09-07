@@ -1,11 +1,11 @@
 { config, lib, ... }:
 let cfg = config.nixfiles.nixos.saneDefaults; in {
   imports = [
+    ./homelab
     ./android.nix
     ./bootloader.nix
     ./gpg.nix
     ./gui.nix
-    ./homelab.nix
     ./internet.nix
     ./locale.nix
     ./nixConfig.nix

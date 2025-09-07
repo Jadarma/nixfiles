@@ -10,7 +10,7 @@
   # Nixfiles
   nixfiles.nixos = {
     saneDefaults.enable = true;
-    homelab.nfs.enable = true;
+    homelab.enable = true;
     android.enable = true;
   };
 
