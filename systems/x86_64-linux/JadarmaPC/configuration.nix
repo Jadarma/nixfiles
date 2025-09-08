@@ -10,8 +10,11 @@
   # Nixfiles
   nixfiles.nixos = {
     saneDefaults.enable = true;
-    homelab.enable = true;
     android.enable = true;
+    homelab = {
+      enable = true;
+      shares."/mnt/vault" = { dataset = "pool/vault"; };
+    };
   };
 
   # Install system-wide packages.

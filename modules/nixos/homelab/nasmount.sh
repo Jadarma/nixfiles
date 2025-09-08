@@ -7,8 +7,7 @@ NAME: nasmount
 
 DESCRIPTION:
     A helper script that mounts NFS shares from a local homelab instance into
-    temporary directories.
-    Assumes working with TrueNAS and ZFS datasets.
+    temporary directories. Assumes working with TrueNAS and ZFS datasets.
     Use 'sudo umount /path/to/mountpoint' to disconnect the share after it is
     no longer needed.
 
@@ -16,19 +15,18 @@ SYNOPSIS:
     nasmont [OPTIONS...] dataset [mountpoint]
 
 ARGUMENTS:
-    dataset                The name of the ZFS dataset that is being mounted.
-                           Note that TrueNAS NFS shares *do not* support
-                           nested datasets; child datasets will show up as
-                           empty directories.
-    mountpoint             If specified, mounts to this (existing) path.
-                           If omitted, defaults to '/tmp/nasmount/$dataset'
-                           and is autocreated.
+    dataset     The name of the ZFS dataset that is being mounted.
+                Note that TrueNAS NFS shares *do not* support nested datasets.
+                Child datasets will show up as empty directories.
+    mountpoint  If specified, mounts to this (existing) path. If omitted,
+                defaults to '/tmp/nasmount/$dataset' and is autocreated.
 
 OPTIONS:
-    -h, --help             Print this message and exit.
-    -r, --read-only        Mount the share as read only.
-    -s <arg>, --host=<arg> Change the hostname (or IP) of the NAS server.
-                           Default is 'nas'.
+    -h, --help                 Print this message and exit.
+    -r, --read-only            Mount the share as read only.
+    -s <arg>, --host=<arg>     Change the hostname (or IP) of the NAS server.
+                               Default is 'nas'.
+    -v <arg>, --nfs-vers=<arg> Use a custom NFS version. Default is 4.2.
 
 EXAMPLE:
     nasmount -r vault
@@ -41,13 +39,14 @@ EOF
 }
 
 host='nas'
+nfsvers='4.2'
 readonly='rw'
 mkdir=''
 dataset=''
 source=''
 target=''
 
-options=$(getopt -n nasmount -o 'hrs:' -l 'help,read-only,host:' -- "$@")
+options=$(getopt -n nasmount -o 'hrs:v:' -l 'help,read-only,host:nfs-vers:' -- "$@")
 eval set -- "$options"
 
 while [ -n "${1+set}" ]; do
@@ -58,6 +57,8 @@ while [ -n "${1+set}" ]; do
             readonly='ro'; shift;;
         -s|--host)
             host="$2"; shift 2;;
+        -v|--nfs-vers)
+            nfsvers="$2"; shift 2;;
         --)
             shift; break;;
         *)
@@ -82,7 +83,12 @@ else
     mkdir=1
 fi
 
+if [ -n "${1+set}" ]; then
+    echo 'Too many arguments' >&2
+    exit 1
+fi
+
 sudo mount -t nfs \
-  -o "nfsvers=4.2,proto=tcp,_netdev,fg,hard,defaults,noatime,$readonly" \
+  -o "nfsvers=$nfsvers,proto=tcp,_netdev,fg,hard,defaults,noatime,$readonly" \
   ${mkdir:+--mkdir} \
   "$source" "$target"

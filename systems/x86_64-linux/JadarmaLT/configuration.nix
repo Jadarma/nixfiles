@@ -9,7 +9,10 @@
   # Nixfiles
   nixfiles.nixos = {
     saneDefaults.enable = true;
-    homelab.enable = true;
+    homelab = {
+      enable = true;
+      shares."/mnt/vault" = { dataset = "pool/vault"; };
+    };
   };
 
   # System-wide packages.
