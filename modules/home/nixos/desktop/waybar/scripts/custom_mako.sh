@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+set -euo pipefail
 #----------------------------------------------------------------------------------------------------------------------
 # Mako Status
 # Helper command for the `custom/mako` waybar module, acts like two scripts in one.
@@ -6,36 +7,41 @@
 # Otherwise, it returns the JSON status for the module.
 #----------------------------------------------------------------------------------------------------------------------
 
-DND_MODE='do-not-disturb'
-makoctl mode | grep -q $DND_MODE && IS_DND=1 || IS_DND=0
+is_dnd=1
+makoctl mode | grep -q 'do-not-disturb' || is_dnd=0
 
-if [ "$1" = "toggle" ]; then
-  [ "$IS_DND" = 1 ] && OPT='-r' || OPT='-a'
-  makoctl mode "$OPT" $DND_MODE >/dev/null
+if [ "${1:-}" = "toggle" ]; then
+  opt=$(if [ "$is_dnd" = 1 ]; then echo '-r'; else echo '-a'; fi)
+  makoctl mode "$opt" 'do-not-disturb' >/dev/null
   pkill -SIGRTMIN+1 waybar
-  exit
+  exit 0
 fi
 
-NOTIFICATION_COUNT=$(makoctl list | nix run nixpkgs#jq -- '.data[] | length')
-if [ "$IS_DND" = 1 ]; then
-  TOOLTIP="Do Not Disturb ($NOTIFICATION_COUNT)"
-  CLASS='do-not-disturb'
-  PERCENTAGE=0
+notification_count=$(\
+  busctl --json=short --user call org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako ListNotifications \
+  | nix run nixpkgs#jq -- '.data[] | length'\
+)
+
+if [ "$is_dnd" = 1 ]; then
+  tooltip="Do Not Disturb ($notification_count)"
+  class='do-not-disturb'
+  percentage=0
 else
-  PERCENTAGE=100
-  if [ "$NOTIFICATION_COUNT" -gt 0 ]; then
-    TOOLTIP="$NOTIFICATION_COUNT New Notification(s)."
-    CLASS='alert'
+  if [ "$notification_count" -gt 0 ]; then
+    tooltip="$notification_count New Notification(s)."
+    class='alert'
   else
-    TOOLTIP='No Notifications'
-    CLASS='clear'
+    tooltip='No Notifications'
+    class='clear'
   fi
+  percentage=100
 fi
 
 # TODO: Forgive me for this hack, find a nicer way to package this script.
+# shellcheck disable=SC2016
 nix run nixpkgs#jq -- --unbuffered --compact-output -n \
-  --arg text "$NOTIFICATION_COUNT" \
-  --arg tooltip "$TOOLTIP" \
-  --arg class "$CLASS" \
-  --arg percentage "$PERCENTAGE" \
+  --arg text "$notification_count" \
+  --arg tooltip "$tooltip" \
+  --arg class "$class" \
+  --arg percentage "$percentage" \
   '{$text, $tooltip, $class, percentage: $percentage | tonumber}'

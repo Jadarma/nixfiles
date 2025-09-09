@@ -8,7 +8,7 @@ let cfg = config.nixfiles.home.desktop; in {
       settings = with config.colorScheme.palette; {
 
         # Limit the number of visible notifications.
-        maxVisible = 10;
+        max-visible = 10;
 
         # Sort notifications by most recent first.
         sort = "-time";
@@ -21,13 +21,13 @@ let cfg = config.nixfiles.home.desktop; in {
         padding = "10";
         layer = "top";
         font = "monospace 10";
-        borderSize = 2;
-        borderRadius = 0;
+        border-size = 2;
+        border-radius = 0;
         icons = true;
         markup = true;
 
         # Do not expire notifications that did not set a timeout.
-        defaultTimeout = 0;
+        default-timeout = 0;
 
         max-history = 10;
         on-button-left = "invoke-default-action";
