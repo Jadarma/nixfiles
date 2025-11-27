@@ -62,6 +62,16 @@ let cfg = config.nixfiles.nixos.homelab; in
         ];
       };
 
+      homelabconfDesktop = pkgs.makeDesktopItem {
+        name = "homelabconf-desktop";
+        desktopName = "Homelab Conf";
+        icon = "nix-snowflake";
+        comment = "Open a code editor to edit the homelab's Nix configs via SSH.";
+        categories = [ "Application" ];
+        exec = "${homelabconf}/bin/homelabconf";
+        terminal = false;
+      };
+
       mkNasNfsShare = share: with share; {
         device = "${host}:/mnt/${dataset}";
         fsType = "nfs";
@@ -83,6 +93,7 @@ let cfg = config.nixfiles.nixos.homelab; in
       environment.systemPackages = [
         nasmount
         homelabconf
+        homelabconfDesktop
       ];
       fileSystems = lib.mapAttrs (mountpoint: mkNasNfsShare) cfg.shares;
     };
