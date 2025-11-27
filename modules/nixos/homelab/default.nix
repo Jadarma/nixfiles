@@ -1,26 +1,5 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.nixfiles.nixos.homelab;
-
-  nasmount = pkgs.writeScriptBin "nasmount" (builtins.readFile ./nasmount.sh);
-
-  mkNasNfsShare = share: with share; {
-    device = "${host}:/mnt/${dataset}";
-    fsType = "nfs";
-    options = [
-      "nfsvers=${nfsVersion}"
-      "proto=tcp"
-      "_netdev"
-      "noauto"
-      "nofail"
-      "x-systemd.automount"
-      "x-systemd.idle-timeout=600"
-      "defaults"
-      "noatime"
-      (if readOnly then "ro" else "rw")
-    ];
-  };
-in
+let cfg = config.nixfiles.nixos.homelab; in
 {
   options = {
     nixfiles.nixos.homelab = {
@@ -57,8 +36,54 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ nasmount ];
-    fileSystems = lib.mapAttrs (mountpoint: mkNasNfsShare) cfg.shares;
-  };
+  config =
+    let
+      nasmount = pkgs.writeShellApplication {
+        name = "nasmount";
+        text = (builtins.readFile ./nasmount.sh);
+      };
+
+      homelabconf = pkgs.writeShellApplication {
+        name = "homelabconf";
+        text = (builtins.readFile ./homelabconf.sh);
+        runtimeInputs = with pkgs; [
+          sshfs-fuse
+          (vscode-with-extensions.override {
+            vscode = vscodium;
+            vscodeExtensions = with vscode-extensions; [
+              tobiasalthoff.atom-material-theme
+              vscode-icons-team.vscode-icons
+              jnoortheen.nix-ide
+              mkhl.direnv
+              timonwong.shellcheck
+              ethansk.restore-terminals
+            ];
+          })
+        ];
+      };
+
+      mkNasNfsShare = share: with share; {
+        device = "${host}:/mnt/${dataset}";
+        fsType = "nfs";
+        options = [
+          "nfsvers=${nfsVersion}"
+          "proto=tcp"
+          "_netdev"
+          "noauto"
+          "nofail"
+          "x-systemd.automount"
+          "x-systemd.idle-timeout=600"
+          "defaults"
+          "noatime"
+          (if readOnly then "ro" else "rw")
+        ];
+      };
+    in
+    lib.mkIf cfg.enable {
+      environment.systemPackages = [
+        nasmount
+        homelabconf
+      ];
+      fileSystems = lib.mapAttrs (mountpoint: mkNasNfsShare) cfg.shares;
+    };
 }
