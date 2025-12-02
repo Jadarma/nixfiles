@@ -14,7 +14,7 @@ in
 {
   # Isolate GPU and PCI devices with VFIO.
   boot = {
-    initrd.kernelModules = [
+    initrd.kernelModules = lib.mkBefore [
       "kvm-amd"
       "vfio_pci"
       "vfio"
@@ -24,9 +24,16 @@ in
 
     kernelParams = [
       "iommu=pt"
+      "amd_iommu=on"
       "pcie_aspm=off"
       ("vfio-pci.ids=" + lib.concatStringsSep "," pciIDs)
     ];
+
+    # Force video driver to be loaded after VFIO.
+    # TODO: Workaround for https://github.com/NixOS/nixpkgs/issues/420419
+    extraModprobeConfig = ''
+      softdep amdgpu pre: vfio vfio_pci
+    '';
   };
 
   # Mount VM Storage SSD
@@ -44,8 +51,6 @@ in
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
         runAsRoot = true;
       };
     };

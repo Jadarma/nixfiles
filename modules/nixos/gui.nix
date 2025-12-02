@@ -17,8 +17,8 @@ let cfg = config.nixfiles.nixos.gui; in {
     };
 
     # Enable Graphics.
-    services.xserver = {
-      enable = true;
+    services = {
+      xserver.enable = true;
 
       # TODO: Confgiure a more minimal display manager.
       displayManager.gdm = {

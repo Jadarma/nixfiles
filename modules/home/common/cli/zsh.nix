@@ -10,8 +10,7 @@ let cfg = config.nixfiles.home.cli.zsh; in {
     programs.zsh = {
       enable = true;
 
-      # Would want to set to "${config.xdg.configHome}/zsh", but documentation say it must be a string relative to user's home for some reason.
-      dotDir = ".config/zsh";
+      dotDir = "${config.xdg.configHome}/zsh";
 
       enableCompletion = true;
 
