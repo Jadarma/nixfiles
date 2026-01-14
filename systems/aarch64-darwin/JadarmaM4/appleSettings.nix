@@ -86,14 +86,6 @@
       StandardHideWidgets = false;
     };
 
-    alf = {
-      allowdownloadsignedenabled = 0;
-      allowsignedenabled = 1;
-      globalstate = 0;
-      loggingenabled = 1;
-      stealthenabled = 0;
-    };
-
     controlcenter = {
       AirDrop = false;
       BatteryShowPercentage = true;
