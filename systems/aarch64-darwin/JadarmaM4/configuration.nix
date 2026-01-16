@@ -1,37 +1,59 @@
-{ pkgs, ... }: {
+{ ... }:
+{
 
   imports = [ ./appleSettings.nix ];
 
+  # Nixfiles
+  nixfiles = {
+    enable = true;
+
+    user = {
+      name = "dan";
+      displayName = "Dan Cîmpianu";
+      homeDirectory = "/Users/dan";
+      uid = 501;
+      gid = 501;
+    };
+
+    development.enable = true;
+
+    state = {
+      homeManager = "25.11";
+      system = 6;
+    };
+  };
+
   # System
-  system.stateVersion = 5;
   networking = {
     hostName = "JadarmaM4";
     computerName = "Mac Mini M4";
   };
 
-  # Configure user.
-  users.users."dan" = {
-    description = "Dan Cîmpianu";
-    shell = pkgs.zsh;
-    home = "/Users/dan";
-  };
-
-  home-manager.users.dan = ./home.nix;
-  system.primaryUser = "dan";
-
-  nixfiles.darwin = {
-    saneDefaults.enable = true;
-  };
-
+  # Extra programs.
   homebrew = {
     masApps.Xcode = 497799835;
 
     casks = [
-      { name = "discord"; greedy = true; }
-      { name = "ghostty"; greedy = true; }
-      { name = "jetbrains-toolbox"; greedy = true; }
-      { name = "keepassxc"; greedy = true; }
-      { name = "signal"; greedy = true; }
+      {
+        name = "discord";
+        greedy = true;
+      }
+      {
+        name = "ghostty";
+        greedy = true;
+      }
+      {
+        name = "jetbrains-toolbox";
+        greedy = true;
+      }
+      {
+        name = "keepassxc";
+        greedy = true;
+      }
+      {
+        name = "signal";
+        greedy = true;
+      }
     ];
   };
 }

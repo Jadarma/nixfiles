@@ -37,7 +37,7 @@
   # For example:
   # ./systems/x86_64-linux/JadarmaPC/configuration.nix
   # ./systems/aarch64-darwin/JadarmaM4/configuration.nix
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-colors, mac-app-util, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-colors, ... }:
     let
       inherit (builtins) map concatMap filter foldl' readDir attrNames;
       inherit (nixpkgs.lib) filterAttrs mergeAttrs strings;
@@ -89,21 +89,12 @@
         "${host}" = nix-darwin.lib.darwinSystem {
           specialArgs = inputs;
           modules = [
-            ./systems/${system}/${host}/configuration.nix
-            ./modules/darwin
-            home-manager.darwinModules.home-manager
             {
-              system.configurationRevision = self.rev or self.dirtyRev or null;
-              nix.settings.experimental-features = "nix-command flakes";
               nixpkgs.hostPlatform = system;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
-                nix-colors.homeManagerModules.default
-                ./modules/home/darwin
-              ];
+              system.configurationRevision = self.rev or self.dirtyRev or null;
             }
+            ./modules-next/darwin.nix
+            ./systems/${system}/${host}/configuration.nix
           ];
         };
       };
