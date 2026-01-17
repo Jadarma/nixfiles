@@ -152,9 +152,9 @@ let
 
   onDarwin = lib.mkIf pkgs.stdenv.isDarwin {
     programs.ghostty = {
-      # Ghostty package is broken for darwin. Installed instead from Homebrew.
-      # This just tricks HM into not erroring because of a missing package.
-      package = pkgs.emptyDirectory;
+
+      # Download pre-built signed binary, the default package is just for Linux.
+      package = pkgs.ghostty-bin;
 
       settings = {
         auto-update = "off";
