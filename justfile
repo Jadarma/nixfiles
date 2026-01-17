@@ -15,8 +15,11 @@ rebuild TYPE="switch":
   esac
 
 # Update the flake lockfile.
+# On Darwin, also update the brew bundle.
 update:
-    nix flake update
+  #!/bin/sh
+  nix flake update
+  [ "$(uname -s)" = 'Darwin' ] && /opt/homebrew/bin/brew update --force
 
 # Run the Nix garbage collector.
 gc:

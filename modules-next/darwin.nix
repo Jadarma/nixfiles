@@ -17,6 +17,7 @@
   # TODO: Automate by recursively iterating and finding all darwin.nix files.
   ++ [
     ./core/nix/darwin.nix
+    ./core/homebrew/darwin.nix
     ./core/user/darwin.nix
     ./programs/ghostty/darwin.nix
   ];
