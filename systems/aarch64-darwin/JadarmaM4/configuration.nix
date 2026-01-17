@@ -18,7 +18,8 @@
     development.enable = true;
 
     programs = {
-        ghostty.enable = true;
+        defaultCli.enable = true;
+        defaultGui.enable = true;
     };
 
     state = {
