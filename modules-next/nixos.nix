@@ -17,6 +17,7 @@
   ++ [
     ./core/nix/nixos.nix
     ./core/user/nixos.nix
+    ./development/containers/nixos.nix
   ];
 
   config = lib.mkIf config.nixfiles.enable {

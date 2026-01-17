@@ -15,7 +15,10 @@
       gid = 501;
     };
 
-    development.enable = true;
+    development = {
+        enable = true;
+        containers.enable = true;
+    };
 
     programs = {
         defaultCli.enable = true;

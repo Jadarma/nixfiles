@@ -16,6 +16,7 @@
     ./core/state/common.nix
     ./desktop/common.nix
     ./development/common.nix
+    ./development/containers/common.nix
     ./development/direnv/common.nix
     ./development/git/common.nix
     ./development/gpg/common.nix
@@ -51,6 +52,7 @@
         ./core/shell/home.nix
         ./core/theme/home.nix
         ./core/xdg/home.nix
+        ./development/containers/home.nix
         ./development/direnv/home.nix
         ./development/git/home.nix
         ./development/gpg/home.nix
