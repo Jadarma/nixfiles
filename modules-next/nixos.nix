@@ -15,8 +15,8 @@
   # A hardcoded list of all modules that should be imported on NixOS systems.
   # TODO: Automate by recursively iterating and finding all nixos.nix files.
   ++ [
-    ./core/nix/darwin.nix
-    ./core/user/darwin.nix
+    ./core/nix/nixos.nix
+    ./core/user/nixos.nix
   ];
 
   config = lib.mkIf config.nixfiles.enable {

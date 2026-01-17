@@ -23,6 +23,7 @@ in
         nixfiles.development = {
           git.enable = mkDefault true;
           gpg.enable = mkDefault true;
+          direnv.enable = mkDefault true;
         };
       };
 
@@ -30,12 +31,13 @@ in
       ifDisabled = mkIf (!cfg.enable) {
         nixfiles.development = {
           git.enable = mkForce false;
-          gpg.enable = mkDefault false;
+          gpg.enable = mkForce false;
+          direnv.enable = mkForce false;
         };
       };
     in
-    mkMerge [
+    mkIf config.nixfiles.enable (mkMerge [
       ifEnabled
       ifDisabled
-    ];
+    ]);
 }
