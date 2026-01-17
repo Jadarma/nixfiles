@@ -14,10 +14,12 @@
     ./core/shell/common.nix
     ./core/user/common.nix
     ./core/state/common.nix
+    ./desktop/common.nix
     ./development/common.nix
     ./development/direnv/common.nix
     ./development/git/common.nix
     ./development/gpg/common.nix
+    ./programs/ghostty/common.nix
   ];
 
   options = {
@@ -44,10 +46,12 @@
       # TODO: Automate by recursively iterating and finding all home.nix files.
       users."${config.nixfiles.user.name}".imports = [
         ./core/shell/home.nix
+        ./core/theme/home.nix
         ./core/xdg/home.nix
         ./development/direnv/home.nix
         ./development/git/home.nix
         ./development/gpg/home.nix
+        ./programs/ghostty/home.nix
       ];
     };
   };

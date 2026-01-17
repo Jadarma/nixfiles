@@ -17,6 +17,10 @@
 
     development.enable = true;
 
+    programs = {
+        ghostty.enable = true;
+    };
+
     state = {
       homeManager = "25.11";
       system = 6;
@@ -36,10 +40,6 @@
     casks = [
       {
         name = "discord";
-        greedy = true;
-      }
-      {
-        name = "ghostty";
         greedy = true;
       }
       {
