@@ -17,6 +17,7 @@ in
     let
       defaultCli = mkIf (config.nixfiles.programs.defaultCli.enable) {
         nixfiles.programs = {
+          bat.enable = mkDefault true;
           eza.enable = mkDefault true;
           starship.enable = mkDefault true;
         };

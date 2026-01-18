@@ -21,6 +21,7 @@
     ./development/git/common.nix
     ./development/gpg/common.nix
     ./programs/common.nix
+    ./programs/bat/common.nix
     ./programs/eza/common.nix
     ./programs/ghostty/common.nix
     ./programs/starship/common.nix
@@ -56,6 +57,7 @@
         ./development/direnv/home.nix
         ./development/git/home.nix
         ./development/gpg/home.nix
+        ./programs/bat/home.nix
         ./programs/eza/home.nix
         ./programs/ghostty/home.nix
         ./programs/starship/home.nix

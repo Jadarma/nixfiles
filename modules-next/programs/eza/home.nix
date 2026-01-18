@@ -1,8 +1,4 @@
-{
-  osConfig,
-  lib,
-  ...
-}:
+{ osConfig, lib, ... }:
 lib.mkIf osConfig.nixfiles.programs.eza.enable {
   programs.eza = {
     enable = true;
