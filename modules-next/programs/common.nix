@@ -25,6 +25,7 @@ in
       };
       defaultGui = mkIf (config.nixfiles.programs.defaultGui.enable) {
         nixfiles.programs = {
+          firefox.enable = mkDefault true;
           ghostty.enable = mkDefault true;
         };
       };
