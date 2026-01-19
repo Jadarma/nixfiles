@@ -20,6 +20,7 @@
     ./development/direnv/common.nix
     ./development/git/common.nix
     ./development/gpg/common.nix
+    ./development/jvm/common.nix
     ./programs/common.nix
     ./programs/bat/common.nix
     ./programs/eza/common.nix
@@ -59,6 +60,7 @@
         ./development/direnv/home.nix
         ./development/git/home.nix
         ./development/gpg/home.nix
+        ./development/jvm/home.nix
         ./programs/bat/home.nix
         ./programs/eza/home.nix
         ./programs/firefox/home.nix

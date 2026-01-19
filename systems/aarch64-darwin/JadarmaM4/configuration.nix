@@ -18,6 +18,7 @@
     development = {
         enable = true;
         containers.enable = true;
+        jvm.enable = true;
     };
 
     programs = {
