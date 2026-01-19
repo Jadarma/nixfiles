@@ -20,6 +20,8 @@
     ./development/direnv/common.nix
     ./development/git/common.nix
     ./development/gpg/common.nix
+    ./development/jetbrains/android/common.nix
+    ./development/jetbrains/idea/common.nix
     ./development/jvm/common.nix
     ./programs/common.nix
     ./programs/bat/common.nix
@@ -60,6 +62,7 @@
         ./development/direnv/home.nix
         ./development/git/home.nix
         ./development/gpg/home.nix
+        ./development/jetbrains/android/home.nix
         ./development/jvm/home.nix
         ./programs/bat/home.nix
         ./programs/eza/home.nix

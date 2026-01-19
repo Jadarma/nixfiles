@@ -34,6 +34,9 @@ in
           direnv.enable = mkForce false;
           git.enable = mkForce false;
           gpg.enable = mkForce false;
+          jetbrains.idea.enable = mkForce false;
+          jetbrains.android.enable = mkForce false;
+          jvm.enable = mkForce false;
         };
       };
     in

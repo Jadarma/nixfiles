@@ -19,6 +19,8 @@
     ./core/nix/darwin.nix
     ./core/homebrew/darwin.nix
     ./core/user/darwin.nix
+    ./development/jetbrains/android/darwin.nix
+    ./development/jetbrains/toolbox/darwin.nix
   ];
 
   config = lib.mkIf config.nixfiles.enable {

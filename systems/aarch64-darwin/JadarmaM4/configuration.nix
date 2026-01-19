@@ -16,14 +16,15 @@
     };
 
     development = {
-        enable = true;
-        containers.enable = true;
-        jvm.enable = true;
+      enable = true;
+      containers.enable = true;
+      jetbrains.idea.enable = true;
+      jetbrains.android.enable = true;
     };
 
     programs = {
-        defaultCli.enable = true;
-        defaultGui.enable = true;
+      defaultCli.enable = true;
+      defaultGui.enable = true;
     };
 
     state = {
@@ -39,26 +40,18 @@
   };
 
   # Extra programs.
-  homebrew = {
-    masApps.Xcode = 497799835;
-
-    casks = [
-      {
-        name = "discord";
-        greedy = true;
-      }
-      {
-        name = "jetbrains-toolbox";
-        greedy = true;
-      }
-      {
-        name = "keepassxc";
-        greedy = true;
-      }
-      {
-        name = "signal";
-        greedy = true;
-      }
-    ];
-  };
+  homebrew.casks = [
+    {
+      name = "discord";
+      greedy = true;
+    }
+    {
+      name = "keepassxc";
+      greedy = true;
+    }
+    {
+      name = "signal";
+      greedy = true;
+    }
+  ];
 }
