@@ -28,6 +28,7 @@
     ./programs/eza/common.nix
     ./programs/firefox/common.nix
     ./programs/ghostty/common.nix
+    ./programs/htop/common.nix
     ./programs/neofetch/common.nix
     ./programs/ripgrep/common.nix
     ./programs/starship/common.nix
@@ -69,6 +70,7 @@
         ./programs/eza/home.nix
         ./programs/firefox/home.nix
         ./programs/ghostty/home.nix
+        ./programs/htop/home.nix
         ./programs/neofetch/home.nix
         ./programs/ripgrep/home.nix
         ./programs/starship/home.nix
