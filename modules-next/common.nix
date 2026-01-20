@@ -32,6 +32,7 @@
     ./programs/neofetch/common.nix
     ./programs/ripgrep/common.nix
     ./programs/starship/common.nix
+    ./programs/qalculate/common.nix
   ];
 
   options = {
@@ -74,6 +75,7 @@
         ./programs/neofetch/home.nix
         ./programs/ripgrep/home.nix
         ./programs/starship/home.nix
+        ./programs/qalculate/home.nix
       ];
     };
   };

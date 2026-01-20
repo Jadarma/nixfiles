@@ -29,6 +29,7 @@ in
         nixfiles.programs = {
           firefox.enable = mkDefault true;
           ghostty.enable = mkDefault true;
+          qalculate.enable = mkDefault true;
         };
       };
     in
