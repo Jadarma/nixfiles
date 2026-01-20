@@ -30,6 +30,7 @@ in
           firefox.enable = mkDefault true;
           ghostty.enable = mkDefault true;
           qalculate.enable = mkDefault true;
+          zathura.enable = mkDefault true;
         };
       };
     in

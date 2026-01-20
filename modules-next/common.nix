@@ -30,9 +30,10 @@
     ./programs/ghostty/common.nix
     ./programs/htop/common.nix
     ./programs/neofetch/common.nix
+    ./programs/qalculate/common.nix
     ./programs/ripgrep/common.nix
     ./programs/starship/common.nix
-    ./programs/qalculate/common.nix
+    ./programs/zathura/common.nix
   ];
 
   options = {
@@ -73,9 +74,10 @@
         ./programs/ghostty/home.nix
         ./programs/htop/home.nix
         ./programs/neofetch/home.nix
+        ./programs/qalculate/home.nix
         ./programs/ripgrep/home.nix
         ./programs/starship/home.nix
-        ./programs/qalculate/home.nix
+        ./programs/zathura/home.nix
       ];
     };
   };
