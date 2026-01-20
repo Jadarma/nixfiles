@@ -19,6 +19,7 @@ in
         nixfiles.programs = {
           bat.enable = mkDefault true;
           eza.enable = mkDefault true;
+          neofetch.enable = mkDefault true;
           ripgrep.enable = mkDefault true;
           starship.enable = mkDefault true;
         };
