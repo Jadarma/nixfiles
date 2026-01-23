@@ -71,14 +71,6 @@
             }
             ./modules-next/nixos.nix
             ./systems/${system}/${host}/configuration.nix
-
-            ./modules/nixos
-            {
-              home-manager.sharedModules = [
-                nix-colors.homeManagerModules.default
-                ./modules/home/nixos
-              ];
-            }
           ];
         };
       };

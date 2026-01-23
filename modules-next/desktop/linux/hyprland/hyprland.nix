@@ -1,8 +1,8 @@
-{ config, lib, ... }:
+{ osConfig, lib, ... }:
 let
   inherit (lib) map flatten concatStrings;
   inherit (lib.attrsets) mapAttrs mapAttrsToList;
-  cfg = config.nixfiles.home.desktop.monitors;
+  cfg = osConfig.nixfiles.desktop.monitors;
 in
 {
 
@@ -214,7 +214,10 @@ in
       monitor =
         let
           fmtExtra = args: concatStrings (mapAttrsToList (k: v: ",${k},${v}") args);
-          fmtLine = (k: v: "${k},${v.resolution},${v.position},${lib.strings.floatToString v.scale}${fmtExtra v.extraArgs}");
+          fmtLine = (
+            k: v:
+            "${k},${v.resolution},${v.position},${lib.strings.floatToString v.scale}${fmtExtra v.extraArgs}"
+          );
           configLines = mapAttrsToList fmtLine cfg;
         in
         configLines ++ [ ",preffered,auto,auto" ];

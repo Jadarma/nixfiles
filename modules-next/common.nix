@@ -70,6 +70,7 @@
         ./core/shell/home.nix
         ./core/theme/home.nix
         ./core/xdg/home.nix
+        ./desktop/linux/hyprland/home.nix
         ./desktop/linux/mako/home.nix
         ./desktop/linux/scripts/home.nix
         ./desktop/linux/theme/home.nix

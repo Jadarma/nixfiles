@@ -21,6 +21,12 @@
 
     desktop = {
       enable = true;
+      monitors = {
+        "eDP-1" = {
+          resolution = "1920x1080@60";
+          position = "0x0";
+        };
+      };
     };
 
     development = {
@@ -56,34 +62,15 @@
     user = config.nixfiles.user.name;
   };
 
-  # Nixfiles -- Legacy
-  nixfiles.nixos = {
-    saneDefaults.enable = true;
-  };
-
-  # User account.
-  home-manager.users.dan = {
-
-    # Extra apps and packages.
-    home.packages = with pkgs; [
-      evince
-      kdePackages.ark
-      keepassxc
-      pcmanfm
-      signal-desktop
-      spotify
-      vesktop
-      viewnior
-    ];
-
-    nixfiles.home.desktop = {
-      enable = true;
-      monitors = {
-        "eDP-1" = {
-          resolution = "1920x1080@60";
-          position = "0x0";
-        };
-      };
-    };
-  };
+  # Extra apps and packages.
+  home-manager.users.dan.home.packages = with pkgs; [
+    evince
+    kdePackages.ark
+    keepassxc
+    pcmanfm
+    signal-desktop
+    spotify
+    vesktop
+    viewnior
+  ];
 }

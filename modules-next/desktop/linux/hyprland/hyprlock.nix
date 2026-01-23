@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
 
   # Configure HyprLock.
   programs.hyprlock = {
@@ -42,7 +43,7 @@
         dots_rounding = -1;
 
         placeholder_text = "";
-        fail_text = ''<span face='JetBrainsMono Nerd Font'>$FAIL <b>($ATTEMPTS)</b></span>'';
+        fail_text = "<span face='JetBrainsMono Nerd Font'>$FAIL <b>($ATTEMPTS)</b></span>";
 
         hide_input = false;
         fade_on_empty = true;

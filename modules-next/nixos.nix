@@ -20,6 +20,7 @@
     ./core/system/linux/nixos.nix
     ./core/user/nixos.nix
     ./desktop/linux/audio/nixos.nix
+    ./desktop/linux/hyprland/nixos.nix
     ./desktop/linux/mako/nixos.nix
     ./desktop/linux/wayland/nixos.nix
     ./development/containers/nixos.nix
