@@ -71,6 +71,7 @@
         ./core/theme/home.nix
         ./core/xdg/home.nix
         ./desktop/linux/mako/home.nix
+        ./desktop/linux/wofi/home.nix
         ./development/containers/home.nix
         ./development/direnv/home.nix
         ./development/git/home.nix

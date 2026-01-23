@@ -10,7 +10,6 @@ in
     ./scripts
     ./theme
     ./waybar
-    ./wofi
   ];
 
   options = {
