@@ -5,7 +5,6 @@ let cfg = config.nixfiles.nixos.saneDefaults; in {
     ./gui.nix
     ./internet.nix
     ./sound.nix
-    ./steam.nix
   ];
 
   options = {
