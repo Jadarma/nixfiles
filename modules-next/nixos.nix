@@ -21,6 +21,7 @@
     ./core/user/nixos.nix
     ./desktop/linux/audio/nixos.nix
     ./desktop/linux/mako/nixos.nix
+    ./desktop/linux/wayland/nixos.nix
     ./development/containers/nixos.nix
     ./development/jetbrains/android/nixos.nix
     ./development/jetbrains/idea/nixos.nix

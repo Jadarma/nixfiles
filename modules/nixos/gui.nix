@@ -19,27 +19,6 @@ in
 
     # Enable Hyprland.
     programs.hyprland.enable = true;
-    xdg.portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
-
-    # Enable Graphics.
-    services = {
-      xserver.enable = true;
-
-      # TODO: Confgiure a more minimal display manager.
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-        autoSuspend = false;
-      };
-    };
-
-    environment.sessionVariables = {
-      # Prefer using Ozone because we're under Wayland.
-      # Otherwise some Electron apps would start under X-Wayland.
-      NIXOS_OZONE_WL = "1";
-    };
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }
