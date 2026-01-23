@@ -21,6 +21,7 @@ in
           eza.enable = mkDefault true;
           htop.enable = mkDefault true;
           neofetch.enable = mkDefault true;
+          neovim.enable = mkDefault true;
           ripgrep.enable = mkDefault true;
           starship.enable = mkDefault true;
         };

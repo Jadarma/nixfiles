@@ -31,6 +31,7 @@
     ./programs/ghostty/common.nix
     ./programs/htop/common.nix
     ./programs/neofetch/common.nix
+    ./programs/neovim/common.nix
     ./programs/qalculate/common.nix
     ./programs/ripgrep/common.nix
     ./programs/starship/common.nix
@@ -76,6 +77,7 @@
         ./programs/ghostty/home.nix
         ./programs/htop/home.nix
         ./programs/neofetch/home.nix
+        ./programs/neovim/home.nix
         ./programs/qalculate/home.nix
         ./programs/ripgrep/home.nix
         ./programs/starship/home.nix
