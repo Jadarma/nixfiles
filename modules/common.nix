@@ -75,6 +75,7 @@
         ./desktop/linux/scripts/home.nix
         ./desktop/linux/theme/home.nix
         ./desktop/linux/wofi/home.nix
+        ./desktop/linux/waybar/home.nix
         ./development/containers/home.nix
         ./development/direnv/home.nix
         ./development/git/home.nix

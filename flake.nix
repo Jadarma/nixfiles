@@ -69,7 +69,7 @@
               nixpkgs.hostPlatform = system;
               system.configurationRevision = self.rev or self.dirtyRev or null;
             }
-            ./modules-next/nixos.nix
+            ./modules/nixos.nix
             ./systems/${system}/${host}/configuration.nix
           ];
         };
@@ -85,7 +85,7 @@
               nixpkgs.hostPlatform = system;
               system.configurationRevision = self.rev or self.dirtyRev or null;
             }
-            ./modules-next/darwin.nix
+            ./modules/darwin.nix
             ./systems/${system}/${host}/configuration.nix
           ];
         };
