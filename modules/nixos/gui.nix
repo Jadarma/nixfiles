@@ -1,5 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.nixfiles.nixos.gui; in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.nixfiles.nixos.gui;
+in
+{
 
   options = {
     nixfiles.nixos.gui = {
@@ -28,14 +36,10 @@ let cfg = config.nixfiles.nixos.gui; in {
       };
     };
 
-    environment = {
-      # Enable notifications, required by Hyprland.
-      systemPackages = with pkgs; [ libnotify ];
-      sessionVariables = {
-        # Prefer using Ozone because we're under Wayland.
-        # Otherwise some Electron apps would start under X-Wayland.
-        NIXOS_OZONE_WL = "1";
-      };
+    environment.sessionVariables = {
+      # Prefer using Ozone because we're under Wayland.
+      # Otherwise some Electron apps would start under X-Wayland.
+      NIXOS_OZONE_WL = "1";
     };
 
     # Configure fonts.
@@ -48,9 +52,18 @@ let cfg = config.nixfiles.nixos.gui; in {
       fontconfig = {
         enable = true;
         defaultFonts = {
-          monospace = [ "JetBrainsMono NF" "Noto Color Emoji" ];
-          serif = [ "NotoSerif NF" "Noto Color Emoji" ];
-          sansSerif = [ "NotoSans NF" "Noto Color Emoji" ];
+          monospace = [
+            "JetBrainsMono NF"
+            "Noto Color Emoji"
+          ];
+          serif = [
+            "NotoSerif NF"
+            "Noto Color Emoji"
+          ];
+          sansSerif = [
+            "NotoSans NF"
+            "Noto Color Emoji"
+          ];
           emoji = [ "Noto Color Emoji" ];
         };
       };

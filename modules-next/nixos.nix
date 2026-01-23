@@ -18,6 +18,7 @@
     ./core/nix/nixos.nix
     ./core/system/linux/nixos.nix
     ./core/user/nixos.nix
+    ./desktop/linux/mako/nixos.nix
     ./development/containers/nixos.nix
     ./development/jetbrains/android/nixos.nix
     ./development/jetbrains/idea/nixos.nix
