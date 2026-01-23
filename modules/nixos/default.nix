@@ -1,7 +1,6 @@
 { config, lib, ... }:
 let cfg = config.nixfiles.nixos.saneDefaults; in {
   imports = [
-    ./homelab
     ./gui.nix
     ./sound.nix
   ];

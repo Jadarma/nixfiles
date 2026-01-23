@@ -22,6 +22,7 @@
     ./development/jetbrains/android/nixos.nix
     ./development/jetbrains/idea/nixos.nix
     ./gaming/steam/nixos.nix
+    ./services/homelab/nixos.nix
   ];
 
   config = lib.mkIf config.nixfiles.enable {

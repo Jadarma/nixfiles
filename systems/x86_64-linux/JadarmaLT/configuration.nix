@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   imports = [
     ./hardware-configuration.nix
@@ -32,6 +33,15 @@
       defaultGui.enable = true;
     };
 
+    services = {
+      homelab = {
+        enable = true;
+        shares."/mnt/vault" = {
+          dataset = "pool/vault";
+        };
+      };
+    };
+
     state = {
       homeManager = "24.05";
       system = "24.05";
@@ -49,14 +59,9 @@
   # Nixfiles -- Legacy
   nixfiles.nixos = {
     saneDefaults.enable = true;
-    homelab = {
-      enable = true;
-      shares."/mnt/vault" = { dataset = "pool/vault"; };
-    };
   };
 
   # User account.
-  users.users.dan.extraGroups = [ "networkmanager" ];
   home-manager.users.dan = {
 
     # Extra apps and packages.
@@ -65,7 +70,6 @@
       kdePackages.ark
       keepassxc
       pcmanfm
-      protonup-ng
       signal-desktop
       spotify
       vesktop

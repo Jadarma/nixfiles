@@ -40,6 +40,7 @@
     ./programs/ripgrep/common.nix
     ./programs/starship/common.nix
     ./programs/zathura/common.nix
+    ./services/homelab/common.nix
   ];
 
   options = {
