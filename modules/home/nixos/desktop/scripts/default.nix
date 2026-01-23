@@ -1,7 +1,0 @@
-{ ... }: {
-  imports = [
-    ./dmoji
-    ./powermenu
-    ./snip
-  ];
-}

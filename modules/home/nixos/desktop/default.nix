@@ -7,7 +7,6 @@ in
 {
   imports = [
     ./hyprland
-    ./scripts
     ./waybar
   ];
 
