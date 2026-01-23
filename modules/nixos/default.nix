@@ -2,7 +2,6 @@
 let cfg = config.nixfiles.nixos.saneDefaults; in {
   imports = [
     ./gui.nix
-    ./sound.nix
   ];
 
   options = {
@@ -13,6 +12,5 @@ let cfg = config.nixfiles.nixos.saneDefaults; in {
 
   config = lib.mkIf cfg.enable {
     nixfiles.nixos.gui.enable = lib.mkDefault true;
-    nixfiles.nixos.sound.enable = lib.mkDefault true;
   };
 }
