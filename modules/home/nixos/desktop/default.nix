@@ -8,7 +8,6 @@ in
   imports = [
     ./hyprland
     ./scripts
-    ./theme
     ./waybar
   ];
 
