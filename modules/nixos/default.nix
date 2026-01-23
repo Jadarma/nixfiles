@@ -3,7 +3,6 @@ let cfg = config.nixfiles.nixos.saneDefaults; in {
   imports = [
     ./homelab
     ./gui.nix
-    ./internet.nix
     ./sound.nix
   ];
 
@@ -15,7 +14,6 @@ let cfg = config.nixfiles.nixos.saneDefaults; in {
 
   config = lib.mkIf cfg.enable {
     nixfiles.nixos.gui.enable = lib.mkDefault true;
-    nixfiles.nixos.internet.enable = lib.mkDefault true;
     nixfiles.nixos.sound.enable = lib.mkDefault true;
   };
 }
