@@ -116,7 +116,7 @@
         forEachSupportedSystem ({ pkgs }: {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              nixpkgs-fmt
+              nixfmt
               nixd
               just
               (vscode-with-extensions.override {
