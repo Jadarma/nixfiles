@@ -7,7 +7,7 @@
 }:
 let
   cfg = osConfig.nixfiles.development.gpg;
-  isDarwin = pkgs.hostPlatform.isDarwin;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
 in
 lib.mkIf cfg.enable {
   # Configure GPG and configure personally managed keys.

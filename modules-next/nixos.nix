@@ -16,6 +16,7 @@
   # TODO: Automate by recursively iterating and finding all nixos.nix files.
   ++ [
     ./core/nix/nixos.nix
+    ./core/system/linux/nixos.nix
     ./core/user/nixos.nix
     ./development/containers/nixos.nix
     ./development/jetbrains/android/nixos.nix

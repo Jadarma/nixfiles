@@ -17,7 +17,7 @@
   # TODO: Automate by recursively iterating and finding all darwin.nix files.
   ++ [
     ./core/nix/darwin.nix
-    ./core/homebrew/darwin.nix
+    ./core/system/darwin/darwin.nix
     ./core/user/darwin.nix
     ./development/jetbrains/android/darwin.nix
     ./development/jetbrains/toolbox/darwin.nix
