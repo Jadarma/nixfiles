@@ -1,6 +1,7 @@
 # MangoHUD
 # Provides benchmarking and diagnostics tooltip overlays.
-{ lib, ... }: {
+{ lib, ... }:
+{
   options.nixfiles.gaming.mangohud = {
     enable = lib.mkEnableOption "MangoHUD";
   };

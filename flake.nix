@@ -37,20 +37,39 @@
   # For example:
   # ./systems/x86_64-linux/JadarmaPC/configuration.nix
   # ./systems/aarch64-darwin/JadarmaM4/configuration.nix
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-colors, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nix-darwin,
+      ...
+    }:
     let
-      inherit (builtins) map concatMap filter foldl' readDir attrNames;
+      inherit (builtins)
+        map
+        concatMap
+        filter
+        foldl'
+        readDir
+        attrNames
+        ;
       inherit (nixpkgs.lib) filterAttrs mergeAttrs strings;
 
       # Read a `path` as a directory, and return a list of the names of all direct subdirectories in it.
-      directSubdirectories = path: attrNames (filterAttrs (name: type: type == "directory") (readDir path));
+      directSubdirectories =
+        path: attrNames (filterAttrs (name: type: type == "directory") (readDir path));
 
       # The list of supported system architectures, derived from existing configurations in the file structure.
       supportedSystems = directSubdirectories ./systems;
 
       # Read the directory structure, and return a list of targets, containing architecture and hostname.
       # For example: [ { system = "x86_64-linux"; host = "hostname"; }].
-      hostWithSystems = system: map (host: { host = host; system = system; }) (directSubdirectories ./systems/${system});
+      hostWithSystems =
+        system:
+        map (host: {
+          host = host;
+          system = system;
+        }) (directSubdirectories ./systems/${system});
 
       # Detect all NixOS configurations.
       nixosSystems = concatMap hostWithSystems (filter (strings.hasSuffix "-linux") supportedSystems);
@@ -60,54 +79,54 @@
 
       # From a host name and a system architecture, create a NixOS system, which passes all flake inputs to the
       # `configuration.nix` of the target.
-      mkNixosSystem = { host, system }: {
-        "${host}" = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = inputs;
-          modules = [
-            {
-              nixpkgs.hostPlatform = system;
-              system.configurationRevision = self.rev or self.dirtyRev or null;
-            }
-            ./modules/nixos.nix
-            ./systems/${system}/${host}/configuration.nix
-          ];
+      mkNixosSystem =
+        { host, system }:
+        {
+          "${host}" = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = inputs;
+            modules = [
+              {
+                nixpkgs.hostPlatform = system;
+                system.configurationRevision = self.rev or self.dirtyRev or null;
+              }
+              ./modules/nixos.nix
+              ./systems/${system}/${host}/configuration.nix
+            ];
+          };
         };
-      };
 
       # From a host name and a system architecture, create a NixDarwin system, which passes all flake inputs to the
       # `configuration.nix` of the target.
-      mkNixDarwinSystem = { host, system }: {
-        "${host}" = nix-darwin.lib.darwinSystem {
-          specialArgs = inputs;
-          modules = [
-            {
-              nixpkgs.hostPlatform = system;
-              system.configurationRevision = self.rev or self.dirtyRev or null;
-            }
-            ./modules/darwin.nix
-            ./systems/${system}/${host}/configuration.nix
-          ];
+      mkNixDarwinSystem =
+        { host, system }:
+        {
+          "${host}" = nix-darwin.lib.darwinSystem {
+            specialArgs = inputs;
+            modules = [
+              {
+                nixpkgs.hostPlatform = system;
+                system.configurationRevision = self.rev or self.dirtyRev or null;
+              }
+              ./modules/darwin.nix
+              ./systems/${system}/${host}/configuration.nix
+            ];
+          };
         };
-      };
-    in
-    {
-      nixosConfigurations = foldl' mergeAttrs { } (map mkNixosSystem nixosSystems);
-      darwinConfigurations = foldl' mergeAttrs { } (map mkNixDarwinSystem darwinSystems);
 
-      # Creates a devshell for working with this flake via direnv.
-      devShells =
+      # From a system architecture, create a dev-shell for it for developing in a GUI editor.
+      mkDevShell =
+        system:
         let
-          forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-            pkgs = import nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          });
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
         in
-        forEachSupportedSystem ({ pkgs }: {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
+        with pkgs;
+        {
+          "${system}".default = mkShell {
+            packages = [
               nixfmt
               nixd
               just
@@ -123,6 +142,11 @@
               })
             ];
           };
-        });
+        };
+    in
+    {
+      nixosConfigurations = foldl' mergeAttrs { } (map mkNixosSystem nixosSystems);
+      darwinConfigurations = foldl' mergeAttrs { } (map mkNixDarwinSystem darwinSystems);
+      devShells = foldl' mergeAttrs { } (map mkDevShell supportedSystems);
     };
 }

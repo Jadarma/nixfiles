@@ -1,4 +1,5 @@
-{ lib, modulesPath, nixos-hardware, ... }: {
+{ modulesPath, nixos-hardware, ... }:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     nixos-hardware.nixosModules.common-cpu-intel
@@ -6,14 +7,17 @@
     nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
-  # System
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.enableAllFirmware = true;
-
   # Bootloader
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "ehci_pci"
+        "ahci"
+        "usb_storage"
+        "sd_mod"
+        "rtsx_pci_sdmmc"
+      ];
       kernelModules = [ "cryptd" ];
       luks.devices."lvm".device = "/dev/disk/by-label/NIXOS_LUKS";
     };
@@ -45,14 +49,17 @@
     { device = "/dev/disk/by-label/NIXOS_SWAP"; }
   ];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
+  hardware = {
+    enableAllFirmware = true;
+    nvidia = {
+      modesetting.enable = true;
+      open = false;
 
-    # Nvidia prime settings needed by the `common-gpu-nvidia` imported above.
-    prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
+      # Nvidia prime settings needed by the `common-gpu-nvidia` imported above.
+      prime = {
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
   };
 }

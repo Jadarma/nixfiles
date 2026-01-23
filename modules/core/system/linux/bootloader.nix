@@ -1,6 +1,7 @@
 # Bootloader
 # Configures systemd-boot.
-{ config, lib, ... }: lib.mkIf config.nixfiles.enable {
+{ config, lib, ... }:
+lib.mkIf config.nixfiles.enable {
   boot.loader = {
     systemd-boot = {
       enable = true;

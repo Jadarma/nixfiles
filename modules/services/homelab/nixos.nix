@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.nixfiles.services.homelab;
+
   nasmount = pkgs.writeShellApplication {
     name = "nasmount";
     text = (builtins.readFile ./nasmount.sh);

@@ -1,7 +1,8 @@
 # Locale
 # Configures some locale fallbacks. They are mostly made for me, so they use mkDefault to not clash with declaring them
 # normally on a different host or user setup.
-{ config, lib, ... }: lib.mkIf config.nixfiles.enable {
+{ config, lib, ... }:
+lib.mkIf config.nixfiles.enable {
   # Set the timezone.
   time.timeZone = lib.mkDefault "Europe/Bucharest";
 

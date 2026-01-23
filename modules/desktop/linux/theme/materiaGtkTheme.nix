@@ -48,7 +48,10 @@ let
       sassc
       which
     ];
-    phases = [ "unpackPhase" "installPhase" ];
+    phases = [
+      "unpackPhase"
+      "installPhase"
+    ];
     installPhase = ''
       HOME=/build
       chmod 777 -R .
