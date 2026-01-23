@@ -41,32 +41,5 @@ in
       # Otherwise some Electron apps would start under X-Wayland.
       NIXOS_OZONE_WL = "1";
     };
-
-    # Configure fonts.
-    fonts = {
-      packages = with pkgs.nerd-fonts; [
-        jetbrains-mono
-        noto
-      ];
-
-      fontconfig = {
-        enable = true;
-        defaultFonts = {
-          monospace = [
-            "JetBrainsMono NF"
-            "Noto Color Emoji"
-          ];
-          serif = [
-            "NotoSerif NF"
-            "Noto Color Emoji"
-          ];
-          sansSerif = [
-            "NotoSans NF"
-            "Noto Color Emoji"
-          ];
-          emoji = [ "Noto Color Emoji" ];
-        };
-      };
-    };
   };
 }

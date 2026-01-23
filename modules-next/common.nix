@@ -10,6 +10,7 @@
   # A hardcoded list of all modules that should be imported on either platform.
   # TODO: Automate by recursively iterating and finding all common.nix files.
   imports = [
+    ./core/fonts/common.nix
     ./core/nix/common.nix
     ./core/shell/common.nix
     ./core/user/common.nix
