@@ -5,7 +5,7 @@ in
 lib.mkIf config.nixfiles.enable {
   users.users."${cfg.name}" = {
     isNormalUser = true;
-    homeMode = 700;
+    homeMode = "750";
     group = cfg.name;
     extraGroups = [ "wheel" ];
   };

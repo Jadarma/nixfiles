@@ -65,15 +65,15 @@
           inherit system;
           specialArgs = inputs;
           modules = [
-            ./systems/${system}/${host}/configuration.nix
-            ./modules/nixos
-            home-manager.nixosModules.home-manager
             {
-              system.configurationRevision = self.rev or self.dirtyRev or null;
-              nix.settings.experimental-features = "nix-command flakes";
               nixpkgs.hostPlatform = system;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
+              system.configurationRevision = self.rev or self.dirtyRev or null;
+            }
+            ./modules-next/nixos.nix
+            ./systems/${system}/${host}/configuration.nix
+
+            ./modules/nixos
+            {
               home-manager.sharedModules = [
                 nix-colors.homeManagerModules.default
                 ./modules/home/nixos

@@ -5,7 +5,11 @@
   pkgs,
   ...
 }:
-lib.mkIf osConfig.nixfiles.development.gpg.enable {
+let
+  cfg = osConfig.nixfiles.development.gpg;
+  isDarwin = pkgs.hostPlatform.isDarwin;
+in
+lib.mkIf cfg.enable {
   # Configure GPG and configure personally managed keys.
   programs.gpg = {
     enable = true;
@@ -20,7 +24,8 @@ lib.mkIf osConfig.nixfiles.development.gpg.enable {
       }
     ];
 
-    scdaemonSettings = {
+    # This helps macOS read the port but it seems to mess up Linux detection.
+    scdaemonSettings = lib.mkIf isDarwin {
       reader-port = "Yubico Yubi";
     };
   };
@@ -30,7 +35,7 @@ lib.mkIf osConfig.nixfiles.development.gpg.enable {
     enable = true;
     enableSshSupport = true;
     enableZshIntegration = true;
-    pinentry.package = with pkgs; if stdenv.isDarwin then pinentry_mac else pinentry-gnome3;
+    pinentry.package = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-gnome3;
 
     defaultCacheTtl = 60;
     maxCacheTtl = 120;

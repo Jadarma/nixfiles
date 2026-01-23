@@ -8,7 +8,6 @@
     # Extra apps and packages.
     packages = with pkgs; [
       evince
-      jetbrains.idea-ultimate
       kdePackages.ark
       keepassxc
       pavucontrol
