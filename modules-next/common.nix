@@ -23,6 +23,7 @@
     ./development/jetbrains/android/common.nix
     ./development/jetbrains/idea/common.nix
     ./development/jvm/common.nix
+    ./development/nixfiles/common.nix
     ./programs/common.nix
     ./programs/bat/common.nix
     ./programs/eza/common.nix
@@ -68,6 +69,7 @@
         ./development/gpg/home.nix
         ./development/jetbrains/android/home.nix
         ./development/jvm/home.nix
+        ./development/nixfiles/home.nix
         ./programs/bat/home.nix
         ./programs/eza/home.nix
         ./programs/firefox/home.nix

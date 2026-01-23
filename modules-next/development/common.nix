@@ -24,6 +24,7 @@ in
           direnv.enable = mkDefault true;
           git.enable = mkDefault true;
           gpg.enable = mkDefault true;
+          nixfiles.enable = mkDefault config.nixfiles.desktop.enable;
         };
       };
 
@@ -37,6 +38,7 @@ in
           jetbrains.idea.enable = mkForce false;
           jetbrains.android.enable = mkForce false;
           jvm.enable = mkForce false;
+          nixfiles.enable = mkForce false;
         };
       };
     in

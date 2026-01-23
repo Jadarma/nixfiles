@@ -11,7 +11,7 @@ rebuild TYPE="switch":
   case "${unameOut}" in
       Linux*)     sudo nixos-rebuild {{TYPE}} --flake .#;;
       Darwin*)    sudo darwin-rebuild {{TYPE}} --flake .#;;
-      *)          machine="Unknown system, cannot rebuild."
+      *)          echo "Unknown system, cannot rebuild." && false;;
   esac
 
 # Update the flake lockfile.
@@ -23,8 +23,8 @@ update:
 
 # Run the Nix garbage collector.
 gc:
-    nix store gc
+  nix store gc
 
 # Launch the code editor.
 code:
-    codium .
+  codium --user-data-dir ".vscode/data" --log 'off' --new-window --wait .
