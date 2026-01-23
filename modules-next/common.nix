@@ -26,6 +26,7 @@
     ./development/nixfiles/common.nix
     ./programs/common.nix
     ./programs/bat/common.nix
+    ./programs/cava/common.nix
     ./programs/eza/common.nix
     ./programs/firefox/common.nix
     ./programs/ghostty/common.nix
@@ -72,6 +73,7 @@
         ./development/jvm/home.nix
         ./development/nixfiles/home.nix
         ./programs/bat/home.nix
+        ./programs/cava/home.nix
         ./programs/eza/home.nix
         ./programs/firefox/home.nix
         ./programs/ghostty/home.nix
