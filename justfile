@@ -9,9 +9,9 @@ rebuild TYPE="switch":
   #!/bin/sh
   unameOut="$(uname -s)"
   case "${unameOut}" in
-      Linux*)     sudo nixos-rebuild {{TYPE}} --flake .#;;
-      Darwin*)    sudo darwin-rebuild {{TYPE}} --flake .#;;
-      *)          echo "Unknown system, cannot rebuild." && false;;
+    Linux*)     sudo nixos-rebuild {{TYPE}} --flake .#;;
+    Darwin*)    sudo darwin-rebuild {{TYPE}} --flake .#;;
+    *)          echo "Unknown system, cannot rebuild." && false;;
   esac
 
 # Update the flake lockfile.
