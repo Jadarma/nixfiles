@@ -21,9 +21,10 @@ update:
   nix flake update
   [ "$(uname -s)" = 'Darwin' ] && /opt/homebrew/bin/brew update --force
 
-# Run the Nix garbage collector.
-gc:
+# Run the Nix garbage collector and try to reduce /nix/store disk usage.
+cleanup:
   nix store gc
+  nix store optimise
 
 # Launch the code editor.
 code:
