@@ -3,7 +3,7 @@
 { config, lib, ... }:
 let
   inherit (lib) mkOption mkIf;
-  inherit (lib.types) str int path bool;
+  inherit (lib.types) str int path bool listOf package;
   cfg = config.nixfiles.user;
 in
 {
@@ -48,6 +48,12 @@ in
       example = true;
       default = false;
     };
+
+    packages = mkOption {
+      description = "List of extra packages to be installed for the user.";
+      type = listOf package;
+      default = [];
+    };
   };
 
   config = mkIf config.nixfiles.enable {
@@ -59,6 +65,7 @@ in
       description = cfg.displayName;
       createHome = true;
       uid = cfg.uid;
+      packages = cfg.packages;
     };
 
     # Create a primary group for the user as well.

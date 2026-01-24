@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
 
   imports = [
@@ -20,6 +20,17 @@
 
       # Enable auto-login, this is a VM.
       autoLogin = true;
+
+      # Extra apps and packages.
+      packages = with pkgs; [
+        evince
+        kdePackages.filelight
+        kdePackages.ark
+        keepassxc
+        pcmanfm
+        vesktop
+        viewnior
+      ];
     };
 
     desktop = {
@@ -84,16 +95,6 @@
   environment.systemPackages = with pkgs; [
     pciutils
     git
-  ];
-
-  users.users."${config.nixfiles.user.name}".packages = with pkgs; [
-    evince
-    kdePackages.filelight
-    kdePackages.ark
-    keepassxc
-    pcmanfm
-    vesktop
-    viewnior
   ];
 
   # Stram Audio to Host

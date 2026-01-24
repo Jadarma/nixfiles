@@ -22,6 +22,18 @@
       # This device uses full-disk encryption, a password was already required to boot it.
       # The second password of the single user is therefore just annoying.
       autoLogin = true;
+
+      # Extra apps and packages.
+      packages = with pkgs; [
+        evince
+        kdePackages.ark
+        keepassxc
+        pcmanfm
+        signal-desktop
+        spotify
+        vesktop
+        viewnior
+      ];
     };
 
     desktop = {
@@ -58,16 +70,4 @@
       system = "24.05";
     };
   };
-
-  # Extra apps and packages.
-  home-manager.users.dan.home.packages = with pkgs; [
-    evince
-    kdePackages.ark
-    keepassxc
-    pcmanfm
-    signal-desktop
-    spotify
-    vesktop
-    viewnior
-  ];
 }
