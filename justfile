@@ -19,7 +19,9 @@ rebuild TYPE="switch":
 update:
   #!/bin/sh
   nix flake update
-  [ "$(uname -s)" = 'Darwin' ] && /opt/homebrew/bin/brew update --force
+  if [ "$(uname -s)" = 'Darwin' ]; then
+    /opt/homebrew/bin/brew update --force
+  fi
 
 # Run the Nix garbage collector and try to reduce /nix/store disk usage.
 cleanup:
