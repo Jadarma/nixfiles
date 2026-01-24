@@ -17,6 +17,9 @@
       homeDirectory = "/home/dan";
       uid = 1000;
       gid = 1000;
+
+      # Enable auto-login, this is a VM.
+      autoLogin = true;
     };
 
     desktop = {
@@ -92,13 +95,6 @@
     vesktop
     viewnior
   ];
-
-  # Enable auto-login.
-  # This is a VM.
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = config.nixfiles.user.name;
-  };
 
   # Stram Audio to Host
   services.pipewire.extraConfig.pipewire-pulse."30-network-stream-sender" = {

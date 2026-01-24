@@ -3,7 +3,7 @@
 { config, lib, ... }:
 let
   inherit (lib) mkOption mkIf;
-  inherit (lib.types) str int path;
+  inherit (lib.types) str int path bool;
   cfg = config.nixfiles.user;
 in
 {
@@ -36,6 +36,17 @@ in
       description = "The primary group's GID. Ideally it would be the same as the UID.";
       type = int;
       example = 1000;
+    };
+
+    autoLogin = mkOption {
+      description = ''
+        Whether to automatically login on boot without requiring a password.
+        Recommended only when using a VM or root drive is encrypted.
+        Only affects NixOS targets.
+      '';
+      type = bool;
+      example = true;
+      default = false;
     };
   };
 

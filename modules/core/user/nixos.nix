@@ -9,4 +9,9 @@ lib.mkIf config.nixfiles.enable {
     group = cfg.name;
     extraGroups = [ "wheel" ];
   };
+
+  services.displayManager.autoLogin = lib.mkIf cfg.autoLogin {
+    enable = true;
+    user = config.nixfiles.user.name;
+  };
 }

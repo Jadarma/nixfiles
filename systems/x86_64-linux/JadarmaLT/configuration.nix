@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
 
   imports = [
@@ -17,6 +17,11 @@
       homeDirectory = "/home/dan";
       uid = 1000;
       gid = 1000;
+
+      # Enable auto-login.
+      # This device uses full-disk encryption, a password was already required to boot it.
+      # The second password of the single user is therefore just annoying.
+      autoLogin = true;
     };
 
     desktop = {
@@ -52,14 +57,6 @@
       homeManager = "24.05";
       system = "24.05";
     };
-  };
-
-  # Enable auto-login.
-  # This device uses full-disk encryption, a password was already required to boot it.
-  # The second password of the single user is therefore just annoying.
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = config.nixfiles.user.name;
   };
 
   # Extra apps and packages.
