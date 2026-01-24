@@ -1,5 +1,9 @@
-{ pkgs, lib, modulesPath, nixos-hardware, ... }:
-
+{
+  pkgs,
+  modulesPath,
+  nixos-hardware,
+  ...
+}:
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
@@ -7,15 +11,19 @@
     nixos-hardware.nixosModules.common-gpu-amd
   ];
 
-  # System
-  system.stateVersion = "23.11";
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.enableAllFirmware = true;
-
   # Bootloader
   boot = {
     initrd = {
-      availableKernelModules = [ "ahci" "xhci_pci" "amdgpu" "virtio_pci" "virtio_scsi" "usbhid" "sr_mod" "virtio_blk" ];
+      availableKernelModules = [
+        "ahci"
+        "xhci_pci"
+        "amdgpu"
+        "virtio_pci"
+        "virtio_scsi"
+        "usbhid"
+        "sr_mod"
+        "virtio_blk"
+      ];
       kernelModules = [ "amdgpu" ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
@@ -45,7 +53,14 @@
     "/home/dan/games" = {
       device = "/dev/disk/by-label/Games";
       fsType = "ntfs-3g";
-      options = [ "rw" "uid=1000" "gid=100" "noatime" "nofail" "utf8" ];
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=100"
+        "noatime"
+        "nofail"
+        "utf8"
+      ];
     };
   };
 
@@ -59,4 +74,7 @@
   # Virtual machine settings.
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
+
+  # Firmware
+  hardware.enableAllFirmware = true;
 }

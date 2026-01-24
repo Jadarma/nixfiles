@@ -1,17 +1,81 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   imports = [
     ./hardware-configuration.nix
   ];
 
-  # Nixfiles
-  nixfiles.nixos = {
-    saneDefaults.enable = true;
-    steam.enable = true;
-  };
-
-  # System.
   networking.hostName = "playgroundVM";
+
+  # Nixfiles
+  nixfiles = {
+    enable = true;
+
+    user = {
+      name = "dan";
+      displayName = "Dan Cîmpianu";
+      homeDirectory = "/home/dan";
+      uid = 1000;
+      gid = 1000;
+    };
+
+    desktop = {
+      enable = true;
+      monitors = {
+        "HDMI-A-1" = {
+          resolution = "2560x1440@144";
+          position = "0x0";
+          wallpaper = "bg_left.png";
+          persistentWorkspaces = [
+            4
+            5
+            6
+          ];
+        };
+        "DP-1" = {
+          resolution = "2560x1440@144";
+          position = "2560x0";
+          extraArgs = {
+            vrr = "2";
+          };
+          wallpaper = "bg_center.png";
+          persistentWorkspaces = [
+            1
+            2
+            3
+          ];
+        };
+        "DP-3" = {
+          resolution = "2560x1440@144";
+          position = "5120x0";
+          wallpaper = "bg_right.png";
+          persistentWorkspaces = [
+            7
+            8
+            9
+          ];
+        };
+      };
+    };
+
+    development = {
+      enable = true;
+      nixfiles.enable = true;
+    };
+
+    gaming.enable = true;
+
+    programs = {
+      defaultCli.enable = true;
+      defaultGui.enable = true;
+      cava.enable = true;
+    };
+
+    state = {
+      homeManager = "23.11";
+      system = "23.11";
+    };
+  };
 
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [
@@ -19,28 +83,22 @@
     git
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dan = {
-    description = "Dan Cîmpianu";
-    isNormalUser = true;
+  users.users."${config.nixfiles.user.name}".packages = with pkgs; [
+    evince
+    kdePackages.filelight
+    kdePackages.ark
+    keepassxc
+    pcmanfm
+    vesktop
+    viewnior
+  ];
 
-    uid = 1000;
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
-
-    createHome = true;
-    home = "/home/dan";
-    homeMode = "700";
-
-    useDefaultShell = true;
-  };
-  home-manager.users.dan = ./home.nix;
-
+  # Enable auto-login.
+  # This is a VM.
   services.displayManager.autoLogin = {
     enable = true;
-    user = "dan";
+    user = config.nixfiles.user.name;
   };
-
-  virtualisation.docker.enable = true;
 
   # Stram Audio to Host
   services.pipewire.extraConfig.pipewire-pulse."30-network-stream-sender" = {
