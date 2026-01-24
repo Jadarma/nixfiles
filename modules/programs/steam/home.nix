@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-lib.mkIf osConfig.nixfiles.gaming.mangohud.enable {
+lib.mkIf osConfig.nixfiles.programs.steam.enable {
   # TODO: Follow https://github.com/flightlessmango/MangoHud/issues/1283
   programs.mangohud = {
     enable = true;

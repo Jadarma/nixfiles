@@ -25,9 +25,6 @@
     ./development/jetbrains/idea/common.nix
     ./development/jvm/common.nix
     ./development/nixfiles/common.nix
-    ./gaming/common.nix
-    ./gaming/steam/common.nix
-    ./gaming/mangohud/common.nix
     ./programs/common.nix
     ./programs/bat/common.nix
     ./programs/cava/common.nix
@@ -40,6 +37,7 @@
     ./programs/qalculate/common.nix
     ./programs/ripgrep/common.nix
     ./programs/starship/common.nix
+    ./programs/steam/common.nix
     ./programs/zathura/common.nix
     ./services/homelab/common.nix
   ];
@@ -83,7 +81,6 @@
         ./development/jetbrains/android/home.nix
         ./development/jvm/home.nix
         ./development/nixfiles/home.nix
-        ./gaming/mangohud/home.nix
         ./programs/bat/home.nix
         ./programs/cava/home.nix
         ./programs/eza/home.nix
@@ -95,6 +92,7 @@
         ./programs/qalculate/home.nix
         ./programs/ripgrep/home.nix
         ./programs/starship/home.nix
+        ./programs/steam/home.nix
         ./programs/zathura/home.nix
       ];
     };

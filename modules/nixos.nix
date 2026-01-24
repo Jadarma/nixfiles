@@ -26,7 +26,7 @@
     ./development/containers/nixos.nix
     ./development/jetbrains/android/nixos.nix
     ./development/jetbrains/idea/nixos.nix
-    ./gaming/steam/nixos.nix
+    ./programs/steam/nixos.nix
     ./services/homelab/nixos.nix
   ];
 

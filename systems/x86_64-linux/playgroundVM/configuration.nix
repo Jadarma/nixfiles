@@ -77,12 +77,11 @@
       nixfiles.enable = true;
     };
 
-    gaming.enable = true;
-
     programs = {
       defaultCli.enable = true;
       defaultGui.enable = true;
       cava.enable = true;
+      steam.enable = true;
     };
 
     state = {
