@@ -98,6 +98,11 @@ in
     requires = [ "pipewire-pulse.service" ];
   };
 
+  # Install system-wide packages.
+  environment.systemPackages = with pkgs; [
+    pciutils
+  ];
+
   # Other
   users.groups.libvirtd.members = [ "dan" ];
   hardware.graphics.enable = true;

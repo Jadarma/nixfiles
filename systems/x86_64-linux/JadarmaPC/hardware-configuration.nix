@@ -1,4 +1,10 @@
-{ pkgs, modulesPath, nixos-hardware, ... }: {
+{
+  pkgs,
+  modulesPath,
+  nixos-hardware,
+  ...
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -6,14 +12,24 @@
   ];
 
   # Sytem
-  system.stateVersion = "24.11";
   nixpkgs.hostPlatform = "x86_64-linux";
 
   # Bootloader
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "nvme" "ahci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
-      kernelModules = [ "cryptd" "dm-snapshot" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "ahci"
+        "thunderbolt"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [
+        "cryptd"
+        "dm-snapshot"
+      ];
       luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS_LUKS";
     };
     kernelPackages = pkgs.linuxPackages_latest;
@@ -30,27 +46,27 @@
 
   # Drives, Partitions, and Swap.
   fileSystems = {
-    "/" =
-      {
-        device = "/dev/disk/by-label/NIXOS_ROOT";
-        fsType = "ext4";
-        options = [ "noatime" ];
-      };
-    "/boot" =
-      {
-        device = "/dev/disk/by-label/NIXOS_BOOT";
-        fsType = "vfat";
-        options = [ "fmask=0077" "dmask=0077" ];
-      };
-    "/home" =
-      {
-        device = "/dev/disk/by-label/NIXOS_HOME";
-        fsType = "ext4";
-        options = [ "noatime" ];
-      };
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS_ROOT";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+    "/boot" = {
+      device = "/dev/disk/by-label/NIXOS_BOOT";
+      fsType = "vfat";
+      options = [
+        "fmask=0077"
+        "dmask=0077"
+      ];
+    };
+    "/home" = {
+      device = "/dev/disk/by-label/NIXOS_HOME";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
   };
 
-  swapDevices = [{ device = "/dev/disk/by-label/NIXOS_SWAP"; }];
+  swapDevices = [ { device = "/dev/disk/by-label/NIXOS_SWAP"; } ];
 
   # CPU
   hardware.enableAllFirmware = true;
@@ -62,4 +78,12 @@
     # See https://hjr265.me/blog/strangest-amd-7950x-bug/
     cpufreq.max = 5450000;
   };
+
+  # Only allow Suspend to RAM.
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
 }

@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ./vfio.nix
@@ -8,46 +8,93 @@
   networking.hostName = "JadarmaPC";
 
   # Nixfiles
-  nixfiles.nixos = {
-    saneDefaults.enable = true;
-    android.enable = true;
-    homelab = {
+  nixfiles = {
+    enable = true;
+
+    user = {
+      name = "dan";
+      displayName = "Dan Cîmpianu";
+      homeDirectory = "/home/dan";
+      uid = 1000;
+      gid = 1000;
+
+      # Enable auto-login, root drive is encrypted.
+      autoLogin = true;
+
+      # Extra apps and packages.
+      packages = with pkgs; [
+        evince
+        kdePackages.ark
+        keepassxc
+        pcmanfm
+        signal-desktop
+        spotify
+        vesktop
+        viewnior
+      ];
+    };
+
+    desktop = {
       enable = true;
-      shares."/mnt/vault" = { dataset = "pool/vault"; };
+      monitors = {
+        "DP-1" = {
+          resolution = "2560x1440@144";
+          position = "0x0";
+          persistentWorkspaces = [
+            4
+            5
+            6
+          ];
+          wallpaper = "bg_left.png";
+        };
+        "HDMI-A-1" = {
+          resolution = "2560x1440@144";
+          position = "2560x0";
+          persistentWorkspaces = [
+            1
+            2
+            3
+          ];
+          wallpaper = "bg_center.png";
+        };
+        "DP-2" = {
+          resolution = "2560x1440@144";
+          position = "5120x0";
+          persistentWorkspaces = [
+            7
+            8
+            9
+          ];
+          wallpaper = "bg_right.png";
+        };
+      };
+    };
+
+    development = {
+      enable = true;
+      nixfiles.enable = true;
+      jetbrains.idea.enable = true;
+      jetbrains.android.enable = true;
+    };
+
+    programs = {
+      defaultCli.enable = true;
+      defaultGui.enable = true;
+      cava.enable = true;
+    };
+
+    services = {
+      homelab = {
+        enable = true;
+        shares."/mnt/vault" = {
+          dataset = "pool/vault";
+        };
+      };
+    };
+
+    state = {
+      homeManager = "24.11";
+      system = "24.11";
     };
   };
-
-  # Install system-wide packages.
-  environment.systemPackages = with pkgs; [
-    pciutils
-    git
-  ];
-
-  # Define a user account.
-  users.groups.dan.gid = 1000;
-  users.users.dan = {
-    description = "Dan Cîmpianu";
-    isNormalUser = true;
-
-    uid = 1000;
-    group = "dan";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
-
-    createHome = true;
-    home = "/home/dan";
-    homeMode = "700";
-
-    useDefaultShell = true;
-  };
-  home-manager.users.dan = ./home.nix;
-
-  # Only allow Suspend to RAM.
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
-
-  virtualisation.docker.enable = true;
 }
