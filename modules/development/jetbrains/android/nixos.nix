@@ -15,4 +15,5 @@ lib.mkIf config.nixfiles.development.jetbrains.android.enable {
 
   # Enable ADB.
   programs.adb.enable = true;
+  users.groups."adbusers".members = [ config.nixfiles.user.name ];
 }
