@@ -59,21 +59,31 @@ in
 
   # Create a Networking Bridge.
   networking = {
+    enableIPv6 = lib.mkForce false;
     useDHCP = lib.mkForce false;
-    bridges."br0".interfaces = [ hostNetworkInterface ];
+
     interfaces = {
-      "br0" = {
+      "virbr0" = {
         useDHCP = lib.mkForce true;
-        macAddress = hostMac;
       };
       "${hostNetworkInterface}" = {
         useDHCP = lib.mkForce true;
       };
     };
 
+    # Make NM use dnsmasq, which is required for the bridge.
+    networkmanager = {
+      enable = true;
+      dns = "dnsmasq";
+      ethernet.macAddress = hostMac;
+    };
+
     # Allow ports for streaming audio: Scream and Pulse
     firewall.allowedUDPPorts = [ 4010 ];
     firewall.allowedTCPPorts = [ 4713 ];
+
+    # Consider virtual interface as trusted, otherwise firewall might cut-off VM internet.
+    firewall.trustedInterfaces = [ "virbr0" ];
   };
 
   # Stream Audio from Pipewire-Pulse network connection.
@@ -91,15 +101,16 @@ in
     enable = true;
     description = "Scream Audio";
     serviceConfig = {
-      ExecStart = "${pkgs.scream}/bin/scream -o pulse -u -i br0 -p 4010 -v";
+      ExecStart = "${pkgs.scream}/bin/scream -o pulse -u -p 4010 -v";
       Restart = "always";
     };
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "default.target" ];
     requires = [ "pipewire-pulse.service" ];
   };
 
   # Install system-wide packages.
   environment.systemPackages = with pkgs; [
+    dnsmasq
     pciutils
   ];
 
