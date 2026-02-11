@@ -13,14 +13,10 @@
     home-manager.darwinModules.home-manager
     ./common.nix
   ]
-  # A hardcoded list of all modules that should be imported on Darwin systems.
-  # TODO: Automate by recursively iterating and finding all darwin.nix files.
-  ++ [
-    ./core/nix/darwin.nix
-    ./core/system/darwin/darwin.nix
-    ./core/user/darwin.nix
-    ./development/jetbrains/android/darwin.nix
-    ./development/jetbrains/toolbox/darwin.nix
+  ++ lib.pipe ./. [
+    (lib.filesystem.listFilesRecursive)
+    (lib.lists.filter (lib.strings.hasSuffix "darwin.nix"))
+    (lib.lists.filter (path: path != ./darwin.nix))
   ];
 
   config = lib.mkIf config.nixfiles.enable {
