@@ -109,6 +109,28 @@ lib.mkIf osConfig.nixfiles.programs.firefox.enable {
           # DNS over HTTPS.
           "network.trr.mode" = pref 2 "number" false;
           "network.trr.uri" = pref "https://mozilla.cloudflare-dns.com/dns-query" "string" false;
+
+          # Remove clanker slop.
+          "browser.ai.control.default" = pref "blocked" "string" true;
+          "browser.ai.control.linkPreviewKeyPoints" = pref "blocked" "string" true;
+          "browser.ai.control.pdfjsAltText" = pref "blocked" "string" true;
+          "browser.ai.control.sidebarChatbot" = pref "blocked" "string" true;
+          "browser.ai.control.smartTabGroups" = pref "blocked" "string" true;
+          "browser.ai.control.translations" = pref "blocked" "string" true;
+          "browser.ml.enable" = pref false "boolean" true;
+          "browser.ml.chat.enabled" = pref false "boolean" true;
+          "browser.ml.chat.menu" = pref false "boolean" true;
+          "browser.ml.linkPreview.enabled" = pref false "boolean" true;
+          "browser.ml.pageAssist.enabled" = pref false "boolean" true;
+          "browser.ml.smartAssist.enabled" = pref false "boolean" true;
+          "browser.search.visualSearch.featureGate" = pref false "boolean" true;
+          "browser.tabs.groups.smart.enabled" = pref false "boolean" true;
+          "browser.tabs.groups.smart.userEnable" = pref false "boolean" true;
+          "browser.urlbar.quicksuggest.mlEnabled" = pref false "boolean" true;
+          "extensions.ml.enabled" = pref false "boolean" true;
+          "pdfjs.enableAltText" = pref false "boolean" true;
+          "places.semanticHistory.featureGate" = pref false "boolean" true;
+          "sidebar.revamp" = pref false "boolean" true;
         };
 
       # Automatically installs extensions for all profiles.
