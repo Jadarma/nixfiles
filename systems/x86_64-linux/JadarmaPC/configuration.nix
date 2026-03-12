@@ -81,6 +81,7 @@
       defaultCli.enable = true;
       defaultGui.enable = true;
       cava.enable = true;
+      steko.enable = true;
     };
 
     services = {

@@ -27,6 +27,10 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+
+    steko = {
+      url = "github:Jadarma/steko";
+    };
   };
 
   # System configuration outputs in this flake are based on file structure.

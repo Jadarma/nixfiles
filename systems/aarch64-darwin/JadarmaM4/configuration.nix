@@ -25,6 +25,7 @@
     programs = {
       defaultCli.enable = true;
       defaultGui.enable = true;
+      steko.enable = true;
     };
 
     state = {
