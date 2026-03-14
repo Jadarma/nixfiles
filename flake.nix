@@ -30,6 +30,7 @@
 
     steko = {
       url = "github:Jadarma/steko";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
