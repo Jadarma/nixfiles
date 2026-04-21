@@ -75,6 +75,7 @@
       nixfiles.enable = true;
       jetbrains.idea.enable = true;
       jetbrains.android.enable = true;
+      containers.enable = true;
     };
 
     programs = {
