@@ -106,6 +106,8 @@ lib.mkIf osConfig.nixfiles.programs.firefox.enable {
             pref false "boolean"
               true;
 
+          "dom.webgpu.enabled" = pref true "boolean" false;
+
           # DNS over HTTPS.
           "network.trr.mode" = pref 2 "number" false;
           "network.trr.uri" = pref "https://mozilla.cloudflare-dns.com/dns-query" "string" false;
