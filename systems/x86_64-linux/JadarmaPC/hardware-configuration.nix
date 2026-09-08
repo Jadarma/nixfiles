@@ -80,10 +80,10 @@
   };
 
   # Only allow Suspend to RAM.
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
 }

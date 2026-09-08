@@ -141,11 +141,22 @@ let
   onLinux = lib.mkIf pkgs.stdenv.isLinux {
     # Hyprland integration (Linux Only)
     wayland.windowManager.hyprland.settings = {
-      exec-once = [
-        "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
-      ];
       bind = [
-        "SUPER, RETURN, exec, ghostty --gtk-single-instance=true"
+        {
+          _args = [
+            "SUPER + RETURN"
+            (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("ghostty --gtk-single-instance=true")'')
+          ];
+        }
+      ];
+
+      on = [
+        {
+          _args = [
+            "hyprland.start"
+            (lib.generators.mkLuaInline "function()\n  hl.exec_cmd(\"ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false\")\nend")
+          ];
+        }
       ];
     };
   };

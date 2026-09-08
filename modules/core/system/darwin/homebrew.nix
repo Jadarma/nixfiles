@@ -7,7 +7,6 @@ lib.mkIf config.nixfiles.enable {
     global = {
       autoUpdate = false;
       brewfile = true;
-      lockfiles = false;
     };
 
     onActivation = {
@@ -25,7 +24,7 @@ lib.mkIf config.nixfiles.enable {
 
   environment.interactiveShellInit = ''
     # Begin Homebrew
-    eval $(${config.homebrew.brewPrefix}/brew shellenv)
+    eval $(${config.homebrew.prefix}/bin/brew shellenv)
     alias brew="echo 'Do not use Homebrew manually, manage it via nix-darwin.' && false"
     # End Homebrew
 

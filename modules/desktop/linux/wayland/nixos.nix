@@ -7,7 +7,6 @@ lib.mkIf config.nixfiles.desktop.enable {
     # TODO: Confgiure a more minimal display manager.
     displayManager.gdm = {
       enable = true;
-      wayland = true;
       autoSuspend = false;
     };
   };

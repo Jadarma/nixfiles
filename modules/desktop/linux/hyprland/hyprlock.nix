@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
 
   # Configure HyprLock.
@@ -104,11 +104,15 @@
   };
 
   # Add keybinds.
-  wayland.windowManager.hyprland.settings = {
-    bind = [
+  wayland.windowManager.hyprland.settings.bind = [
+    {
       # HyprLock is called by HyprIdle whenever a dbus lock event occurs.
       # Instead of calling it manually, we trigger the event to get the same effect.
-      "SUPER + SHIFT, escape, exec, loginctl lock-session"
-    ];
-  };
+
+      _args = [
+        "SUPER + SHIFT + escape"
+        (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("loginctl lock-session")'')
+      ];
+    }
+  ];
 }

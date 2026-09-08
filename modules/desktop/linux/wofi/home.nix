@@ -26,19 +26,32 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
 
   # Hyprland integration.
   wayland.windowManager.hyprland.settings = {
-    # NOTE: Bodgy hack here.
-    #       Because hyprland doesn't source the `home.sessionVariables`, force the menu to be launched by an intermediary
-    #       shell, that way ZSH will do the environment sourcing for you. This is important because without it, programs
-    #       won't have the same environment as your terminal, and IDEs won't be able to use GPG/SSH for instance.
     bind = [
-      "SUPER, D, exec, /usr/bin/env zsh -ic 'pgrep wofi || wofi --show drun -D orientation=horizontal --lines=1 --prompt=\"Search Applications…\"'"
+      {
+        # NOTE: Bodgy hack here.
+        # Because hyprland doesn't source the `home.sessionVariables`, force the menu to be launched by an intermediary
+        # shell, that way ZSH will do the environment sourcing for you. This is important because without it, programs
+        # won't have the same environment as your terminal, and IDEs won't be able to use GPG/SSH for instance.
+        _args = [
+          "SUPER + D"
+          (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("/usr/bin/env zsh -ic 'pgrep wofi || wofi --show drun -D orientation=horizontal --height=1 --prompt=\"Search Applications…\"'")'')
+          { description = "Launch application menu."; }
+        ];
+      }
     ];
 
-    layerrule = [
-      "dimaround, wofi"
-      # Use specific animation.
-      # TODO: Seems like only works for exit animation.
-      "animation slide top, wofi"
+    layer_rule = [
+      {
+        name = "Wofi dim.";
+        match = {
+          namespace = "wofi";
+        };
+        dim_around = true;
+
+        # Use specific animation.
+        # TODO: Seems like only works for exit animation.
+        animation = "slide top";
+      }
     ];
   };
 }

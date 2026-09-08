@@ -4,7 +4,9 @@
   pkgs,
   ...
 }:
-lib.mkIf osConfig.nixfiles.programs.neofetch.enable {
+# TODO: It's dead, Jim. Force disable for now, investigate a migration.
+# osConfig.nixfiles.programs.neofetch.enable
+lib.mkIf false {
 
   home.packages = [ pkgs.neofetch ];
 

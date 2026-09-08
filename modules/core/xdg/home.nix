@@ -23,6 +23,7 @@ in
       # User dirs only available on NixOS, alternative below.
       enable = pkgs.stdenv.isLinux;
       createDirectories = true;
+      setSessionVariables = true;
 
       # Bread and butter.
       documents = "${home}/docs";
@@ -40,8 +41,8 @@ in
 
       # Specialized.
       extraConfig = {
-        XDG_REPO_DIR = "${home}/repo"; # Git clones of various projects.
-        XDG_SCREENSHOTS_DIR = "${home}/pics/screenshots"; # Separates screenshots from regular pictures.
+        REPO = "${home}/repo"; # Git clones of various projects.
+        SCREENSHOTS = "${home}/pics/screenshots"; # Separates screenshots from regular pictures.
       };
     };
   };

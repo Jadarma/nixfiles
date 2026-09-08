@@ -43,27 +43,90 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
   ];
 
   # Hyprland integration.
-  wayland.windowManager.hyprland.settings = {
-    bind = [
-      "SUPER, E, exec, dmoji"
-      "SUPER, escape, exec, powermenu"
-    ];
-    bindd = [
-      # Snip Display
-      "SUPER                     , Print, Save a screenshot of the current monitor.         , exec, snip"
-      "SUPER + CTRL              , Print, Clip a screenshot of the current monitor.         , exec, snip -c"
-      "SUPER +      + SHIFT      , Print, Save and edit a screenshot of the current monitor., exec, snip -a"
-      "SUPER + CTRL + SHIFT      , Print, Clip and edit a screenshot of the current monitor., exec, snip -ca"
-      # Snip Window
-      "SUPER                + ALT, Print, Save a screenshot of the current window.          , exec, snip -w"
-      "SUPER + CTRL         + ALT, Print, Clip a screenshot of the current window.          , exec, snip -wc"
-      "SUPER        + SHIFT + ALT, Print, Save and edit a screenshot of the current window. , exec, snip -wa"
-      "SUPER + CTRL + SHIFT + ALT, Print, Clip and edit a screenshot of the current window. , exec, snip -wac"
-      # Snip Selection
-      "SUPER                     , S    , Save a screenshot of a selection.                 , exec, snip -s"
-      "SUPER + CTRL              , S    , Clip a screenshot of a selection.                 , exec, snip -sc"
-      "SUPER        + SHIFT      , S    , Save and edit a screenshot of a selection.        , exec, snip -sa"
-      "SUPER + CTRL + SHIFT      , S    , Clip and edit a screenshot of a selection.        , exec, snip -sac"
-    ];
-  };
+  wayland.windowManager.hyprland.settings.bind =
+    let
+      commands = [
+        {
+          keys = "SUPER + E";
+          command = "dmoji";
+          description = "Open the emoji picker.";
+        }
+        {
+          keys = "SUPER + escape";
+          command = "powermenu";
+          description = "Open the power menu.";
+        }
+        # Snip - Whole Display
+        {
+          keys = "SUPER + Print";
+          command = "snip";
+          description = "Save a screenshot of the current monitor.";
+        }
+        {
+          keys = "SUPER + CTRL + Print";
+          command = "snip -c";
+          description = "Clip a screenshot of the current monitor.";
+        }
+        {
+          keys = "SUPER + SHIFT + Print";
+          command = "snip -a";
+          description = "Save and edit a screenshot of the current monitor.";
+        }
+        {
+          keys = "SUPER + CTRL + SHIFT + Print";
+          command = "snip -ca";
+          description = "Clip and edit a screenshot of the current monitor.";
+        }
+        # Snip - Window
+        {
+          keys = "SUPER + ALT + Print";
+          command = "snip -w";
+          description = "Save a screenshot of the active window.";
+        }
+        {
+          keys = "SUPER + CTRL + ALT + Print";
+          command = "snip -wc";
+          description = "Clip a screenshot of the active window.";
+        }
+        {
+          keys = "SUPER + SHIFT + ALT + Print";
+          command = "snip -wa";
+          description = "Save and edit a screenshot of the active window.";
+        }
+        {
+          keys = "SUPER + CTRL + SHIFT + ALT + Print";
+          command = "snip -wca";
+          description = "Clip and edit a screenshot of the active window.";
+        }
+        #Snip - Selection
+        {
+          keys = "SUPER + S";
+          command = "snip -s";
+          description = "Save a screenshot of a selection.";
+        }
+        {
+          keys = "SUPER + CTRL + S";
+          command = "snip -sc";
+          description = "Clip a screenshot of a selection.";
+        }
+        {
+          keys = "SUPER + SHIFT + S";
+          command = "snip -sa";
+          description = "Save and edit a screenshot of a selection.";
+        }
+        {
+          keys = "SUPER + CTRL + SHIFT + S";
+          command = "snip -sca";
+          description = "Clip and edit a screenshot of a selection.";
+        }
+      ];
+      luaFormat = cmd: {
+        _args = [
+          cmd.keys
+          (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${cmd.command}")'')
+          { description = cmd.description; }
+        ];
+      };
+    in
+    map luaFormat commands;
 }

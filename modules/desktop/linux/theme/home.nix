@@ -25,6 +25,9 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
     };
 
     theme = (import ./materiaGtkTheme.nix { inherit pkgs; }) { scheme = config.colorScheme; };
+
+    # TODO: State version 26.05 changed this behavior. Keep current behavior and investigate later.
+    gtk4.theme = config.gtk.theme;
   };
 
   # Configure QT to use Kvantum with the Adapta Dark theme, which will look close to the GTK theme.

@@ -26,6 +26,9 @@
       defaultCli.enable = true;
       defaultGui.enable = true;
       steko.enable = true;
+
+      # TODO: Broken build, wait for https://github.com/NixOS/nixpkgs/issues/514566 to be merged in 26.05.
+      zathura.enable = false;
     };
 
     state = {

@@ -11,10 +11,18 @@
   };
 
   # Set HyprCursor env vars.
-  wayland.windowManager.hyprland.settings = {
-    env = [
-      "HYPRCURSOR_THEME,catppuccin-macchiato-teal-cursors"
-      "HYPRCURSOR_SIZE,32"
-    ];
-  };
+  wayland.windowManager.hyprland.settings.env = [
+    {
+      _args = [
+        "HYPRCURSOR_THEME"
+        "catppuccin-macchiato-teal-cursors"
+      ];
+    }
+    {
+      _args = [
+        "HYPRCURSOR_SIZE"
+        "32"
+      ];
+    }
+  ];
 }

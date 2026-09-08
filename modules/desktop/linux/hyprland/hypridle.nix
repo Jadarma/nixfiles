@@ -1,6 +1,5 @@
 { ... }:
 {
-
   # Configure HyprIdle
   services.hypridle = {
     enable = true;

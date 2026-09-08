@@ -1,10 +1,15 @@
-{ osConfig, lib, ... }:
+{
+  config,
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 lib.mkIf osConfig.nixfiles.programs.firefox.enable {
   programs.firefox = {
     enable = true;
-
-    # TODO: Use firefox-bin, but it is broken on Darwin as of 25.11.
-    # package = pkgs.firefox-bin;
+    package = pkgs.firefox-bin;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
 
     # These policies are applied across all profiles.
     # For options, see https://mozilla.github.io/policy-templates/.
@@ -297,11 +302,27 @@ lib.mkIf osConfig.nixfiles.programs.firefox.enable {
   };
 
   # Hyprland integration. (Linux Only)
-  wayland.windowManager.hyprland.settings = {
-    bindd = [
-      "SUPER              , F2, Launch Firefox.                  , exec, firefox"
-      "SUPER + SHIFT      , F2, Launch Firefox in private profile., exec, firefox -P Incognito"
-      "SUPER + ALT + SHIFT, F2, Launch Firefox in testing profile., exec, firefox -P Testing"
-    ];
-  };
+  wayland.windowManager.hyprland.settings.bind = [
+    {
+      _args = [
+        "SUPER + F2"
+        (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("firefox")'')
+        { description = "Launch Firefox."; }
+      ];
+    }
+    {
+      _args = [
+        "SUPER + SHIFT + F2"
+        (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("firefox -P Incognito")'')
+        { description = "Launch Firefox in private profile."; }
+      ];
+    }
+    {
+      _args = [
+        "SUPER + ALT + SHIFT + F2"
+        (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("firefox -P Testing")'')
+        { description = "Launch Firefox in testing profile."; }
+      ];
+    }
+  ];
 }

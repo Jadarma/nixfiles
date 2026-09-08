@@ -12,9 +12,12 @@ lib.mkIf osConfig.nixfiles.programs.qalculate.enable {
   ];
 
   # Hyprland integration. (Linux Only)
-  wayland.windowManager.hyprland.settings = {
-    bind = [
-      ", XF86Calculator, exec, qalculate-gtk"
-    ];
-  };
+  wayland.windowManager.hyprland.settings.bind = [
+    {
+      _args = [
+        "XF86Calculator"
+        (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("qalculate-gtk")'')
+      ];
+    }
+  ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
 
   # Install packages.
@@ -9,9 +9,12 @@
 
   # Add keybinds.
   # TODO: Consider adding a secondary keybind that prompts for other formats.
-  wayland.windowManager.hyprland.settings = {
-    bind = [
-      "SUPER + CONTROL, C, exec, hyprpicker --autocopy --no-fancy --format=hex"
-    ];
-  };
+  wayland.windowManager.hyprland.settings.bind = [
+    {
+      _args = [
+        "SUPER + CONTROL + C"
+        (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("hyprpicker --autocopy --no-fancy --format=hex")'')
+      ];
+    }
+  ];
 }

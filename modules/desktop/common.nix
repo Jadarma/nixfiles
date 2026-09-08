@@ -19,10 +19,12 @@ let
     attrsOf
     listOf
     either
+    oneOf
     str
     strMatching
     int
     float
+    bool
     ;
 
 in
@@ -51,9 +53,14 @@ in
           };
           extraArgs = mkOption {
             description = "Extra monitor args for Hyprland.";
-            type = attrsOf str;
+            type = attrsOf (oneOf [
+              str
+              int
+              float
+              bool
+            ]);
             example = {
-              vrr = "2";
+              vrr = 2;
             };
             default = { };
           };

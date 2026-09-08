@@ -39,13 +39,13 @@ let
     };
     buildInputs = with pkgs; [
       bc
+      dart-sass
       gtk4.dev
       meson
       ninja
-      nodePackages.sass
       optipng
       rendersvg
-      sassc
+      sass
       which
     ];
     phases = [
