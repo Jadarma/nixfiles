@@ -42,7 +42,7 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
             description = "Open the power menu.";
           }
           {
-            keys = "SUPER + Space";
+            keys = "SUPER + D";
             ipcCommand = "panel-toggle launcher";
             description = "Open the application launcher.";
           }

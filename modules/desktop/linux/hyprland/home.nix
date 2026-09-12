@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) flatten;
+  inherit (lib) flatten concatMapStringsSep;
   inherit (lib.attrsets) mapAttrs mapAttrsToList;
   cfg = osConfig.nixfiles.desktop.monitors;
 in
@@ -21,9 +21,34 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
     };
 
     configType = "lua";
-    extraConfig = builtins.readFile ./hyprland.lua;
+    extraConfig = concatMapStringsSep "\n" builtins.readFile [
+      ./style.lua
+      ./scrolling.lua
+    ];
 
     settings = {
+
+      config = {
+
+        general = {
+          allow_tearing = false;
+        };
+
+        input = {
+          numlock_by_default = true;
+        };
+
+        misc = {
+          mouse_move_enables_dpms = true;
+          key_press_enables_dpms = true;
+        };
+
+        ecosystem = {
+          no_update_news = false;
+          no_donation_nag = true;
+        };
+      };
+
       monitor =
         let
           fallback = {
