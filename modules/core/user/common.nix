@@ -3,7 +3,14 @@
 { config, lib, ... }:
 let
   inherit (lib) mkOption mkIf;
-  inherit (lib.types) str int path bool listOf package;
+  inherit (lib.types)
+    str
+    int
+    path
+    bool
+    listOf
+    package
+    ;
   cfg = config.nixfiles.user;
 in
 {
@@ -52,7 +59,7 @@ in
     packages = mkOption {
       description = "List of extra packages to be installed for the user.";
       type = listOf package;
-      default = [];
+      default = [ ];
     };
   };
 

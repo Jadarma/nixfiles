@@ -28,6 +28,12 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
+    # TODO: [26.11] Modules are merged into nixpkgs, this input can be removed.
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     steko = {
       url = "github:Jadarma/steko";
       inputs.nixpkgs.follows = "nixpkgs";

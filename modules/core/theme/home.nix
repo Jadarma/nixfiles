@@ -28,6 +28,13 @@ lib.mkIf osConfig.nixfiles.enable {
       base0F = lib.mkDefault "FF5370";
 
       accent = lib.mkDefault "16A085";
+      shadow = lib.mkDefault "1B2529";
     };
+  };
+
+  # Make wallpapers available in XDG data dir.
+  xdg.dataFile.wallpapers = lib.mkIf osConfig.nixfiles.desktop.enable {
+    source = ./wallpapers;
+    recursive = true;
   };
 }

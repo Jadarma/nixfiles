@@ -4,13 +4,11 @@
 #
 # Opens a menu that displays all Unicode emojis and allows them to be copied to the clipboard.
 # The entries are sorted by frequency and recency.
+#
+# Note: This functionality is already built-in to Noctalia's launcher.
+#       But the frecency and better emoji metadata make this search slightly more useful.
+#       Kept as A/B test.
 # ---------------------------------------------------------------------------------------------------------------------
-
-# Do not run if a wofi menu is already triggered.
-if pgrep wofi; then
-  >&2 echo 'Wofi already running, not interrupting menu.' 
-  exit 1
-fi
 
 # Fetch emoji data from here and store it in a local database.
 # To renew the emoji store, update the link, then delete the database and rerun the script.
@@ -29,11 +27,9 @@ if [[ ! -f "$DATA_BASE" ]]; then
             description: ($desc | split("_") | map(./"" | first |= ascii_upcase | add) | join(" ")),
             tags: (.value[1:] | map(select(inside($desc) | not)))
           }
-        | 
-          .emoji + " " +
-          "<span variant=\"normal\" weight=\"bold\">" + .description + "</span>" +
-          if(.tags | length > 0)
-            then " <span weight=\"ultralight\" style=\"oblique\" size=\"small\" stretch=\"condensed\">(" + (.tags | join(", ")) + ")</span>"
+        |
+          .emoji + " " + .description + if(.tags | length > 0)
+            then "\t" + (.tags | join(", "))
             else ""
           end
       '\
@@ -41,7 +37,7 @@ if [[ ! -f "$DATA_BASE" ]]; then
 fi
 
 # Show the menu and wait for a selection.
-line=$(frece print "$DATA_BASE" | wofi --dmenu --columns=3 --cache-file=/dev/null --matching=multi-contains -i -m -p 'Search Emoji…')
+line=$(frece print "$DATA_BASE" | noctalia dmenu -p 'Search Emoji…')
 [[ -z $line ]] && exit
 
 # Increment entry and paste.

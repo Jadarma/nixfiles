@@ -14,4 +14,10 @@ lib.mkIf config.nixfiles.enable {
     enable = true;
     user = config.nixfiles.user.name;
   };
+
+  # Set the profile picture.
+  systemd.tmpfiles.rules = [
+    "f+ /var/lib/AccountsService/users/${cfg.name} 0600 root root - [User]\\nIcon=/var/lib/AccountsService/icons/${cfg.name}\\n"
+    "L+ /var/lib/AccountsService/icons/${cfg.name} - - - - ${./profile.png}"
+  ];
 }

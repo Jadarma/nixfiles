@@ -223,7 +223,3 @@ hl.workspace_rule({ workspace = "f[1]s[false]", gaps_out = 0, gaps_in = 0 })
 hl.window_rule({ match = { float = false, workspace = "w[tv1]s[false]" }, border_size = 0, rounding = 0 })
 hl.window_rule({ match = { float = false, workspace = "f[1]s[false]" }, border_size = 0, rounding = 0 })
 
--- EVENTS -------------------------------------------------------------------------------------------------------------
-hl.on("hyprland.start", function()
-    hl.exec_cmd("notify-send -u low -t 2500 'Welcome!' 'To <i>Hyprland!</i>'")
-end)

@@ -1,0 +1,165 @@
+[lockscreen_widgets]
+enabled = true
+
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@DP-1",
+    "lockscreen-login-box@DP-2",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-clock@HDMI-A-1",
+    "lockscreen-widget-clock@eDP-1",
+    "lockscreen-widget-date@HDMI-A-1",
+    "lockscreen-widget-date@eDP-1",
+    "lockscreen-widget-visualizer@HDMI-A-1",
+    "lockscreen-widget-visualizer@eDP-1",
+]
+
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+type = "login_box"
+output = "HDMI-A-1"
+box_height = 70.0
+box_width = 400.0
+cx = 1280.0
+cy = 1072.0
+placement_height = 1440.0
+placement_width = 2560.0
+
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+background_color = "surface"
+background_opacity = 1.0
+background_radius = 12.0
+center_password_text = true
+input_opacity = 1.0
+input_radius = 12.0
+layout = "compact"
+show_unlock_hint = false
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+type = "login_box"
+enabled = false
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+type = "login_box"
+enabled = false
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+type = "login_box"
+output = "eDP-1"
+box_height = 70.0
+box_width = 400.0
+cx = 960.0
+cy = 804.0
+placement_height = 1080.0
+placement_width = 1920.0
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface"
+background_opacity = 1.0
+background_radius = 12.0
+center_password_text = true
+input_opacity = 1.0
+input_radius = 12.0
+layout = "compact"
+show_unlock_hint = false
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+
+[lockscreen_widgets.widget."lockscreen-widget-clock@HDMI-A-1"]
+type = "clock"
+box_height = 32.0
+box_width = 224.0
+output = "HDMI-A-1"
+cx = 1280.0
+cy = 512.0
+placement_height = 1440.0
+placement_width = 2560.0
+
+[lockscreen_widgets.widget."lockscreen-widget-clock@HDMI-A-1".settings]
+color = "on_surface_variant"
+background = false
+format = "{:%A, %F}"
+font_family = "JetBrainsMono NF"
+
+[lockscreen_widgets.widget."lockscreen-widget-clock@eDP-1"]
+type = "clock"
+box_height = 32.0
+box_width = 224.0
+output = "eDP-1"
+cx = 960.0
+cy = 384.0
+placement_height = 1080.0
+placement_width = 1920.0
+
+[lockscreen_widgets.widget."lockscreen-widget-clock@eDP-1".settings]
+color = "on_surface_variant"
+background = false
+format = "{:%A, %F}"
+font_family = "JetBrainsMono NF"
+
+[lockscreen_widgets.widget."lockscreen-widget-date@HDMI-A-1"]
+type = "clock"
+box_height = 192.0
+box_width = 256.0
+cx = 1280.0
+cy = 432.0
+output = "HDMI-A-1"
+placement_height = 1440.0
+placement_width = 2560.0
+
+[lockscreen_widgets.widget."lockscreen-widget-date@HDMI-A-1".settings]
+background = false
+
+[lockscreen_widgets.widget."lockscreen-widget-date@eDP-1"]
+type = "clock"
+box_height = 192.0
+box_width = 256.0
+cx = 960.0
+cy = 324.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+
+[lockscreen_widgets.widget."lockscreen-widget-date@eDP-1".settings]
+background = false
+
+[lockscreen_widgets.widget."lockscreen-widget-visualizer@HDMI-A-1"]
+type = "audio_visualizer"
+box_height = 128.0
+box_width = 416.0
+cx = 1280.0
+cy = 973.0
+output = "HDMI-A-1"
+placement_height = 1440.0
+placement_width = 2560.0
+
+[lockscreen_widgets.widget."lockscreen-widget-visualizer@HDMI-A-1".settings]
+show_when_idle = false
+background = false
+bands = 64
+centered = false
+mirrored = false
+color_1 = "primary"
+color_2 = "secondary"
+
+[lockscreen_widgets.widget."lockscreen-widget-visualizer@eDP-1"]
+type = "audio_visualizer"
+box_height = 128.0
+box_width = 416.0
+cx = 960.0
+cy = 705.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+
+[lockscreen_widgets.widget."lockscreen-widget-visualizer@eDP-1".settings]
+show_when_idle = false
+background = false
+bands = 64
+centered = false
+mirrored = false
+color_1 = "primary"
+color_2 = "secondary"

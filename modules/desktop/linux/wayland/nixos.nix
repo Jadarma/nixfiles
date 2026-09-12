@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 lib.mkIf config.nixfiles.desktop.enable {
   # Enable Graphics.
   services = {
@@ -13,9 +18,16 @@ lib.mkIf config.nixfiles.desktop.enable {
 
   xdg.portal.enable = true;
 
-  environment.sessionVariables = {
-    # Prefer using Ozone because we're under Wayland.
-    # Otherwise some Electron apps would start under X-Wayland.
-    NIXOS_OZONE_WL = "1";
+  environment = {
+
+    systemPackages = with pkgs; [
+      wl-clipboard
+    ];
+
+    sessionVariables = {
+      # Prefer using Ozone because we're under Wayland.
+      # Otherwise some Electron apps would start under X-Wayland.
+      NIXOS_OZONE_WL = "1";
+    };
   };
 }
