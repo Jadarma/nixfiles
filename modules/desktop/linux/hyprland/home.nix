@@ -34,7 +34,10 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
           allow_tearing = false;
         };
 
-        input = {
+        input = with osConfig.services.xserver.xkb; {
+          kb_layout = layout;
+          kb_variant = variant;
+          kb_options = options;
           numlock_by_default = true;
         };
 
