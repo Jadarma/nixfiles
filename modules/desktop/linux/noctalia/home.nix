@@ -261,6 +261,10 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
       offset_y = 24;
       border = true;
       background_opacity = 1.0;
+
+      kinds = {
+        media = false;
+      };
     };
 
     shell = {
