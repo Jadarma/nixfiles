@@ -56,3 +56,13 @@ hl.config({
 
 hl.curve("easeOutQuart", { type = "bezier", points = { { 0.25, 1.0 }, { 0.5, 1.0 } } })
 hl.animation({ leaf = "global", enabled = true, speed = 2.5, bezier = "easeOutQuart" })
+
+-- RULES --------------------------------------------------------------------------------------------------------------
+
+-- Smart gaps.
+hl.workspace_rule({ workspace = "w[tv1]s[false]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]s[false]", gaps_out = 0, gaps_in = 0 })
+hl.window_rule({ match = { float = false, workspace = "w[tv1]s[false]" }, border_size = 0 })
+hl.window_rule({ match = { float = false, workspace = "w[tv1]s[false]" }, rounding = 0 })
+hl.window_rule({ match = { float = false, workspace = "f[1]s[false]" }, border_size = 0 })
+hl.window_rule({ match = { float = false, workspace = "f[1]s[false]" }, rounding = 0 })
