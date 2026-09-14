@@ -28,6 +28,7 @@ in
       # Bread and butter.
       documents = "${home}/docs";
       download = "${home}/dl";
+      projects = "${home}/repo";
 
       # Media.
       music = "${home}/music";
@@ -41,7 +42,6 @@ in
 
       # Specialized.
       extraConfig = {
-        REPO = "${home}/repo"; # Git clones of various projects.
         SCREENSHOTS = "${home}/pics/screenshots"; # Separates screenshots from regular pictures.
       };
     };
@@ -52,14 +52,14 @@ in
 
   # Set the XDG variables manually for consistency in Darwin.
   home.sessionVariables = lib.mkIf pkgs.stdenv.isDarwin {
-    XDG_DESKTOP_DIR = "${home}/Desktop";
     XDG_DOCUMENTS_DIR = "${home}/Documents";
     XDG_DOWNLOAD_DIR = "${home}/Downloads";
+    XDG_PROJECTS_DIR = "${home}/repo";
     XDG_MUSIC_DIR = "${home}/Music";
     XDG_PICTURES_DIR = "${home}/Pictures";
-    XDG_PUBLICSHARE_DIR = "${home}/Public";
     XDG_VIDEOS_DIR = "${home}/Movies";
-    XDG_REPO_DIR = "${home}/repo";
+    XDG_DESKTOP_DIR = "${home}/Desktop";
+    XDG_PUBLICSHARE_DIR = "${home}/Public";
     XDG_SCREENSHOTS_DIR = "${home}/Pictures/Screenshots";
   };
 }
