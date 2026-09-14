@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
 
   imports = [
@@ -59,8 +59,19 @@
     services = {
       homelab = {
         enable = true;
-        shares."/mnt/vault" = {
-          dataset = "pool/vault";
+        shares = {
+          "${config.nixfiles.user.homeDirectory}/docs/vault" = {
+            dataset = "pool/vault";
+            readOnly = false;
+          };
+          "${config.nixfiles.user.homeDirectory}/pics/cloud" = {
+            dataset = "pool/homelab/immich/images/library/admin";
+            readOnly = true;
+          };
+          "${config.nixfiles.user.homeDirectory}/docs/cloud" = {
+            dataset = "pool/homelab/paperless/media/documents/originals";
+            readOnly = true;
+          };
         };
       };
     };
