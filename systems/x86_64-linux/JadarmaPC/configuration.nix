@@ -82,6 +82,7 @@
       defaultGui.enable = true;
       cava.enable = true;
       discord.enable = true;
+      obsidian.enable = true;
       steko.enable = true;
     };
 
