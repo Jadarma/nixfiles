@@ -28,7 +28,6 @@
         kdePackages.ark
         keepassxc
         pcmanfm
-        vesktop
         viewnior
       ];
     };
@@ -81,6 +80,7 @@
       defaultCli.enable = true;
       defaultGui.enable = true;
       cava.enable = true;
+      discord.enable = true;
       steam.enable = true;
     };
 

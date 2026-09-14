@@ -29,7 +29,6 @@
         pcmanfm
         signal-desktop
         spotify
-        vesktop
         viewnior
       ];
     };
@@ -82,6 +81,7 @@
       defaultCli.enable = true;
       defaultGui.enable = true;
       cava.enable = true;
+      discord.enable = true;
       steko.enable = true;
     };
 
