@@ -140,6 +140,7 @@ lib.mkIf (osConfig.nixfiles.desktop.enable && pkgs.stdenv.hostPlatform.isLinux) 
       sidebar_section = "compact";
       hidden_tabs = [ "screen-time" ];
 
+      # TODO: See if calendar can be useful. Follow https://github.com/noctalia-dev/noctalia/issues/4436.
       calendar = {
         show_events_card = false;
         show_week_numbers = true;
